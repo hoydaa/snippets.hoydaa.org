@@ -1,0 +1,32 @@
+# Define any application specific rules to your models here
+# such as routing, partials, etc.
+
+MyIndex:
+  models:
+    Code:
+      fields:
+        id: unindexed
+        title:
+          boost: 1.5
+          type: text
+        description: text
+        code: text
+        tags: text
+        languages: text
+        contributor: text
+      title: title
+      description: description
+      route: code/show?id=%id%
+      partial: code/searchResult
+      rebuild_limit: 250
+#      if the model indexed or not
+#      validator: shouldIndex
+  
+  index:
+    cultures: [en_US]
+    encoding: UTF-8
+    stop_words: [the, and, it]
+    short_words: 1
+    analyzer: utf8num
+    case_sensitive: off
+    mb_string: on   

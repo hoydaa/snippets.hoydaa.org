@@ -1,0 +1,4 @@
+properties.ini
+rsync_exclude.txt
+generated-sfGuardPlugin-schema-transformed.xml
+generated-schema-transformed.xml

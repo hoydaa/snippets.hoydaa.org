@@ -1,0 +1,76 @@
+propel:
+  repo_code:
+    _attributes:            { phpName: Code }
+    id:                     { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
+    code:                   { type: LONGVARCHAR, required: true }
+    code_htmlized:          { type: LONGVARCHAR, required: true }
+    code_hash:              { type: VARCHAR, size: 32, required: true }
+    title:                  { type: VARCHAR, size: 255 }
+    description:            { type: VARCHAR, size: 255 }
+    sf_guard_user_id:       { type: INTEGER, foreignTable: sf_guard_user, foreignReference: id, onDelete: RESTRICT }
+    comment_count:          { type: INTEGER, required: true, default: 0 }
+    average_rating:         { type: DECIMAL, size: 4, scale: 2, required: true, default: 0.0 }
+    name:                   { type: VARCHAR, size: 255, required: false }
+    email:                  { type: VARCHAR, size: 255, required: false }
+    created_at:             ~
+    updated_at:             ~    
+    
+  repo_code_language:
+    _attributes:            { phpName: CodeLanguage }
+    id:                     { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
+    code_id:                { type: INTEGER, required: true, foreignTable: repo_code, foreignReference: id, onDelete: RESTRICT }
+    language_id:            { type: INTEGER, required: true, foreignTable: repo_language, foreignReference: id, onDelete: RESTRICT }
+    
+  repo_code_tag:
+    _attributes:            { phpName: CodeTag }
+    id:                     { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
+    code_id:                { type: INTEGER, required: true, foreignTable: repo_code, foreignReference: id, onDelete: RESTRICT }
+    tag_id:                 { type: INTEGER, required: true, foreignTable: repo_tag, foreignReference: id, onDelete: RESTRICT }
+    sf_guard_user_id:       { type: INTEGER, required: true, foreignTable: sf_guard_user, foreignReference: id, onDelete: RESTRICT }
+    
+  repo_language:
+    _attributes:            { phpName: Language }
+    id:                     { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
+    name:                   { type: VARCHAR, size: 100, required: true }
+    tag:                    { type: VARCHAR, size: 100, required: true }
+    
+  repo_tag:
+    _attributes:            { phpName: Tag }
+    id:                     { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
+    tag:                    { type: VARCHAR, size: 100, required: true }
+    tag_normalized:         { type: VARCHAR, size: 100, required: true }
+    popularity:             { type: INTEGER, required: true, default: 0 }
+    created_at:             ~
+    updated_at:             ~    
+    
+  repo_comment:
+    _attributes:            { phpName: Comment }
+    id:                     { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }    
+    title:                  { type: VARCHAR, size: 255, required: false }
+    comment:                { type: LONGVARCHAR, required: true }
+    comment_htmlized:       { type: LONGVARCHAR, required: true }            
+    name:                   { type: VARCHAR, size: 255, required: false }
+    email:                  { type: VARCHAR, size: 255, required: false }
+    sf_guard_user_id:       { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id, onDelete: RESTRICT }
+    code_id:                { type: INTEGER, required: true, foreignTable: repo_code, foreignReference: id, onDelete: RESTRICT }    
+    created_at:             ~
+    updated_at:             ~    
+    
+  repo_rating:
+    _attributes:            { phpName: Rating }
+    id:                     { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }    
+    sf_guard_user_id:       { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id, onDelete: RESTRICT }
+    code_id:                { type: INTEGER, required: true, foreignTable: repo_code, foreignReference: id, onDelete: RESTRICT }
+    rating:                 { type: INTEGER, required: true }
+    created_at:             ~
+    updated_at:             ~    
+    
+  # will be improved
+  repo_user_profile:
+    _attributes:            { phpName: UserProfile }
+    id:                     { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
+    sf_guard_user_id:       { type: INTEGER, foreignTable: sf_guard_user, foreignReference: id, onDelete: RESTRICT }
+    first_name:             { type: VARCHAR, size: 255, required: true }
+    last_name:              { type: VARCHAR, size: 255, required: true }
+    email:                  { type: VARCHAR, size: 255, required: true }
+    confirmation:           { type: VARCHAR, size: 32, required: true }

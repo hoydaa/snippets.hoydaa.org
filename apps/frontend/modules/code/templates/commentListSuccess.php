@@ -1,0 +1,1 @@
+<?php include_partial('code/comments', array('code' => $code)) ?>

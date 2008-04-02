@@ -1,0 +1,49 @@
+Language:
+  c:
+    name: C
+    tag: c
+  java:
+    name: Java
+    tag: java
+  php:
+    name: Php
+    tag: php
+  xml:
+    name: Xml
+    tag: xml
+    
+Tag:
+  j2me:
+    tag: J2me
+    tag_normalized: j2me
+    popularity: 25
+  j2ee:
+    tag: j2ee
+    tag_normalized: j2ee
+    popularity: 11
+  pattern:
+    tag: patterns
+    tag_normalized: patterns
+    popularity: 20
+  pdaapi:
+    tag: pdaapi
+    tag_normalized: pdaapi
+    popularity: 30
+  mysql:
+    tag: mysql
+    tag_normalized: mysql
+    popularity: 23
+  apache:
+    tag: apache
+    tag_normalized: apache
+    popularity: 4
+    
+#Code:
+#  code1:
+#    name: Umut Utkan
+#    email: umut.utkan@gmail.com
+#    code_language_id: java
+#    code: public class Deneme {}
+#    title: Deneme kodu
+#    description: Deneme aciklama
+#    average_rating: 5.89

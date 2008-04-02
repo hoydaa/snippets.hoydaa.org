@@ -1,0 +1,42 @@
+methods:
+  post: [first_name, last_name, email]
+
+names:
+  first_name:
+    required:     true
+    required_msg: Please enter your first name.
+  last_name:
+    required:     true
+    required_msg: Please enter your last name.
+  email:
+    required:     true
+    required_msg: Please enter your email.
+    validators:   [emailValidator, emailUniqueValidator]
+    
+emailValidator:
+    class:        sfEmailValidator
+    param:
+      email:       email
+      email_error: Uygunsuz e-posta adresi.
+
+usernameValidator:
+    class:        sfStringValidator
+    param:
+      min:        5
+      min_error:  Username has to be at least 5 characters long.
+      
+usernameUniqueValidator:
+    class:        myUniqueValidator
+    param:
+      class_name:       sfGuardUserPeer
+      field_const_name: USERNAME
+      form_field_name:  username
+      unique_error:     There is another user with the same username, please try another one.
+      
+emailUniqueValidator:
+  class:                 myUniqueValidator
+  param:
+    class_name:          UserProfilePeer
+    field_const_name:    EMAIL
+    form_field_name:     email
+    unique_error:        There is another user with the same email, please try another one.

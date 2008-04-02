@@ -1,0 +1,5 @@
+changePassword:
+  is_secure: on
+  
+editProfile:
+  is_secure: on
