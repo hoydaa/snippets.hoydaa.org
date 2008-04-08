@@ -45,7 +45,7 @@
     		    <?php echo $sf_data->getRaw('sf_content') ?>
     		</div>
     		<div id="right">
-				<?php include_component_slot('sidebar') ?>
+				<?php include_partial('sidebar/default') ?>
     		</div>
 		</div>
 	</div>

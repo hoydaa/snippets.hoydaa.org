@@ -13,13 +13,9 @@ class sidebarComponents extends sfComponents
 
     public function executeIndex()
     {
-        $this->forward('sidebar', 'default');
+        $this->forward('sidebar', 'most');
     }
-  
-    public function executeDefault() {
-        
-    }
-    
+     
     public function executeMost() {
         $most = $this->getRequestParameter('most');
 
