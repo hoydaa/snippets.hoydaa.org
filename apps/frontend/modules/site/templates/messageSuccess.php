@@ -1,0 +1,1 @@
+<p class="message"><?php echo $sf_flash->get('message') ?></p>
