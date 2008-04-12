@@ -15,8 +15,5 @@
 </script>
 
 <?php echo form_tag('sfLucene/search', array('method' => 'get', 'onsubmit' => 'checkForm()')) ?>
-	<input type="text" name="query" size="40" id="query"/>&nbsp;<input type="submit" value="Search"/>
-	<br/>
-	<input type="radio" value="full" name="search_type" checked/>&nbsp;Full Text&nbsp;&nbsp;
-	<input type="radio" value="tag" name="search_type" id="isTag"/>&nbsp;Tags Only
+	<input type="text" name="query" size="80" id="query" class="text"/>&nbsp;<input type="submit" value="Search" class="button"/>
 </form>
