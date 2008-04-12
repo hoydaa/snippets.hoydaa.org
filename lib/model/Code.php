@@ -61,7 +61,7 @@ class Code extends BaseCode
     //for lucene index
     public function getContributor() {
         return ($this->getSfGuardUserId() ? 
-            $this->getSfGuardUserId()->getProfile()->getUsername() : $this->getName());
+            $this->getSfGuardUser()->getUsername() : $this->getName());
     }
 }
 

@@ -16,26 +16,44 @@ class userActions extends sfActions
         $this->forward('user', 'editProfile');
     }
 
-    public function executeEditProfile() {
-        if ($this->getRequest()->getMethod() != sfRequest::POST)
-        {
-	        return sfView::SUCCESS;
-        }
-        else
-        {
-            $p = $this->getUser()->getProfile();
-            $p->setFirstName($this->getRequestParameter('first_name'));
-            $p->setLastName($this->getRequestParameter('last_name'));
-            $p->setEmail($this->getRequestParameter('email'));
-            $p->save();
-            $this->getRequest()->setError('form-message', array('User profile saved.'));
-        }
-    }
-    
-    public function handleErrorEditProfile() {
-        return sfView::SUCCESS;
-    }
-    
+	public function executeEditProfile() {
+		if ($this->getRequest()->getMethod() != sfRequest::POST) {
+			$user = $this->getUser()->getProfile();
+
+			$this->getRequest()->setParameter('email', $user->getEmail());
+			$this->getRequest()->setParameter('first_name', $user->getFirstName());
+			$this->getRequest()->setParameter('last_name', $user->getLastName());
+		} else {
+			$c = new Criteria();
+			$c->add(UserProfilePeer::EMAIL, $this->getRequestParameter('email'));
+
+			$profile = UserProfilePeer::doSelectOne($c);
+
+			if ($profile && $profile->getSfGuardUserId() != $this->getUser()->getGuardUser()->getId()) {
+				$this->getRequest()->setError('email', 'This email belongs to some other user.');
+
+				return sfView::SUCCESS;
+			}
+
+			$c = new Criteria();
+			$c->add(UserProfilePeer::SF_GUARD_USER_ID, $this->getUser()->getGuardUser()->getId());
+
+			$profile = UserProfilePeer::doSelectOne($c);
+
+			$profile->setEmail($this->getRequestParameter('email'));
+			$profile->setFirstName($this->getRequestParameter('first_name'));
+			$profile->setLastName($this->getRequestParameter('last_name'));
+
+			$profile->save();
+
+			$this->getRequest()->setError('form-message', array('User profile saved.'));
+		}
+	}
+
+	public function handleErrorEditProfile() {
+		return sfView::SUCCESS;
+	}
+
     public function executeRegister() {
         if ($this->getRequest()->getMethod() != sfRequest::POST)
         {
@@ -81,28 +99,29 @@ class userActions extends sfActions
             }
         }
     }
-    
+
     public function executeChangePassword() {
-        if ($this->getRequest()->getMethod() != sfRequest::POST)
-        {
-	        return sfView::SUCCESS;
-        }
-        else
-        {
-            $old_password = $this->getRequestParameter('old_password');
-            $new_password = $this->getRequestParameter('new_password');
-            if($this->getUser()->getGuardUser()->checkPasswordByGuard($old_password)) {
-                $this->getUser()->getGuardUser()->setPassword($new_password);
-                $this->getUser()->getGuardUser()->save();
-                $this->getRequest()->setError('form-message', array('Your password is changd.'));
-                return sfView::SUCCESS;
-            } else {
-                $this->getRequest()->setError('form-message', array('Your old password is wrong.'));
-                return sfView::SUCCESS;
-            }
-        }
+		if ($this->getRequest()->getMethod() != sfRequest::POST) {
+			return sfView::SUCCESS;
+		}
+
+		$old_password = $this->getRequestParameter('old_password');
+		$new_password = $this->getRequestParameter('new_password');
+
+		if (!$this->getUser()->getGuardUser()->checkPasswordByGuard($old_password)) {
+			$this->getRequest()->setError('old_password', 'Your old password is wrong.');
+
+			return sfView::SUCCESS;
+		}
+
+		$this->getUser()->getGuardUser()->setPassword($new_password);
+		$this->getUser()->getGuardUser()->save();
+
+    	$this->setFlash('message', 'Your password is changed.');
+
+    	$this->forward('site', 'message');
     }
-    
+
     public function handleErrorRequestPassword() {
         return sfView::SUCCESS;
     }
