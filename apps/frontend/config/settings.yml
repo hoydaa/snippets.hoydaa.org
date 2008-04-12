@@ -41,6 +41,9 @@ all:
 #    unavailable_action:  unavailable  # From an application disabled via the available setting below
 #
   .settings:
+    validation_error_prefix:    ''
+    validation_error_suffix:    ''
+    validation_error_class:     error
 #    zend_lib_dir: /opt/ZendFramework-1.5.0/library/Zend
 #    autoloading_functions:
 #      - [sfZendFrameworkBridge, autoload]
