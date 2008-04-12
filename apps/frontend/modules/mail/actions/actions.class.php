@@ -34,27 +34,26 @@ class mailActions extends sfActions
         $this->user = $user;
         
     }
-    
-    public function executeRequestPassword() {
-        $user = $this->getRequest()->getAttribute('user');
-        $password = $this->getRequest()->getAttribute('password');
-        
-        // class initialization
-        $mail = new sfMail();
-        $mail->setCharset('utf-8');
- 
-        // definition of the required parameters
-        $mail->setSender('codesnippet@hoydaa.org', 'Hoydaa.org Codesnippet');
-        $mail->setFrom('codesnippet@hoydaa.org', 'Hoydaa.org Codesnippet');
-        $mail->addReplyTo('codesnippet@hoydaa.org');
- 
-        $mail->addAddress($user->getProfile()->getEmail()); 
-        
+
+	public function executeForgotPassword() {
+		$email = $this->getRequest()->getAttribute('email');
+		$username = $this->getRequest()->getAttribute('username');
+		$password = $this->getRequest()->getAttribute('password');
+
+		$mail = new sfMail();
+		$mail->setCharset('utf-8');
+
+		$mail->setSender('codesnippet@hoydaa.org', 'Hoydaa.org Codesnippet');
+		$mail->setFrom('codesnippet@hoydaa.org', 'Hoydaa.org Codesnippet');
+		$mail->addReplyTo('codesnippet@hoydaa.org');
+
+		$mail->addAddress($email); 
+
         $mail->setSubject('codesnippet.hoydaa.org Reset Password');
-        
+
         $this->mail = $mail;
-        $this->user = $user;
+        $this->username = $username;
         $this->password = $password;        
     }
-    
+
 }
