@@ -22,13 +22,13 @@ class sidebarComponents extends sfComponents
         $this->logMessage('Umut: ' . $most, 'debug');
         
         if(!$most || $most == 'new') {
-            $this->new_codes = CodePeer::getNewCodes();
+            $this->snippets = CodePeer::getNewCodes();
         } else if($most == 'high') {
-            $this->new_codes = CodePeer::getPopularCodes();
+            $this->snippets = CodePeer::getPopularCodes();
         } else if($most == 'disc') {
-            $this->new_codes = CodePeer::getMostDiscussedCodes();
+            $this->snippets = CodePeer::getMostDiscussedCodes();
         } else {
-            $this->new_codes = CodePeer::getNewCodes();
+            $this->snippets = CodePeer::getNewCodes();
         }
     }
 
