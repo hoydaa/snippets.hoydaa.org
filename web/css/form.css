@@ -1,0 +1,52 @@
+form {
+	margin: 0;
+}
+
+form .row {
+	margin-bottom: 10px;
+}
+
+form label {
+	float: left;
+	width: 125px;
+	font-weight: bold;
+	color: #42423D;
+}
+
+input {
+	font-family: Verdana,Arial,Helvetica,sans-serif;
+	font-size: 11px;
+	padding: 3px;
+}
+
+input[type=text], input[type=password], textarea {
+	border: 1px solid #D3D3D1;
+}
+
+input[type=text], input[type=password] {
+	width: 200px;
+}
+
+form textarea {
+	width: 400px;
+	height: 200px;
+}
+
+input[type=submit] {
+	background-color: #AE0000;
+	border: none;
+	color: #FFFFFF;
+}
+
+input[type=submit]:hover {
+	background-color: #232323;
+}
+
+form .error {
+	margin-left: 125px;
+	color: #FF0000;
+}
+
+form .button-panel {
+	margin-left: 125px;
+}
