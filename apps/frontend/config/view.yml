@@ -9,7 +9,7 @@ default:
     keywords:     symfony, project
     language:     en
 
-  stylesheets:    [main, layout, lang-java]
+  stylesheets:    [newlayout, newmain, sidebox, form]
 
   javascripts:    [/js/jquery-1.2.3.js]
 
