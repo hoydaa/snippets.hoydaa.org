@@ -11,7 +11,7 @@ names:
   email:
     required:     true
     required_msg: Please enter your email.
-    validators:   [emailValidator, emailUniqueValidator]
+    validators:   [emailValidator]
     
 emailValidator:
     class:        sfEmailValidator
