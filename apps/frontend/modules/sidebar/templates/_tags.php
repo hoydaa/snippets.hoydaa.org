@@ -8,14 +8,14 @@
 			<?php $text = "<span style='font-size:" . (10 + floor($pop * 10)) . "px;'>" . $tag . "</span>"; ?>
 			<?php echo link_to($text, 'sfLucene/search?query=tags:' . $tag) ?>
 			<?php endforeach; ?>
-			<?php echo __('Display') ?>:
+			<?php echo "<br/>" . __('Display') ?>:
 			<?php echo select_tag(
 				'tag_type',
 				options_for_select(array('cloud' => 'Popular Tags', 'new' => 'New Tags'), $sf_params->get('tag_type')),
 				array(
 					'onchange' => remote_function(
 						array(
-							'update' => 'update-tags',
+							'update' => 'sidebar-tags',
 							'url' => 'sidebar/tags',
 							'with' => '"tag_type="+value'
 						)
