@@ -24,7 +24,7 @@ class Code extends BaseCode
         $salt = $this->getTitle().$this->getDescription();
         $this->setCodeHash(sha1($salt.$this->getCode()));
         $arr = myUtils::highlightSnippet($this->getCode());
-        $this->setCodeHtmlized($arr['snippet']);
+//        $this->setCodeHtmlized($arr['snippet']);
         foreach($this->getCodeLanguages() as $language) {
             $language->delete();
         }

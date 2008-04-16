@@ -9,14 +9,7 @@
  */ 
 class Comment extends BaseComment
 {
+
     
-    public function setComment($v) {
-        parent::setComment($v);
-    }
-    
-    public function save($con = null) {
-        $this->setCommentHtmlized(myUtils::highlightSnippet($this->getComment()));
-        parent::save($con);
-    }
     
 }
