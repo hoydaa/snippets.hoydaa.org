@@ -53,100 +53,69 @@
         <?php echo form_message($sf_request) ?>
 
 		<?php if(!$sf_user->isAuthenticated()): ?>
-            <div class="form-row">
-                <?php echo form_error('name') ?>
+            <div class="row">
             	<?php echo label_for('name', __('Name'), array('class' => 'required')) ?>
-            	<div class="input-cont">
                 <?php echo object_input_tag($code, 'getName'); ?>
-                </div>
+                <?php echo form_error('name') ?>
             </div>
     
-            <div class="form-row">
-                <?php echo form_error('email') ?>
+            <div class="row">
             	<?php echo label_for('email', __('Email'), array('class' => 'required')) ?>
-            	<div class="input-cont">
                 <?php echo object_input_tag($code, 'getEmail'); ?>
-                </div>
+                <?php echo form_error('email') ?>
             </div>
         <?php else: ?>
         	<?php echo input_hidden_tag('name', $sf_user->getProfile()->getFullName()) ?>
         	<?php echo input_hidden_tag('email', $sf_user->getProfile()->getEmail()) ?>
         <?php endif; ?>
         
-        <div class="form-row">
+        <div class="row">
+            <?php echo link_to(label_for('code', __('Code'), array('class' => 'required')), '#', array(
+            	'onmouseover' => remote_function(
+	                array(
+	                	'method' => 'post',
+	                    'contentType' => 'application/x-www-form-urlencoded',
+	        			'update' => 'code-div', 
+	        			'url' => 'sidebar/highlight',
+	            		'with' => '"code="+encodeURIComponent($("code-textarea").value)+"&language="+$("code_language_id").options[$("code_language_id").selectedIndex].value',
+	            		'loading' => "$('code-div').innerHTML='Please wait...';Element.show('code-div');",
+	            		'complete' => "Element.hide('indicator-highlight');"
+	                )),
+	            'onmouseout' => "Element.hide('code-div');"
+            )) ?>
+        	<?php include_component('sidebar', 'languageConsole', array('textarea' => 'code-textarea')) ?>
+        	<div id="code-div" style="display: none;" class="code_snippet"></div>
+            <?php echo object_textarea_tag($code, 'getCode', array('id' => 'code-textarea')) ?>
             <?php echo form_error('code') ?>
-                <?php echo link_to(label_for('code', __('Code'), array('class' => 'required')), '#', array(
-             		'onmouseover' => remote_function(
-	                    array(
-	                        'method' => 'post',
-	                        'contentType' => 'application/x-www-form-urlencoded',
-	        				'update' => 'code-div', 
-	        				'url' => 'sidebar/highlight',
-	            			'with' => '"code="+encodeURIComponent($("code-textarea").value)+"&language="+$("code_language_id").options[$("code_language_id").selectedIndex].value',
-	            			'loading' => "$('code-div').innerHTML='Please wait...';Element.show('code-div');",
-	            			'complete' => "Element.hide('indicator-highlight');"
-	                    )),
-	            	'onmouseout' => "Element.hide('code-div');"
-                )) ?>            
-        	<div class="input-cont">
-        		<?php include_component('sidebar', 'languageConsole', array('textarea' => 'code-textarea')) ?>
-        		<div id="code-div" style="display: none;" class="code_snippet">
-        		</div>
-                <?php echo object_textarea_tag($code, 'getCode', array('id' => 'code-textarea')) ?>
             <span id="indicator-highlight" style="display: none;"> Please wait...</span>
-            </div>
             <script language="javascript">
             	$("code-div").style.top = findPosY($("code-textarea"));
             	$("code-div").style.left = findPosX($("code-textarea"));
             </script>
         </div>
         
-        <div class="form-row">
-        	<?php echo form_error('title') ?>
+        <div class="row">
         	<?php echo label_for('title', __('Title'), array('class' => 'required')) ?>
-        	<div class="input-cont">
             <?php echo object_input_tag($code, 'getTitle') ?>
-            </div>
+            <?php echo form_error('title') ?>
         </div>
         
-        <div class="form-row">
-            <?php echo form_error('description') ?>
+        <div class="row">
         	<?php echo label_for('description', __('Description')) ?>
-        	<div class="input-cont">
             <?php echo object_input_tag($code, 'getDescription') ?>
-            </div>
+            <?php echo form_error('description') ?>            
         </div>
         
-        <div class="form-row">
-            <?php echo form_error('tags') ?>
+        <div class="row">
         	<?php echo label_for('tags', __('Tags')) ?>
-        	<div class="input-cont">
-                <?php echo input_auto_complete_tag('tags', $code->getTags(), 'sidebar/searchTag', array('autocomplete'=>'off', 'size'=>'40'), array('use_style'=>'true', 'after_update_element'=>'updateTags')) ?>
-            </div>
+            <?php echo input_auto_complete_tag('tags', $code->getTags(), 'sidebar/searchTag', array('autocomplete'=>'off', 'size'=>'40'), array('use_style'=>'true', 'after_update_element'=>'updateTags')) ?>
+            <?php echo form_error('tags') ?>
         </div>        
         
-        <div class="form-row">
-        	<div class="input-cont">
+        <div class="button-panel">
             <?php echo submit_tag(__('Save')) ?>
-        	</div>
         </div>
         
         <?php echo object_input_hidden_tag($code, 'getId') ?>
     
     </form>
-    
-    <div class="code_snippet" id="hede">
-<div>
-    <div class="line_numbers">1<br>2<br>3<br>4<br>5<br>6<br>7</div>
-    <div style="float:left;">
-        <span class="keyword">public</span><span>&nbsp;</span><span class="keyword">class</span><span>&nbsp;</span><span>Deneme</span><span>&nbsp;</span><span>{</span><span>
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">private</span><span>&nbsp;</span><span class="keyword">int</span><span>&nbsp;</span><span>a</span><span>&nbsp;</span><span>=</span><span>&nbsp;</span><span>0</span><span>;</span><span>
-            <br>
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">public</span><span>&nbsp;</span><span>Deneme</span><span>(</span><span class="keyword">int</span><span>&nbsp;</span><span>a</span><span>)</span><span>&nbsp;</span><span>{</span><span>
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span class="keyword">this</span><span>.</span><span>a</span><span>&nbsp;</span><span>=</span><span>&nbsp;</span><span>a</span><span>;</span><span>
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;</span><span>}</span><span>
-            <br>
-        </span><span>}</span>
-    </div>
-</div>    
-    </div>
