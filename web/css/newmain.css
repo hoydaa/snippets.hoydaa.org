@@ -37,11 +37,18 @@ a:hover {
 
 /* message */
 
-p.message {
+p.info {
 	margin: 0;
 	padding-left: 32px;
 	line-height: 32px;
 	background: url("/images/info.png") no-repeat;
+}
+
+p.error {
+	margin: 0;
+	padding-left: 32px;
+	line-height: 32px;
+	background: url("/images/error.png") no-repeat;
 }
 
 /* feed link */
