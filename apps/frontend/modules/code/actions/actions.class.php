@@ -43,9 +43,16 @@ class codeActions extends sfActions
     }
     
     public function executeEdit() {
+        $id = $this->getRequestParameter('id');
+        
+        if($id && !myUtils::isUserRecord('CodePeer', $id, $this->getUser()->getId())) {
+            $this->setFlash('error', 'You dont have enough credentials to edit this record.');
+
+    	    $this->forward('site', 'message');
+        }
+        
         if ($this->getRequest()->getMethod() != sfRequest::POST)
         {
-            $id = $this->getRequestParameter('id');
             if($id) {
                 $this->code = CodePeer::retrieveByPk($id);
             } else {
