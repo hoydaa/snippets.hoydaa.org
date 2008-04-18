@@ -13,7 +13,7 @@
                 curleft += obj.offsetLeft;
                 obj = obj.offsetParent;
             }
-        } else if (document.layers)
+        } else if (document.layers) {
             curleft += obj.x;
         }
 
@@ -89,7 +89,7 @@
     </div>
     <div class="row">
         <?php echo label_for('tags', __('Tags')) ?>
-        <?php echo input_auto_complete_tag('tags', $code->getTags(), 'sidebar/searchTag', array('autocomplete'=>'off', 'size'=>'40'), array('use_style'=>'true', 'after_update_element'=>'updateTags')) ?>
+        <?php echo input_auto_complete_tag('tags', $code->getTags(), 'tag/search', array('autocomplete'=>'off', 'size'=>'40'), array('use_style'=>'true', 'after_update_element'=>'updateTags')) ?>
         <?php echo form_error('tags') ?>
     </div>
     <div class="button-panel">
