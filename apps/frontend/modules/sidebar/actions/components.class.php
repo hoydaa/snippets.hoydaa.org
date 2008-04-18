@@ -32,16 +32,5 @@ class sidebarComponents extends sfComponents
         }
     }
 
-    public function executeTags() {
-        $tag_type = $this->getRequestParameter('tag_type');
-        
-        $this->logMessage('Umut: ' . $tag_type, 'debug');
-        
-        if(!$tag_type || $tag_type == 'cloud'){
-            $this->pop_tags = TagPeer::getPopularTags();
-        } else {
-            $this->pop_tags = TagPeer::getNewTags();
-        }
-    }
     
 }
