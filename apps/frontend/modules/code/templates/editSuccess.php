@@ -83,7 +83,7 @@
 	                )),
 	            'onmouseout' => "Element.hide('code-div');"
             )) ?>
-        	<?php include_component('sidebar', 'languageConsole', array('textarea' => 'code-textarea')) ?>
+        	<?php include_component('code', 'languageConsole', array('textarea' => 'code-textarea')) ?>
         	<div id="code-div" style="display: none;" class="code_snippet"></div>
             <?php echo object_textarea_tag($code, 'getCode', array('id' => 'code-textarea')) ?>
             <?php echo form_error('code') ?>

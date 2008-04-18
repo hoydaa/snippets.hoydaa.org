@@ -44,11 +44,6 @@ class sidebarComponents extends sfComponents
         }
     }
     
-    public function executeLanguageConsole() {
-        $this->logMessage("Textarea: " . $this->textarea, 'debug');
-        $this->languages = LanguagePeer::doSelect(new Criteria());
-    }
-    
     public function executeUser() {
         $c = new Criteria();
         $c->add(CodePeer::SF_GUARD_USER_ID, $this->getUser()->getId());

@@ -61,7 +61,7 @@
             <?php echo form_error('comment') ?>
         	<?php echo label_for('comment', __('Comment'), array('class' => 'required')) ?>
         	<div class="input-cont">
-        		<?php include_component('sidebar', 'languageConsole', array('textarea' => 'comment-textarea')) ?>
+        		<?php include_component('code', 'languageConsole', array('textarea' => 'comment-textarea')) ?>
                 <?php echo textarea_tag('comment', $sf_request->getParameter('comment'), array('id' => 'comment-textarea', 'style' => 'width: 300px; height: 200px;')) ?>
             </div>
         </div>
