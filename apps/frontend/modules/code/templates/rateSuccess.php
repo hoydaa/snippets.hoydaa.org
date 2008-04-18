@@ -1,6 +1,6 @@
 
 
-<?php include_partial('sidebar/rater', array(
+<?php include_partial('code/rater', array(
 	'rate_max' => 10, 
 	'rate_avg' => $rate_avg, 
 	'rater_width' => 200,

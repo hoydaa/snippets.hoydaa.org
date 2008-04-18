@@ -8,7 +8,7 @@
 		<div class="code-code"><?php echo $code->getCodeHtmlized() ?></div>
 	</div>
 	<div id="rater-update">
-        <?php include_partial('sidebar/rater', array(
+        <?php include_partial('code/rater', array(
 			'rate_max' => 10, 
 			'rate_avg' => $code->getAverageRating(), 
 			'rater_width' => 200,
