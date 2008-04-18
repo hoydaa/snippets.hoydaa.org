@@ -8,7 +8,7 @@
 				<?php foreach ($snippets as $snippet): ?>
 				<li>
 					<?php echo link_to($snippet->getTitle(), 'code/show?id='.$snippet->getId()); ?><br />
-					<?php echo __('Posted by').' '.link_to($snippet->getContributor(), 'sfLucene/search?query=contributor:'.$snippet->getContributor()).' at '.format_date($snippet->getCreatedAt()) ?><br />
+					<?php include_partial('code/createdBy', array('code' => $snippet)) ?>
 				</li>
 				<?php endforeach; ?>
 			</ul>
