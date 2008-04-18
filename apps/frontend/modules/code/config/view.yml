@@ -6,3 +6,6 @@ commentListSuccess:
   
 commentSuccess:
   has_layout:   off
+
+mostSuccess:
+  has_layut:     off

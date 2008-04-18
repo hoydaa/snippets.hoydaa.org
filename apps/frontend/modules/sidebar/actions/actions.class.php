@@ -11,10 +11,6 @@
 class sidebarActions extends sfActions
 {
     
-    public function executeMost() {
-        
-    }
-    
     public function executeHighlight() {
         $code = $this->getRequestParameter('code');
         $language = $this->getRequestParameter('language');

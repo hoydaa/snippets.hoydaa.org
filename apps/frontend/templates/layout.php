@@ -41,7 +41,7 @@
 					<br />
 					<?php endif; ?>
 					<div id="sidebar-snippets">
-						<?php include_component('sidebar', 'most') ?>
+						<?php include_component('code', 'most') ?>
 					</div>
 					<br />
 					<div id="sidebar-tags">
