@@ -1,56 +1,93 @@
 methods:
-  post: [username, first_name, last_name, email, password]
+  post: [username, password, password_confirmation, email, email_confirmation, first_name, last_name, gender, birthday]
 
 names:
   username:
-    required:     true
+    required: true
     required_msg: Please enter a username.
-    validators:   [usernameValidator, usernameUniqueValidator]
-  first_name:
-    required:     true
-    required_msg: Please enter your first name.
-  last_name:
-    required:     true
-    required_msg: Please enter your last name.
-  email:
-    required:     true
-    required_msg: Please enter your email.
-    validators:   [emailValidator, emailUniqueValidator]
+    validators: [usernameValidator, usernameUniqueValidator]
+
   password:
-    required:     true
+    required: true
     required_msg: Please enter your password.
-    validators:   [passwordValidator]
-    
-emailValidator:
-    class:        sfEmailValidator
-    param:
-      email:       email
-      email_error: Please enter a valid email address.
+    validators: [passwordValidator]
+
+  password_confirmation:
+    required: true
+    required_msg: Please re-type your password.
+    validators: [passwordCompareValidator]
+
+  email:
+    required: true
+    required_msg: Please enter your e-mail.
+    validators: [emailValidator, emailUniqueValidator]
+
+  email_confirmation:
+    required: true
+    required_msg: Please re-type your e-mail.
+    validators: [emailCompareValidator]
+
+  first_name:
+    required: true
+    required_msg: Please enter your first name.
+
+  last_name:
+    required: true
+    required_msg: Please enter your last name.
+
+  gender:
+    required: false
+    validators: [genderValidator]
+
+  birthday:
+    required: false
 
 usernameValidator:
-    class:        sfStringValidator
-    param:
-      min:        5
-      min_error:  Username has to be at least 5 characters long.
-      
-passwordValidator:
-    class:        sfStringValidator
-    param:
-      min:        5
-      min_error:  Password has to be at least 5 characters long.      
-      
-usernameUniqueValidator:
-    class:        myUniqueValidator
-    param:
-      class_name:       sfGuardUserPeer
-      field_const_name: USERNAME
-      form_field_name:  username
-      unique_error:     There is another user with the same username, please try another one.
-      
-emailUniqueValidator:
-  class:                 myUniqueValidator
+  class: sfStringValidator
   param:
-    class_name:          UserProfilePeer
-    field_const_name:    EMAIL
-    form_field_name:     email
-    unique_error:        There is another user with the same email, please try another one.
+    min: 5
+    min_error: Username has to be at least 5 characters long.
+
+usernameUniqueValidator:
+  class: sfPropelUniqueValidator
+  param:
+    class: sfGuardUser
+    column: username
+    unique_error: There is another user with the same username, please try another one.
+
+passwordValidator:
+  class: sfStringValidator
+  param:
+    min: 5
+    min_error: Password has to be at least 5 characters long.
+
+passwordCompareValidator:
+  class: sfCompareValidator
+  param:
+    check: password
+    compare_error: Passwords do not match.
+
+emailValidator:
+  class: sfEmailValidator
+  param:
+    email: email
+    email_error: Please enter a valid email address.
+
+emailCompareValidator:
+  class: sfCompareValidator
+  param:
+    check: email
+    compare_error: E-mail addresses do not match.
+
+emailUniqueValidator:
+  class: sfPropelUniqueValidator
+  param:
+    class: UserProfile
+    column: email
+    unique_error: There is another user with the same email, please try another one.
+
+genderValidator:
+  class: sfStringValidator
+  param:
+    values: [M, F]
+    values_error: Not a valid gender.
