@@ -68,7 +68,9 @@ propel:
     _attributes:            { phpName: UserProfile }
     id:                     { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
     sf_guard_user_id:       { type: INTEGER, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
+    email:                  { type: VARCHAR, size: 255, required: true }
     first_name:             { type: VARCHAR, size: 255, required: true }
     last_name:              { type: VARCHAR, size: 255, required: true }
-    email:                  { type: VARCHAR, size: 255, required: true }
     confirmation:           { type: VARCHAR, size: 32, required: true }
+    gender:                 { type: CHAR, size: 1, required: false }
+    birthday:               { type: DATE, required: false }
