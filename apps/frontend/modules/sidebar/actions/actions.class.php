@@ -10,10 +10,6 @@
  */
 class sidebarActions extends sfActions
 {
-
-    public function executeTags() {
-        
-    }
     
     public function executeMost() {
         
