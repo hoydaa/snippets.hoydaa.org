@@ -54,39 +54,39 @@ class userActions extends sfActions
 		return sfView::SUCCESS;
 	}
 
-    public function executeRegister() {
-        if ($this->getRequest()->getMethod() != sfRequest::POST)
-        {
-	        return sfView::SUCCESS;
-        }
-        else
-        {
-            $u = new SfGuardUser();
-            $u->setUsername($this->getRequestParameter('username'));
-            $u->setPassword($this->getRequestParameter('password'));
-            $u->setIsActive(false);
-            $p = new UserProfile();
-            $p->setFirstName($this->getRequestParameter('first_name'));
-            $p->setLastName($this->getRequestParameter('last_name'));
-            $p->setEmail($this->getRequestParameter('email'));
-            $u->addUserProfile($p);
-            $u->save();
-            $this->getRequest()->setError('form-message', array('Registration complete.'));
+	public function executeRegister() {
+		if ($this->getRequest()->getMethod() != sfRequest::POST) {
+			return sfView::SUCCESS;
+		}
 
-            $this->getRequest()->setAttribute('user_id', $u->getId());
-            
-            $raw_email = $this->sendEmail('mail', 'register');  
- 
-            // log the email
-            $this->logMessage($raw_email, 'debug');
-            
-            $this->user = $u;
-            
-            return 'MailSent';
-            
-        }        
-    }
-    
+		$user = new SfGuardUser();
+		$user->setUsername($this->getRequestParameter('username'));
+		$user->setPassword($this->getRequestParameter('password'));
+		$user->setIsActive(false);
+
+		$profile = new UserProfile();
+		$profile->setEmail($this->getRequestParameter('email'));
+		$profile->setFirstName($this->getRequestParameter('first_name'));
+		$profile->setLastName($this->getRequestParameter('last_name'));
+		$user->addUserProfile($profile);
+
+		$user->save();
+
+		$this->getRequest()->setAttribute('email', $profile->getEmail());
+		$this->getRequest()->setAttribute('full_name', $profile->getFullName());
+		$this->getRequest()->setAttribute('activation_key', $profile->getConfirmation());
+
+		$raw_email = $this->sendEmail('mail', 'register');  
+		$this->logMessage($raw_email, 'debug');
+
+		$this->setFlash('info', 'We sent a confirmation email to your email address.');
+		$this->forward('site', 'message');
+	}
+
+	public function handleErrorRegister() {
+		return sfView::SUCCESS;
+	}
+
     public function executeConfirmation() {
         $key = $this->getRequestParameter('key');
         if($key) {
@@ -117,57 +117,13 @@ class userActions extends sfActions
 		$this->getUser()->getGuardUser()->setPassword($new_password);
 		$this->getUser()->getGuardUser()->save();
 
-    	$this->setFlash('message', 'Your password is changed.');
+    	$this->setFlash('info', 'Your password is changed.');
 
     	$this->forward('site', 'message');
     }
 
-    public function handleErrorRequestPassword() {
-        return sfView::SUCCESS;
-    }
-    
     public function handleErrorChangePassword() {
         return sfView::SUCCESS;
     }
-    
-    public function executeRequestPassword() {
-        if($this->getRequest()->getMethod() != sfRequest::POST) {
-            return sfView::SUCCESS;
-        } else {
-            $username = $this->getRequestParameter('username');
-            $email = $this->getRequestParameter('email');
-            $c = new Criteria();
-            $c->add(sfGuardUserPeer::USERNAME, $username);
-            $c->add(UserProfilePeer::EMAIL, $email);
-            $user = SfGuardUserPeer::doSelectOne($c);
-            
-            if($user) {
 
-                // set new random password
-                $password = substr(md5(rand(100000, 999999)), 0, 6);
-                $user->setPassword($password);
-                $user->save();
-                
-                $this->getRequest()->setAttribute('password', $password);
-                $this->getRequest()->setAttribute('user', $user);
-                
-                $raw_email = $this->sendEmail('mail', 'requestPassword');  
- 
-                // log the email
-                $this->logMessage($raw_email, 'debug'); 
-                
-                $this->user = $user;
-                return 'MailSent';
-            } else {
-                $this->getRequest()->setError('form-message', array('There is no user with username: ' . 
-                    $username . ' and email: ' . $email));
-                return sfView::SUCCESS;
-            }
-        }
-    }
-    
-    public function handleErrorRegister() {
-        return sfView::SUCCESS;
-    }
-    
 }
