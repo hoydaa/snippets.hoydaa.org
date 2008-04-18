@@ -36,7 +36,7 @@
 				<div id="sidebar">
 					<?php if($sf_user->isAuthenticated()): ?>
 					<div id="sidebar-user">
-						<?php include_component('sidebar', 'user') ?>
+						<?php include_component('user', 'box') ?>
 					</div>
 					<br />
 					<?php endif; ?>
