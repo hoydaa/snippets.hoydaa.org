@@ -89,15 +89,22 @@ class userActions extends sfActions
 
     public function executeConfirmation() {
         $key = $this->getRequestParameter('key');
+
         if($key) {
             $user_profile = UserProfilePeer::retrieveByConfirmation($key);
+
             if($user_profile) {
                 $user = sfGuardUserPeer::retrieveByPK($user_profile->getSfGuardUserId());
                 $user->setIsActive(true);
                 $user->save();
-                $this->user = $user;
+
+                $this->setFlash('info', 'Your account has been activated.');
+				$this->forward('site', 'message');
             }
         }
+
+        $this->setFlash('error', 'Activation link is not valid.');
+        $this->forward('site', 'message');
     }
 
     public function executeChangePassword() {
