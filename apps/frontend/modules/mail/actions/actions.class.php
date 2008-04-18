@@ -8,31 +8,24 @@
  * @author     Your name here
  * @version    SVN: $Id$
  */
-class mailActions extends sfActions
-{
-    
-    public function executeRegister() {
-        $user = sfGuardUserPeer::retrieveByPK($this->getRequest()->getAttribute('user_id'));
+class mailActions extends sfActions {
 
-        $this->logMessage('User_id: ' . $this->getRequestParameter('user_id'));
-        
-        // class initialization
+    public function executeRegister() {
+        $email = $this->getRequest()->getAttribute('email');
+        $full_name = $this->getRequest()->getAttribute('full_name');
+        $activation_key = $this->getRequest()->getAttribute('activation_key');
+
         $mail = new sfMail();
         $mail->setCharset('utf-8');
- 
-        // definition of the required parameters
         $mail->setSender('codesnippet@hoydaa.org', 'Hoydaa.org Codesnippet');
         $mail->setFrom('codesnippet@hoydaa.org', 'Hoydaa.org Codesnippet');
         $mail->addReplyTo('codesnippet@hoydaa.org');
- 
-        $mail->addAddress($user->getProfile()->getEmail()); 
-        
         $mail->setSubject('codesnippet.hoydaa.org Account Confirmation');
-        
-        $this->mail = $mail;
+        $mail->addAddress($email);
 
-        $this->user = $user;
-        
+        $this->mail = $mail;
+        $this->full_name = $full_name;
+        $this->activation_key = $activation_key;
     }
 
 	public function executeForgotPassword() {
