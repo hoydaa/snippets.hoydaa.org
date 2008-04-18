@@ -28,7 +28,7 @@
 		</div>
 		<div id="bar-wrapper">
 			<div id=bar>
-				<?php include_partial('sidebar/searchForm') ?>
+				<?php include_partial('sfLucene/searchForm') ?>
 			</div>
 		</div>
 		<div id="main-wrapper">
