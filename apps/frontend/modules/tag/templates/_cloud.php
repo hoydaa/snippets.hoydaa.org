@@ -16,7 +16,7 @@
 					'onchange' => remote_function(
 						array(
 							'update' => 'sidebar-tags',
-							'url' => 'sidebar/tags',
+							'url' => 'tag/cloud',
 							'with' => '"tag_type="+value'
 						)
 					),

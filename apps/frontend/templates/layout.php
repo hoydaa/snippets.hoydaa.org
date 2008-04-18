@@ -45,7 +45,7 @@
 					</div>
 					<br />
 					<div id="sidebar-tags">
-						<?php include_component('sidebar', 'tags') ?>
+						<?php include_component('tag', 'cloud') ?>
 					</div>
 				</div>
 				<div id="content">
