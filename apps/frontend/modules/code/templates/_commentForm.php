@@ -51,9 +51,21 @@
         </div>
         
         <div class="row">
-        	<?php echo label_for('comment', __('Comment'), array('class' => 'required')) ?>
+            <?php echo link_to(label_for('comment', __('Comment'), array('class' => 'required')), '#', array(
+                'onmouseover' => remote_function(
+                    array(
+                        'method' => 'post',
+                        'contentType' => 'application/x-www-form-urlencoded',
+                        'update' => 'comment-div',
+                        'url' => 'code/highlight',
+                        'with' => '"code="+encodeURIComponent($("comment-textarea").value)',
+                        'loading' => "$('comment-div').innerHTML='Please wait...';Element.show('comment-div');",
+                    )),
+                    'onmouseout' => "Element.hide('comment-div');"
+            )) ?>
         	<?php include_component('code', 'languageConsole', array('textarea' => 'comment-textarea')) ?>
-            <?php echo textarea_tag('comment', $sf_request->getParameter('comment'), array('id' => 'comment-textarea', 'style' => 'width: 300px; height: 200px;')) ?>
+            <div id="comment-div" style="display: none;"></div>                    	
+            <?php echo textarea_tag('comment', $sf_request->getParameter('comment'), array('id' => 'comment-textarea')) ?>
             <?php echo form_error('comment') ?>
         </div>
         
@@ -62,3 +74,8 @@
         </div>
     
     </form>
+    
+<script language="javascript">
+    $("comment-div").style.top = findPosY($("comment-textarea"));
+    $("comment-div").style.left = findPosX($("comment-textarea"));
+</script>    

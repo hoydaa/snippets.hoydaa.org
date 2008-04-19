@@ -54,7 +54,7 @@ form .button-panel {
 /**
     Specific to post code page
 */
-#code-div {
+#code-div, #comment-div {
     width: 400px;
     height: 200px;
     position: absolute;
