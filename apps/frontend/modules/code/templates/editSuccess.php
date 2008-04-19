@@ -60,8 +60,8 @@
                     'method' => 'post',
                     'contentType' => 'application/x-www-form-urlencoded',
                     'update' => 'code-div',
-                    'url' => 'sidebar/highlight',
-                    'with' => '"code="+encodeURIComponent($("code-textarea").value)+"&language="+$("code_language_id").options[$("code_language_id").selectedIndex].value',
+                    'url' => 'code/highlight',
+                    'with' => '"code="+encodeURIComponent($("code-textarea").value)',
                     'loading' => "$('code-div').innerHTML='Please wait...';Element.show('code-div');",
                     'complete' => "Element.hide('indicator-highlight');"
                 )),
