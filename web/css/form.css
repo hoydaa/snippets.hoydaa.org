@@ -50,3 +50,15 @@ form .error {
 form .button-panel {
 	margin-left: 125px;
 }
+
+/**
+    Specific to post code page
+*/
+#code-div {
+    width: 400px;
+    height: 200px;
+    position: absolute;
+    overflow: auto;
+    border: 1px solid #D3D3D1;  
+    background-color: white;
+}
