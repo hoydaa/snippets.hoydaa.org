@@ -182,7 +182,7 @@ class codeActions extends sfActions
     }
     
     public function executeHighlight() {
-//        $code = $this->getRequestParameter('code');
+        $code = $this->getRequestParameter('code');
 //        $language = $this->getRequestParameter('language');
 //        $this->logMessage('Umut: ' . $code . $language, 'debug');
 //        $soap = new SoapClient("http://localhost:8080/axis2/services/CodesnippetService?wsdl");
@@ -190,7 +190,7 @@ class codeActions extends sfActions
 //        $this->logMessage('Umut: ' . $rtn->return, 'debug');
 //        $this->code = $rtn->return;
         
-        $this->code = 'umut utkan';
+        $this->code = "<b>" . $code . "</b>";
     }
     
 }

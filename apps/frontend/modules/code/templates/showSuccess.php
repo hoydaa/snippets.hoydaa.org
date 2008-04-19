@@ -5,7 +5,7 @@
 	<div class="code-block">
 		<div class="code-info"><?php include_partial('code/createdBy', array('code' => $code)) ?></div>	
 		<div class="code-desc">"<?php echo $code->getDescription() ?>"</div>
-		<div class="code-code"><?php echo $code->getCodeHtmlized() ?></div>
+		<div class="code-code" id="code-code"><?php echo $code->getCode() . "hede" ?></div>
 	</div>
 	<div id="rater-update">
         <?php include_partial('code/rater', array(
@@ -48,4 +48,18 @@
 		    )
 		) ?>
 	}
+	
+    Event.observe(window, 'load', 
+	   function() {
+            <?php echo remote_function(
+                array(
+                    'method' => 'post',
+                    'contentType' => 'application/x-www-form-urlencoded',
+                    'update' => 'code-code',
+                    'url' => 'code/highlight',
+                    'with' => '"code="+encodeURIComponent($("code-code").innerHTML)',
+                    'loading' => "$('code-code').innerHTML='Please wait...';"
+                )) ?>    
+	   }
+	);
 </script>

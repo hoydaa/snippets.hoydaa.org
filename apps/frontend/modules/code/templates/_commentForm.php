@@ -29,47 +29,36 @@
 </div>
 
 		<?php if(!$sf_user->isAuthenticated()): ?>
-            <div class="form-row">
-                <?php echo form_error('name') ?>
+            <div class="row">
             	<?php echo label_for('name', __('Name'), array('class' => 'required')) ?>
-            	<div class="input-cont">
                 <?php echo input_tag('name', $sf_request->getParameter('name')); ?>
-                </div>
             </div>
     
-            <div class="form-row">
-                <?php echo form_error('email') ?>
+            <div class="row">
             	<?php echo label_for('email', __('Email'), array('class' => 'required')) ?>
-            	<div class="input-cont">
                 <?php echo input_tag('email', $sf_request->getParameter('email')); ?>
-                </div>
+                <?php echo form_error('email') ?>
             </div>
         <?php else: ?>
         	<?php echo input_hidden_tag('name', $sf_user->getProfile()->getFullName()) ?>
         	<?php echo input_hidden_tag('email', $sf_user->getProfile()->getEmail()) ?>
         <?php endif; ?>
         
-        <div class="form-row">
-            <?php echo form_error('title') ?>
+        <div class="row">
         	<?php echo label_for('title', __('Title')) ?>
-        	<div class="input-cont">
+            <?php echo form_error('title') ?>
             <?php echo input_tag('title', $sf_request->getParameter('title')); ?>
-            </div>
         </div>
         
-        <div class="form-row">
-            <?php echo form_error('comment') ?>
+        <div class="row">
         	<?php echo label_for('comment', __('Comment'), array('class' => 'required')) ?>
-        	<div class="input-cont">
-        		<?php include_component('code', 'languageConsole', array('textarea' => 'comment-textarea')) ?>
-                <?php echo textarea_tag('comment', $sf_request->getParameter('comment'), array('id' => 'comment-textarea', 'style' => 'width: 300px; height: 200px;')) ?>
-            </div>
+        	<?php include_component('code', 'languageConsole', array('textarea' => 'comment-textarea')) ?>
+            <?php echo textarea_tag('comment', $sf_request->getParameter('comment'), array('id' => 'comment-textarea', 'style' => 'width: 300px; height: 200px;')) ?>
+            <?php echo form_error('comment') ?>
         </div>
         
-        <div class="form-row">
-        	<div class="input-cont">
+        <div class="button-panel">
             <?php echo submit_tag(__('Save')) ?>
-        	</div>
         </div>
     
     </form>
