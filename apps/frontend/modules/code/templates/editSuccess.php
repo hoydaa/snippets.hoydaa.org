@@ -4,36 +4,6 @@
     function updateTags(text, li) {
         document.getElementsByName('tags')[0].value = li.id;
     }
-
-    function findPosX(obj) {
-        var curleft = 0;
-
-        if (document.getElementById || document.all) {
-            while (obj.offsetParent) {
-                curleft += obj.offsetLeft;
-                obj = obj.offsetParent;
-            }
-        } else if (document.layers) {
-            curleft += obj.x;
-        }
-
-        return curleft;
-    }
-
-    function findPosY(obj) {
-        var curtop = 0;
-
-        if (document.getElementById || document.all) {
-            while (obj.offsetParent) {
-                curtop += obj.offsetTop;
-                obj = obj.offsetParent;
-            }
-        } else if (document.layers) {
-            curtop += obj.y;
-        }
-
-        return curtop;
-    }
 </script>
 
 <?php echo form_tag('code/edit') ?>
@@ -63,15 +33,13 @@
                     'url' => 'code/highlight',
                     'with' => '"code="+encodeURIComponent($("code-textarea").value)',
                     'loading' => "$('code-div').innerHTML='Please wait...';Element.show('code-div');",
-                    'complete' => "Element.hide('indicator-highlight');"
                 )),
                 'onmouseout' => "Element.hide('code-div');"
         )) ?>
         <?php include_component('code', 'languageConsole', array('textarea' => 'code-textarea')) ?>
-        <div id="code-div" style="display: none;" class="code_snippet"></div>
+        <div id="code-div" style="display: none;"></div>
         <?php echo object_textarea_tag($code, 'getCode', array('id' => 'code-textarea')) ?>
         <?php echo form_error('code') ?>
-        <span id="indicator-highlight" style="display: none;"> Please wait...</span>
         <script language="javascript">
             $("code-div").style.top = findPosY($("code-textarea"));
             $("code-div").style.left = findPosX($("code-textarea"));
