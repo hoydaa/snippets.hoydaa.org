@@ -23,12 +23,11 @@ class Code extends BaseCode
     public function save($con = null) {
         $salt = $this->getTitle().$this->getDescription();
         $this->setCodeHash(sha1($salt.$this->getCode()));
-        $arr = myUtils::highlightSnippet($this->getCode());
-//        $this->setCodeHtmlized($arr['snippet']);
+        $snippet_languages = Code::getSnippetLanguages($this->getCode());
         foreach($this->getCodeLanguages() as $language) {
             $language->delete();
         }
-        foreach($arr['languages'] as $language) {
+        foreach($snippet_languages as $language) {
             $code_language = new CodeLanguage();
             $code_language->setCode($this);
             $code_language->setLanguage($language);
@@ -62,6 +61,18 @@ class Code extends BaseCode
     public function getContributor() {
         return ($this->getSfGuardUserId() ? 
             $this->getSfGuardUser()->getUsername() : $this->getName());
+    }
+    
+    public static function getSnippetLanguages($snippet_code) {
+        $rtn_language = array();
+        $languages = LanguagePeer::doSelect(new Criteria());
+        foreach($languages as $language) {
+            $arr = array();
+            preg_match_all("/<".$language->getTag()."\-snippet>(.+)<\/".$language->getTag()."\-snippet>/isU", $snippet_code, $arr, PREG_SET_ORDER); 
+            if(sizeof($arr) > 0)
+                $rtn_language[] = $language;
+        }
+        return $rtn_language;
     }
 }
 
