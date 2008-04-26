@@ -10,6 +10,9 @@
 class Code extends BaseCode
 {
     
+    public static $REG_EXPRESSION = "/<%s\-snippet>(.+)<\/%s\-snippet>/isU";
+    
+    
     public function getTags() {
         $rtn = "";
         $code_tags = $this->getCodeTags();
@@ -68,7 +71,9 @@ class Code extends BaseCode
         $languages = LanguagePeer::doSelect(new Criteria());
         foreach($languages as $language) {
             $arr = array();
-            preg_match_all("/<".$language->getTag()."\-snippet>(.+)<\/".$language->getTag()."\-snippet>/isU", $snippet_code, $arr, PREG_SET_ORDER); 
+            $exp = sprintf(self::$REG_EXPRESSION, $language->getTag(), $language->getTag());
+            preg_match_all($exp, $snippet_code, $arr, PREG_SET_ORDER);
+//            preg_match_all("/<".$language->getTag()."\-snippet>(.+)<\/".$language->getTag()."\-snippet>/isU", $snippet_code, $arr, PREG_SET_ORDER); 
             if(sizeof($arr) > 0)
                 $rtn_language[] = $language;
         }
