@@ -30,6 +30,31 @@ class codeComponents extends sfComponents
         } else {
             $this->snippets = CodePeer::getNewCodes();
         }
-    }    
+    }
+    
+    public static function executeHighlight($code) {
+        $code = $this->getRequestParameter('snippet');
+        $languages = LanguagePeer::doSelect(new Criteria());
+        foreach($languages as $language) {
+            $arr = array();
+            $exp = sprintf(Code::$REG_EXPRESSION, $language->getTag(), $language->getTag());
+            preg_match_all($exp, $code, $arr, PREG_SET_ORDER);
+            if(sizeof($arr) > 0) {
+                for($i = 0; $i < sizeof($arr); $i++) {
+                    $code = str_replace($arr[$i][0], "<div>".$arr[$i][1]."</div>", $code);
+                }
+            }
+        }
+        
+        $arr = array();
+        $exp = sprintf(Code::$REG_EXPRESSION, 'other', 'other');
+        preg_match_all($exp, $code, $arr, PREG_SET_ORDER);
+        if(sizeof($arr) > 0) {
+            for($i = 0; $i < sizeof($arr); $i++) {
+                $code = str_replace($arr[$i][0], "<div>".$arr[$i][1]."</div>", $code);
+            }
+        }
+        return $code;
+    }
     
 }
