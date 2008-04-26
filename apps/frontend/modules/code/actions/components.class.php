@@ -32,8 +32,8 @@ class codeComponents extends sfComponents
         }
     }
     
-    public static function executeHighlight($code) {
-        $code = $this->getRequestParameter('snippet');
+    public function executeHighlight() {
+        $code = $this->code;
         $languages = LanguagePeer::doSelect(new Criteria());
         foreach($languages as $language) {
             $arr = array();
@@ -54,7 +54,7 @@ class codeComponents extends sfComponents
                 $code = str_replace($arr[$i][0], "<div>".$arr[$i][1]."</div>", $code);
             }
         }
-        return $code;
+        $this->code = $code;
     }
     
 }

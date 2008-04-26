@@ -1,1 +1,1 @@
-<?php echo $code ?>
+<?php include_component('code', 'highlight', array('code' => $code)) ?>
