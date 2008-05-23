@@ -1,17 +1,17 @@
-<?php use_helper('Date', 'I18N', 'My', 'Javascript') ?>
+<?php use_helper('Date', 'I18N', 'My', 'jQuery') ?>
 
 <div class="sidebox">
 	<div class="bottom">
 		<div class="content">
 			<?php echo image_tag('snippets.gif') ?><br />
-			<ul>
+			<ol>
 				<?php foreach ($snippets as $snippet): ?>
 				<li>
-					<?php echo link_to($snippet->getTitle(), 'code/show?id='.$snippet->getId()); ?><br />
+					<h3><?php echo link_to($snippet->getTitle(), 'code/show?id='.$snippet->getId(), 'class=title'); ?></h3>
 					<?php include_partial('code/createdBy', array('code' => $snippet)) ?>
 				</li>
 				<?php endforeach; ?>
-			</ul>
+			</ol>
 			<?php echo __('Display') ?>:
 			<?php echo select_tag(
 				'most',
@@ -24,7 +24,7 @@
 					$sf_params->get('most')
 				),
 				array(
-					'onchange' => remote_function(
+					'onchange' => jq_remote_function(
 						array(
 							'update' => 'sidebar-snippets',
 							'url' => 'code/most',

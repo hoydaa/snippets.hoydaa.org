@@ -4,7 +4,7 @@
     
     <?php use_helper('Validation') ?>
     
-    <?php use_helper('Javascript') ?>
+    <?php use_helper('jQuery') ?>
     
     <?php use_helper('My') ?>
     
@@ -52,7 +52,7 @@
         
         <div class="row">
             <?php echo link_to(label_for('comment', __('Comment'), array('class' => 'required')), '#', array(
-                'onmouseover' => remote_function(
+                'onmouseover' => jq_remote_function(
                     array(
                         'method' => 'post',
                         'contentType' => 'application/x-www-form-urlencoded',

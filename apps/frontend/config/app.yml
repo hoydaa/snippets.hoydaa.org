@@ -5,3 +5,5 @@ all:
     profile_field_name:           sf_guard_user_id
     remember_key_expiration_age:  2592000   # 30 days in seconds
     remember_cookie_name:         codeRepositoryRememberMe   
+  lucene:
+    per_page: 1

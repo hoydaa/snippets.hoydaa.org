@@ -1,4 +1,4 @@
-<?php use_helper('I18N', 'Javascript') ?>
+<?php use_helper('I18N', 'jQuery') ?>
 
 <div class="related">
 	<span class="title"><?php echo $code->getTitle() ?></span>
@@ -43,7 +43,7 @@
 <script language="javascript">
 	//Event.observe(window, 'load', loadComments());
 	function loadComments() {
-		<?php echo remote_function(
+		<?php echo jq_remote_function(
 		    array(
 		        'update' => 'comment-list-container',
 		        'url' => 'code/commentList?code_id=' . $code->getId()

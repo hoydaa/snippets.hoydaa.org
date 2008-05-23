@@ -1,4 +1,4 @@
-<?php use_helper('Javascript', 'Number') ?>
+<?php use_helper('jQuery', 'Number') ?>
 
 <?php 
     $r_width = isset($rater_width) ? $rater_width : 100;
@@ -50,7 +50,7 @@
 			<div id="rater-part-<?php echo $i ?>" class="rater-part<?php  echo $i < round($rate_avg) ? "-highlighted" : ""?>" 
 				onmouseover="highlightRater(<?php echo $i ?>);"
 				style="width: <?php echo round($r_width/$rate_max) ?>px; height: 15px; float: left;"
-				onclick="<?php echo remote_function(
+				onclick="<?php echo jq_remote_function(
 				    array(
 				        'update' => $rater_update,
 				        'url' => $rater_url,

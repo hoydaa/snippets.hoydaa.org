@@ -9,9 +9,9 @@ default:
     keywords:     symfony, project
     language:     en
 
-  stylesheets:    [newlayout, newmain, sidebox, form]
+  stylesheets:    [newlayout, newmain, sidebox, form, corner]
 
-  javascripts:    [/js/jquery-1.2.3.js, util.js]
+  javascripts:    [util.js, jquery-1.2.3.js, jquery.corner.js]
 
   has_layout:     on
   layout:         layout

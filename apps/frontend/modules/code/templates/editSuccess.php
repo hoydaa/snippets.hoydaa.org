@@ -1,4 +1,4 @@
-<?php use_helper('I18N', 'Object', 'Validation', 'Javascript') ?>
+<?php use_helper('I18N', 'Object', 'Validation', 'jQuery') ?>
 
 <script language="javascript">
     function updateTags(text, li) {
@@ -25,7 +25,7 @@
     <?php endif; ?>
     <div class="row">
         <?php echo link_to(label_for('code', __('Code'), array('class' => 'required')), '#', array(
-            'onmouseover' => remote_function(
+            'onmouseover' => jq_remote_function(
                 array(
                     'method' => 'post',
                     'contentType' => 'application/x-www-form-urlencoded',
