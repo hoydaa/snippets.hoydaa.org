@@ -1,3 +1,9 @@
+sfGuardUser:
+  umut.utkan:
+    username:       umut.utkan
+    password:       gahve123
+    is_super_admin: true
+
 Language:
   c:
     name: C
@@ -37,13 +43,41 @@ Tag:
     tag: apache
     tag_normalized: apache
     popularity: 4
+  gof:
+    tag: gof
+    tag_normalized: gof
+    popularity: 10
     
-#Code:
-#  code1:
-#    name: Umut Utkan
-#    email: umut.utkan@gmail.com
-#    code_language_id: java
-#    code: public class Deneme {}
-#    title: Deneme kodu
-#    description: Deneme aciklama
-#    average_rating: 5.89
+Code:
+  singleton:
+    sf_guard_user_id: umut.utkan
+    code: |
+      <java-snippet>
+      public class Singleton {
+        // Protected constructor is sufficient to suppress unauthorized calls to the constructor
+        protected Singleton() {}
+ 
+        /**
+         * SingletonHolder is loaded on the first execution of Singleton.getInstance() 
+         * or the first access to SingletonHolder.instance , not before.
+         */
+        private static class SingletonHolder { 
+          private final static Singleton instance = new Singleton();
+        }
+ 
+        public static Singleton getInstance() {
+          return SingletonHolder.instance;
+        }
+      }
+      </java-snippet>
+    title: Singleton pattern
+    description: Singleton pattern is a design pattern that is used to restrict instantiation of a class to one object.
+    average_rating: 5.89
+    
+CodeTag:
+  ctag1:
+    code_id: singleton
+    tag_id: pattern
+  ctag2:
+    code_id: singleton
+    tag_id: gof
