@@ -73,6 +73,91 @@ Code:
     title: Singleton pattern
     description: Singleton pattern is a design pattern that is used to restrict instantiation of a class to one object.
     average_rating: 5.89
+  facade:
+    sf_guard_user_id: umut.utkan
+    code: |
+      import java.text.ParseException;
+      import java.text.SimpleDateFormat;
+      import java.util.Calendar;
+      import java.util.Date;
+ 
+      /** "Facade" * */
+      class UserfriendlyDate {
+        Calendar cal = Calendar.getInstance();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+ 
+        public UserfriendlyDate(String isodate_ymd) throws ParseException {
+                Date date = sdf.parse(isodate_ymd);
+                cal.setTime(date);
+        }
+ 
+        public void addDays(int days) {
+                cal.add(Calendar.DAY_OF_MONTH, days);
+        }
+ 
+        public String toString() {
+                return sdf.format(cal.getTime());
+        }
+      }
+ 
+      /** "Client" * */
+      class FacadePattern {
+        public static void main(String[] args) throws ParseException {
+                UserfriendlyDate d = new UserfriendlyDate("1980-08-20");
+                System.out.println("Date: " + d.toString());
+                d.addDays(20);
+                System.out.println("20 days after: " + d.toString());
+        }
+      }
+    title: Facade pattern
+    description: A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
+    average_rating: 5.89    
+  adapter:
+    sf_guard_user_id: umut.utkan
+    code: |
+      /* the client class should instantiate adapter objects */
+      /* by using a reference of this type */ 
+      interface Stack<T>
+      {
+        void push (T o);
+        T pop ();
+        T top ();
+      }
+ 
+      /* DoubleLinkedList is the adaptee class */
+      class DList<T>
+      {
+        public void insert (DNode pos, T o) { ... }
+        public void remove (DNode pos) { ... }
+ 
+        public void insertHead (T o) { ... }
+        public void insertTail (T o) { ... }
+ 
+        public T removeHead () { ... }
+        public T removeTail () { ... }
+ 
+        public T getHead () { ... }
+        public T getTail () { ... }
+      }
+ 
+        /* Adapt DList class to Stack interface is the adapter class */
+      class DListImpStack<T> extends DList<T> implements Stack<T>
+      {
+          public void push (T o) {
+            insertTail (o);
+        }
+ 
+       public T pop () {
+          return removeTail ();
+        }
+ 
+        public T top () {
+          return getTail ();
+        }
+      }
+    title: Adapter pattern
+    description: In computer programming, the adapter design pattern (often referred to as the wrapper pattern or simply a wrapper) 'adapts' one interface for a class into one that a client expects.
+    average_rating: 8.5
     
 CodeTag:
   ctag1:
@@ -80,4 +165,16 @@ CodeTag:
     tag_id: pattern
   ctag2:
     code_id: singleton
+    tag_id: gof
+  ctag3:
+    code_id: facade
+    tag_id: pattern
+  ctag4:
+    code_id: facade
+    tag_id: gof
+  ctag5:
+    code_id: adapter
+    tag_id: pattern
+  ctag6:
+    code_id: adapter
     tag_id: gof
