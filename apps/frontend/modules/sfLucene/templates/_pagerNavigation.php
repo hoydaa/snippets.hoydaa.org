@@ -1,26 +1,17 @@
-<?php
-/**
- * @package sfLucenePlugin
- * @subpackage Module
- * @author Carl Vondrick <carlv@carlsoft.net>
- */
-?>
-
 <?php if ($pager->haveToPaginate()): ?>
+<ul class="search-page-numbers">
     <?php if ($pager->getPage() != $pager->getPreviousPage()): ?>
-      <?php echo link_to(image_tag('/sf/sf_admin/images/previous.png', 'align=absmiddle'), 'sfLucene/search?query=' . $query . '&page=' . $pager->getPreviousPage(), 'class=bookend') ?>
+    <li><?php echo link_to(__('Prev'), 'sfLucene/search?query=' . $query . '&page=' . $pager->getPreviousPage() . (($category) ? '&category='.$category : ''), 'class=bookend') ?></li>
     <?php endif ?>
-
     <?php foreach ($links as $page): ?>
-      <?php if ($page == $pager->getPage()): ?>
-        <strong><?php echo $page ?></strong>
-      <?php else: ?>
-        <?php echo link_to($page, 'sfLucene/search?query=' . $query . '&page=' . $page) ?>
-      <?php endif ?>
-    <?php endforeach ?>
-
-    <?php if ($pager->getPage() != $pager->getNextPage()): ?>
-      <?php echo link_to(image_tag('/sf/sf_admin/images/next.png', 'align=absmiddle'), 'sfLucene/search?query=' . $query . '&page=' . $pager->getNextPage(), 'class=bookend') ?>
+    <?php if ($page == $pager->getPage()): ?>
+    <li><span><?php echo $page ?></span></li>
+    <?php else: ?>
+    <li><?php echo link_to($page, 'sfLucene/search?query=' . $query . '&page=' . $page . (($category) ? '&category='.$category : '')) ?></li>
     <?php endif ?>
-
+    <?php endforeach ?>
+    <?php if ($pager->getPage() != $pager->getNextPage()): ?>
+    <li><?php echo link_to(__('Next'), 'sfLucene/search?query=' . $query . '&page=' . $pager->getNextPage() . (($category) ? '&category='.$category : ''), 'class=bookend') ?></li>
+    <?php endif ?>
+</ul>
 <?php endif ?>

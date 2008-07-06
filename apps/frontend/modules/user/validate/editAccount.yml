@@ -1,0 +1,23 @@
+methods:
+  post: [first_name, last_name, gender, birthday]
+
+names:
+  first_name:
+    required: true
+    required_msg: Please enter your first name.
+
+  last_name:
+    required: true
+    required_msg: Please enter your last name.
+
+  gender:
+    required: false
+
+  birthday:
+    required: false
+    validators: [birthdayValidator]
+
+birthdayValidator:
+  class: sfDateValidator
+  param:
+    date_error: Not a valid date.

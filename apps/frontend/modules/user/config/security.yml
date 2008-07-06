@@ -1,5 +1,14 @@
+viewAccount:
+  is_secure: on
+
+editAccount:
+  is_secure: on
+
+changeEmail:
+  is_secure: on
+
 changePassword:
   is_secure: on
-  
+
 editProfile:
   is_secure: on

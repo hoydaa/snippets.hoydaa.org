@@ -2,10 +2,11 @@ body {
 	margin: 0;
 	font-family: Verdana,Arial,Helvetica,sans-serif;
 	font-size: 11px;
+    color: #42423D;
 }
 
 #header-wrapper {
-	background-color: #383D44;
+	background-color: #1A1613;
 	border-bottom: 1px solid #FFFFFF;
 }
 
@@ -16,13 +17,80 @@ body {
 }
 
 #footer-wrapper {
-	background-color: #6B6A64;
-	border-top: 1px solid #383D44;
+	background-color: #42423D;
+	border-top: 1px solid #000000;
 }
 
 #footer {
 	padding: 10px 0;
-	color: #FFFFFF;
+}
+
+/* menu */
+
+#nav {
+    margin: 0;
+    padding: 0;
+}
+
+#nav li {
+    display: inline;
+}
+
+#nav a {
+    text-decoration: none;
+    color: #B8AF8B;padding: 5px;
+}
+
+#nav a:hover {
+    background-color: #AE0000;
+    color: #FFFFFF;
+}
+
+/* panel */
+
+.panel .row {
+    margin-bottom: 10px;
+}
+
+.panel label {
+    float: left;
+    width: 125px;
+    font-weight: bold;
+    color: #42423D;
+}
+
+.panel .shifted {
+    margin-left: 125px;
+}
+
+/* snippets */
+
+#snippets {
+    
+}
+
+/* snippets sidebar */
+
+#sidebar-snippets ol {
+    list-style-type: none;
+    margin: 0;
+    margin-top: 10px;
+    padding: 0;
+}
+
+#sidebar-snippets ol li {
+    margin-bottom: 10px;
+}
+
+#sidebar-snippets ol li h3 {
+    margin: 0;
+    margin-bottom: 5px;
+}
+
+/* tags sidebar */
+
+#sidebar-tags .tag-cloud {
+    margin: 10px 0;
 }
 
 /* link */
@@ -64,4 +132,73 @@ div.indicator {
 	width: 16px;
 	height: 16px;
 	background: url("/images/indicator.gif") no-repeat 0 0;
+}
+
+/* hr */
+
+.hr {
+    margin: 10px 0;
+    height: 1px;
+    background: url("/images/hr.gif") repeat-x;
+}
+
+/* TAG CLOUD */
+
+ul#tag_cloud {
+    list-style-type: none;
+    padding: 0;
+}
+
+ul#tag_cloud li {
+    display: inline;
+}
+
+ul#tag_cloud li.rank_1 {
+    font-size: 0.7em;
+    font-weight: 100;
+}
+
+ul#tag_cloud li.rank_2 {
+    font-size: 0.8em;
+    font-weight: 200;
+}
+
+ul#tag_cloud li.rank_3 {
+    font-size: 0.9em;
+    font-weight: 300;
+}
+
+ul#tag_cloud li.rank_4 {
+    font-size: 1.0em;
+    font-weight: 400;
+}
+
+ul#tag_cloud li.rank_5 {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+ul#tag_cloud li.rank_6 {
+    font-size: 1.4em;
+    font-weight: 600;
+}
+
+ul#tag_cloud li.rank_7 {
+    font-size: 1.6em;
+    font-weight: 700;
+}
+
+ul#tag_cloud li.rank_8 {
+    font-size: 1.8em;
+    font-weight: 800;
+}
+
+ul#tag_cloud li.rank_9 {
+    font-size: 2.2em;
+    font-weight: 900;
+}
+
+ul#tag_cloud li.rank_10 {
+    font-size: 2.5em;
+    font-weight: 900;
 }

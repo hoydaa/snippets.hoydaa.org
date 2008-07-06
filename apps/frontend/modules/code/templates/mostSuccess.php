@@ -1,1 +1,0 @@
-<?php include_component('code', 'most') ?>

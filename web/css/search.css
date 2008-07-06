@@ -1,0 +1,42 @@
+form.search-controls input[type=text] {
+    width: 400px;
+}
+
+ol.search-results {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ol.search-results li {
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #DFDDD5;
+}
+
+ul.search-page-numbers {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+ul.search-page-numbers li {
+    display: inline;
+}
+
+ul.search-page-numbers li span {
+    padding: 4px 8px;
+    background-color: #232323;
+    color: #FFFFFF;
+}
+
+ul.search-page-numbers li a {
+    padding: 4px 8px;
+    background-color: #AE0000;
+    color: #FFFFFF;
+    text-decoration: none;
+}
+
+ul.search-page-numbers li a:hover {
+    background-color: #232323;
+}

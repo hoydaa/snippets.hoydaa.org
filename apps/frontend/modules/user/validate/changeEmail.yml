@@ -1,0 +1,41 @@
+methods:
+  post: [password, new_email, new_email_confirmation]
+
+names:
+  password:
+    required: true
+    required_msg: Please enter your password.
+    validators: [passwordValidator]
+  new_email:
+    required: true
+    required_msg: Please enter your new e-mail address.
+    validators: [emailValidator, emailUniqueValidator]
+  new_email_confirmation:
+    required:     true
+    required_msg: Please re-type your new e-mail address.
+    validators: [emailCompareValidator]
+
+passwordValidator:
+  class: sfStringValidator
+  param:
+    min: 5
+    min_error: Passwords have to be at least 5 characters long.      
+
+emailValidator:
+  class: sfEmailValidator
+  param:
+    email: email
+    email_error: Please enter a valid e-mail address.
+
+emailUniqueValidator:
+  class: sfPropelUniqueValidator
+  param:
+    class: UserProfile
+    column: email
+    unique_error: There is another user with the same e-mail address, please try another one.
+
+emailCompareValidator:
+  class: sfCompareValidator
+  param:
+    check: new_email_confirmation
+    compare_error: E-mail addresses do not match with each other.

@@ -1,7 +1,23 @@
-# Define all the models in your project that you want indexed.
-
 MyIndex:
   models:
+    Snippet:
+      fields:
+        id: unindexed
+        title:
+          boost: 1.5
+          type: text
+        description: text
+        body: text
+        tag: text
+        languages: text
+        contributor: text
+        sfguarduserid: unindexed
+        name: unindexed
+        createdat: text
+      title: title
+      description: description
+      route: snippet/show?id=%id%
+      partial: snippet/searchResult
 
   index:
     encoding: UTF-8

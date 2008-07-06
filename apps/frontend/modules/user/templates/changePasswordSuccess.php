@@ -1,5 +1,7 @@
 <?php use_helper('I18N', 'Validation') ?>
 
+<h1><?php echo __('Change Password') ?></h1>
+
 <?php echo form_tag('user/changePassword') ?>
 	<div class="row">
 		<?php echo label_for('old_password', __('Old Password')) ?>

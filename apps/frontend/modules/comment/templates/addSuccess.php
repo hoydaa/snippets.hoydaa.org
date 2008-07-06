@@ -1,0 +1,1 @@
+<?php include_partial('comment/show', array('comment' => $comment)) ?>

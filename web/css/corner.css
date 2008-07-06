@@ -1,0 +1,19 @@
+.corner {
+    background: url("/images/nt.gif") repeat;
+}
+
+.corner .top div {
+    background: url("/images/tl.gif") no-repeat top left;
+}
+
+.corner .top {
+    background: url("/images/tr.gif") no-repeat top right;
+}
+
+.corner .bottom div {
+    background: url("/images/bl.gif") no-repeat bottom left;
+}
+
+.corner .bottom {
+    background: url("/images/br.gif") no-repeat bottom right;
+}
