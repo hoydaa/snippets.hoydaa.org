@@ -9,7 +9,7 @@ default:
     keywords:     symfony, project
     language:     en
 
-  stylesheets:    [newlayout, newmain, sidebox, form, search]
+  stylesheets:    [layout, main, sidebox, form, search]
 
   javascripts:    [util]
 
