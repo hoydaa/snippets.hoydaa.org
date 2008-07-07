@@ -1,54 +1,54 @@
 propel:
   snippets_snippet:
     _attributes:            { phpName: Snippet }
-    id:                     { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
-    body:                   { type: LONGVARCHAR, required: true }
-    title:                  { type: VARCHAR, size: 255 }
-    description:            { type: LONGVARCHAR }
-    sf_guard_user_id:       { type: INTEGER, foreignTable: sf_guard_user, foreignReference: id, onDelete: RESTRICT }
-    comment_count:          { type: INTEGER, required: true, default: 0 }
-    average_rating:         { type: DECIMAL, size: 4, scale: 2, required: true, default: 0.0 }
-    name:                   { type: VARCHAR, size: 255, required: false }
-    email:                  { type: VARCHAR, size: 255, required: false }
+    id:                     { type: integer, required: true, autoIncrement: true, primaryKey: true }
+    sf_guard_user_id:       { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: restrict }
+    name:                   { type: varchar, size: 255, required: false }
+    email:                  { type: varchar, size: 255, required: false }
+    title:                  { type: varchar, size: 255 }
+    description:            { type: longvarchar }
+    body:                   { type: longvarchar, required: true }
+    average_rating:         { type: decimal, size: 4, scale: 2, required: true, default: 0.0 }
+    managed_content:        { type: boolean, required: true, default: 0 }
     created_at:             ~
     updated_at:             ~
 
   snippets_snippet_language:
     _attributes:            { phpName: SnippetLanguage }
-    id:                     { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
-    snippet_id:             { type: INTEGER, required: true, foreignTable: snippets_snippet, foreignReference: id, onDelete: RESTRICT }
-    language_id:            { type: INTEGER, required: true, foreignTable: snippets_language, foreignReference: id, onDelete: RESTRICT }
+    id:                     { type: integer, required: true, autoIncrement: true, primaryKey: true }
+    snippet_id:             { type: integer, required: true, foreignTable: snippets_snippet, foreignReference: id, onDelete: restrict }
+    language_id:            { type: integer, required: true, foreignTable: snippets_language, foreignReference: id, onDelete: restrict }
 
   snippets_tag:
     _attributes:            { phpName: Tag }
-    snippet_id:             { type: INTEGER, required: true, primaryKey: true, foreignTable: snippets_snippet, foreignReference: id, onDelete: CASCADE }
-    name:                   { type: VARCHAR, size: 100, required: true, primaryKey: true }
+    snippet_id:             { type: integer, required: true, primaryKey: true, foreignTable: snippets_snippet, foreignReference: id, onDelete: cascade }
+    name:                   { type: varchar, size: 100, required: true, primaryKey: true }
     created_at:             ~
 
   snippets_language:
     _attributes:            { phpName: Language }
-    id:                     { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
-    name:                   { type: VARCHAR, size: 100, required: true }
-    tag:                    { type: VARCHAR, size: 100, required: true }
+    id:                     { type: integer, required: true, autoIncrement: true, primaryKey: true }
+    name:                   { type: varchar, size: 100, required: true }
+    tag:                    { type: varchar, size: 100, required: true }
 
   snippets_comment:
     _attributes:            { phpName: Comment }
-    id:                     { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
-    snippet_id:             { type: INTEGER, required: true, foreignTable: snippets_snippet, foreignReference: id, onDelete: CASCADE }
-    sf_guard_user_id:       { type: INTEGER, required: false, foreignTable: sf_guard_user, foreignReference: id, onDelete: RESTRICT }
-    name:                   { type: VARCHAR, size: 255, required: false }
-    email:                  { type: VARCHAR, size: 255, required: false }
-    body:                   { type: LONGVARCHAR, required: true }
+    id:                     { type: integer, required: true, autoIncrement: true, primaryKey: true }
+    snippet_id:             { type: integer, required: true, foreignTable: snippets_snippet, foreignReference: id, onDelete: cascade }
+    sf_guard_user_id:       { type: integer, required: false, foreignTable: sf_guard_user, foreignReference: id, onDelete: restrict }
+    name:                   { type: varchar, size: 255, required: false }
+    email:                  { type: varchar, size: 255, required: false }
+    body:                   { type: longvarchar, required: true }
     created_at:             ~
 
   # will be improved
   snippets_user_profile:
     _attributes:            { phpName: UserProfile }
-    id:                     { type: INTEGER, required: true, autoIncrement: true, primaryKey: true }
-    sf_guard_user_id:       { type: INTEGER, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
-    email:                  { type: VARCHAR, size: 255, required: true }
-    first_name:             { type: VARCHAR, size: 255, required: true }
-    last_name:              { type: VARCHAR, size: 255, required: true }
-    confirmation:           { type: VARCHAR, size: 32, required: true }
-    gender:                 { type: CHAR, size: 1, required: false }
-    birthday:               { type: DATE, required: false }
+    id:                     { type: integer, required: true, autoIncrement: true, primaryKey: true }
+    sf_guard_user_id:       { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
+    email:                  { type: varchar, size: 255, required: true }
+    first_name:             { type: varchar, size: 255, required: true }
+    last_name:              { type: varchar, size: 255, required: true }
+    confirmation:           { type: varchar, size: 32, required: true }
+    gender:                 { type: char, size: 1, required: false }
+    birthday:               { type: date, required: false }

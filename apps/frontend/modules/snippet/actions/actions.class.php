@@ -63,6 +63,7 @@ class snippetActions extends sfActions
     $this->getRequest()->setParameter('description', $code->getTitle());
     $this->getRequest()->setParameter('body', $code->getBody());
     $this->getRequest()->setParameter('tags', $code->getTag());
+    $this->getRequest()->setParameter('managed_content', $code->getManagedContent());
   }
 
   public function executeUpdate()
@@ -104,6 +105,18 @@ class snippetActions extends sfActions
       $tag->setName(trim($tag_name));
 
       $code->addTag($tag);
+    }
+
+    if ($this->getUser()->hasGroup('EDITOR'))
+    {
+      if ($this->getRequestParameter('managed_content'))
+      {
+        $code->setManagedContent(1);
+      }
+      else
+      {
+        $code->setManagedContent(0);
+      }
     }
 
     $code->save();

@@ -17,6 +17,14 @@ class Snippet extends BaseSnippet
     return implode(', ', $tag_names);
   }
 
+  public function getMC()
+  {
+    if ($this->getManagedContent())
+      return 'true';
+    else
+      return 'false';
+  }
+
     public function save($con = null) {
         $salt = $this->getTitle().$this->getDescription();
         $snippet_languages = Snippet::getSnippetLanguagess($this->getBody());

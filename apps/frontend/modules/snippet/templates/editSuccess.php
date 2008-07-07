@@ -34,6 +34,13 @@
         <?php echo input_auto_complete_tag('tags',  $sf_params->get('tags'), 'tag/autocomplete', array('autocomplete' => 'off'), array('use_style' => 'true', 'tokens' => ',')) ?>
         <?php echo form_error('tags') ?>
     </div>
+    <?php if($sf_user->isAuthenticated() && $sf_user->hasGroup('EDITOR')): ?>
+    <div class="row">
+        <?php echo label_for('managed_content', __('Managed Content')) ?>
+        <?php echo checkbox_tag('managed_content', '1', $sf_params->get('managed_content')) ?>
+        <?php echo form_error('managed_content') ?>
+    </div>
+    <?php endif; ?>
     <div class="button-panel">
         <?php echo submit_tag(__('Save')) ?>
     </div>

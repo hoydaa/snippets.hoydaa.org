@@ -3,6 +3,8 @@ MyIndex:
     Snippet:
       fields:
         id: unindexed
+        sfguarduserid: unindexed
+        contributor: text
         title:
           boost: 1.5
           type: text
@@ -10,9 +12,7 @@ MyIndex:
         body: text
         tag: text
         languages: text
-        contributor: text
-        sfguarduserid: unindexed
-        name: unindexed
+        mc: keyword
         createdat: text
       title: title
       description: description
