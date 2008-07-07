@@ -18,7 +18,7 @@
 		<?php echo input_password_tag('new_password_confirm') ?>
 		<?php echo form_error('new_password_confirm') ?>
 	</div>
-		<div class="button-panel">
+		<div class="row right_col">
 		<?php echo submit_tag(__('Submit')) ?>
 	</div>
 </form>

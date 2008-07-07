@@ -1,7 +1,16 @@
 methods:
-  post: [body]
+  post: [body, captcha]
 
 names:
   body:
     required: true
     required_msg: Please enter a comment.
+  captcha:
+    required: true
+    required_msg: Please type the code shown.
+    validators: [captchaValidator]
+
+captchaValidator:
+  class: sfCryptographpValidator
+  param:
+    code_error: The code you entered is not correct.

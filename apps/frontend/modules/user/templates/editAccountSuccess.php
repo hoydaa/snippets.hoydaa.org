@@ -25,7 +25,7 @@
         <?php echo input_date_tag('birthday', $sf_params->get('birthday'), 'class=date rich=true') ?>
         <?php echo form_error('birthday') ?>
     </div>
-    <div class="button-panel">
+    <div class="row right_col">
         <?php echo submit_tag(__('Save')) ?>
     </div>
 </form>

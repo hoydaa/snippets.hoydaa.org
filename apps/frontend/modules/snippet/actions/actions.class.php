@@ -124,6 +124,34 @@ class snippetActions extends sfActions
     return $this->redirect('snippet/show?id='.$code->getId());
   }
 
+  public function validateUpdate()
+  {
+    $id = $this->getRequestParameter('id');
+    $captcha = $this->getRequestParameter('captcha');
+
+    $captchaValidator = new sfCryptographpValidator;
+    $captchaValidator->initialize($this->getContext());
+
+    if (!$id)
+    {
+      if (!$captcha)
+      {
+        $this->getRequest()->setError('captcha', 'Please type the code shown.');
+      }
+      else if (!$id && !$captchaValidator->execute($captcha, $error))
+      {
+        $this->getRequest()->setError('captcha', 'The code you entered is not correct.');
+      }
+    }
+
+    if ($this->getRequest()->hasErrors())
+    {
+      return false;
+    }
+
+    return true;
+  }
+
   public function handleErrorUpdate()
   {
     if (!$this->getRequestParameter('id'))

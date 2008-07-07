@@ -38,7 +38,7 @@
         <?php echo input_tag('last_name', $sf_params->get('last_name')) ?>
         <?php echo form_error('last_name') ?>
     </div>
-    <div class="button-panel">
+    <div class="row right_col">
         <?php echo submit_tag(__('Sign Up')) ?>
     </div>
 </form>

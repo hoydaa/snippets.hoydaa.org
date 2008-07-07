@@ -41,12 +41,17 @@
         <?php echo form_error('managed_content') ?>
     </div>
     <?php endif; ?>
-    <div class="row">
-        <?php echo label_for('captcha', __('Captcha')) ?>
+    <?php if (!$sf_params->get('id')): ?>
+    <div class="row right_col">
         <?php echo cryptographp_picture() ?><?php echo cryptographp_reload() ?>
+    </div>
+    <div class="row">
+        <?php echo label_for('captcha', __('Type the code shown')) ?>
+        <?php echo input_tag('captcha', $sf_params->get('captcha')) ?>
         <?php echo form_error('captcha') ?>
     </div>
-    <div class="button-panel">
+    <?php endif; ?>
+    <div class="row right_col">
         <?php echo submit_tag(__('Save')) ?>
     </div>
 </form>

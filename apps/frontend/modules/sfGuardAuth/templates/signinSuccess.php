@@ -17,7 +17,7 @@
         <?php echo label_for('remember', __('Remember me?')) ?>
         <?php echo checkbox_tag('remember') ?>
     </div>
-    <div class="button-panel">
+    <div class="row right_col">
         <?php echo submit_tag(__('Sign In')) ?>
     </div>
 </form>

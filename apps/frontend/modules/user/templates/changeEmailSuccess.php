@@ -18,7 +18,7 @@
         <?php echo input_tag('new_email_confirmation', $sf_params->get('new_email_confirmation')) ?>
         <?php echo form_error('new_email_confirmation') ?>
     </div>
-    <div class="button-panel">
+    <div class="row right_col">
         <?php echo submit_tag(__('Submit')) ?>
     </div>
 </form>

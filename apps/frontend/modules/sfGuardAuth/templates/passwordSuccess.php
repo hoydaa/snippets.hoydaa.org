@@ -6,7 +6,7 @@
 		<?php echo input_tag('email', $sf_params->get('email')) ?>
 		<?php echo form_error('email') ?>
 	</div>        
-	<div class="button-panel">
+	<div class="row right_col">
 		<?php echo submit_tag(__('Submit')) ?>
 	</div>
 </form>

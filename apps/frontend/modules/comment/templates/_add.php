@@ -1,4 +1,4 @@
-<?php use_helper('I18N', 'Validation', 'Javascript') ?>
+<?php use_helper('I18N', 'Validation', 'Javascript', 'Cryptographp') ?>
 
 <?php echo form_remote_tag(array(
   'url' => 'comment/add',
@@ -23,7 +23,15 @@
     <?php echo textarea_tag('body', $sf_params->get('body')) ?>
     <?php echo form_error('body') ?>            
   </div>
-  <div class="button-panel">
+  <div class="row right_col">
+    <?php echo cryptographp_picture() ?><?php echo cryptographp_reload() ?>
+  </div>
+  <div class="row">
+    <?php echo label_for('captcha', __('Type the code shown')) ?>
+    <?php echo input_tag('captcha', $sf_params->get('captcha')) ?>
+    <?php echo form_error('captcha') ?>
+  </div>
+  <div class="row right_col">
     <?php echo submit_tag(__('Save')) ?>
   </div>
 </form>

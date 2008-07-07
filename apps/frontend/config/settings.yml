@@ -92,7 +92,7 @@ all:
 #    standard_helpers:       [Partial, Cache, Form]
 #
 #    # Activated modules from plugins or from the symfony core
-    enabled_modules:        [sfGuardAuth, sfRating, sfComment, sfLucene]
+    enabled_modules:        [sfGuardAuth, sfRating, sfComment, sfLucene, cryptographp]
 #
 #    # Charset used for the response
 #    charset:                utf-8
