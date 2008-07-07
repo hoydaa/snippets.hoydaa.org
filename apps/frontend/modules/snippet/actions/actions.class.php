@@ -127,10 +127,32 @@ class snippetActions extends sfActions
   public function validateUpdate()
   {
     $id = $this->getRequestParameter('id');
+    $name = $this->getRequestParameter('name');
+    $email = $this->getRequestParameter('email');
     $captcha = $this->getRequestParameter('captcha');
+
+    $emailValidator = new sfEmailValidator();
+    $emailValidator->initialize($this->getContext());
 
     $captchaValidator = new sfCryptographpValidator;
     $captchaValidator->initialize($this->getContext());
+
+    if (!$this->getUser()->isAuthenticated())
+    {
+      if (!$name)
+      {
+        $this->getRequest()->setError('name', 'Please enter your name.');
+      }
+
+      if (!$email)
+      {
+        $this->getRequest()->setError('email', 'Please enter your email address.');
+      }
+      else if (!$emailValidator->execute($email, $error))
+      {
+        $this->getRequest()->setError('email', 'Please enter a valid email address.');
+      }
+    }
 
     if (!$id)
     {
