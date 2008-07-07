@@ -1,4 +1,4 @@
-<?php use_helper('I18N', 'Validation', 'Javascript') ?>
+<?php use_helper('I18N', 'Validation', 'Javascript', 'Cryptographp') ?>
 
 <?php echo form_tag('snippet/update') ?>
     <?php echo input_hidden_tag('id', $sf_params->get('id')) ?>
@@ -41,6 +41,11 @@
         <?php echo form_error('managed_content') ?>
     </div>
     <?php endif; ?>
+    <div class="row">
+        <?php echo label_for('captcha', __('Captcha')) ?>
+        <?php echo cryptographp_picture() ?><?php echo cryptographp_reload() ?>
+        <?php echo form_error('captcha') ?>
+    </div>
     <div class="button-panel">
         <?php echo submit_tag(__('Save')) ?>
     </div>
