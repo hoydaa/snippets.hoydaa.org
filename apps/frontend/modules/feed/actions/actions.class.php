@@ -23,7 +23,7 @@ class feedActions extends sfActions
         $feed->setAuthorEmail('codesnippet@hoydaa.org');
         $feed->setAuthorName('Hoydaa Codesnippet');
 
-        $codes = CodePeer::getNewCodes();
+        $codes = SnippetPeer::getNewCodes();
 
         foreach ($codes as $code)
         {
