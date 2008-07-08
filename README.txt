@@ -4,3 +4,5 @@ Required plugins
   symfony plugin-install http://plugins.symfony-project.com/sfFeed2Plugin
   symfony plugin-install http://plugins.symfony-project.com/sfLucenePlugin
   symfony plugin-install http://plugins.symfony-project.com/sfCryptographpPlugin
+
+Important Points
