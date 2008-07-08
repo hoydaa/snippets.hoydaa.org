@@ -2,4 +2,4 @@ all:
   propel:
     class:          sfPropelDatabase
     param:
-      dsn:          mysql://root:pokemon@localhost/coderepository
+      dsn:          mysql://snippetsuser:usersnippets@localhost/snippets
