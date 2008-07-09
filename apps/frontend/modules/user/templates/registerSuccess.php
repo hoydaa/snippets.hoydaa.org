@@ -38,6 +38,16 @@
         <?php echo input_tag('last_name', $sf_params->get('last_name')) ?>
         <?php echo form_error('last_name') ?>
     </div>
+    <div class="row">
+        <?php echo label_for('gender', __('Gender')) ?>
+        <?php echo select_tag('gender', options_for_select(array(null, 'M' => __('Male'), 'F' => __('Female')), $sf_params->get('gender'))) ?>
+        <?php echo form_error('gender') ?>
+    </div>
+    <div class="row">
+        <?php echo label_for('birthday', __('Birthday')) ?>
+        <?php echo input_date_tag('birthday', $sf_params->get('birthday'), 'class=date rich=true') ?>
+        <?php echo form_error('birthday') ?>
+    </div>
     <div class="row right_col">
         <?php echo submit_tag(__('Sign Up')) ?>
     </div>
