@@ -38,6 +38,8 @@ form textarea.snippet {
 
 form .error {
     margin-left: 125px;
+    padding-left: 16px;
+    background: url("/images/bullet_error.png") no-repeat;
     color: #FF0000;
 }
 
