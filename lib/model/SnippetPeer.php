@@ -61,18 +61,18 @@ class SnippetPeer extends BaseSnippetPeer
 
   public static function getMostDiscussedCodes($max = 10)
   {
-    $code = array();
+    $codes = array();
     $con = Propel::getConnection();
-    $sql = 	"select
-        			%s as code_id
-        		from
-        			%s
-        		order by
-        			%s desc";
+    $sql = 	"SELECT %s AS code_id FROM %s LEFT JOIN %s ON %s = %s 
+      GROUP BY %s order by COUNT(*) desc, %s desc";
     $sql = sprintf($sql,
       SnippetPeer::ID,
       SnippetPeer::TABLE_NAME,
-      SnippetPeer::COMMENT_COUNT
+      CommentPeer::TABLE_NAME,
+      SnippetPeer::ID,
+      CommentPeer::SNIPPET_ID,
+      SnippetPeer::ID,
+      CommentPeer::ID
     );
     $stmt = $con->prepareStatement($sql);
     $stmt->setLimit($max);
