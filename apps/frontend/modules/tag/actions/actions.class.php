@@ -15,7 +15,11 @@ class tagActions extends sfActions
   {
     $tag = $this->getRequestParameter('tags');
 
-    $this->tags = TagPeer::getTagsByName($tag);
+    $c = new Criteria();
+    $c->add(TagPeer::NAME, $tag . '%', Criteria::LIKE);
+
+    $this->tags = TagPeer::doSelect($c);
+    //$this->tags = TagPeer::getTagsByName($tag);
   }
 
   public function executeShow()
