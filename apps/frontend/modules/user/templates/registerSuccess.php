@@ -1,4 +1,4 @@
-<?php use_helper('I18N', 'Validation') ?>
+<?php use_helper('I18N', 'Validation', 'Cryptographp') ?>
 
 <h1><?php echo __('Sign Up') ?></h1>
 
@@ -48,6 +48,14 @@
         <?php echo input_date_tag('birthday', $sf_params->get('birthday'), 'class=date rich=true') ?>
         <?php echo form_error('birthday') ?>
     </div>
+  <div class="row right_col">
+    <?php echo cryptographp_picture() ?><?php echo cryptographp_reload() ?>
+  </div>
+  <div class="row">
+    <?php echo label_for('captcha', __('Type the code shown')) ?>
+    <?php echo input_tag('captcha', $sf_params->get('captcha')) ?>
+    <?php echo form_error('captcha') ?>
+  </div>
     <div class="row right_col">
         <?php echo submit_tag(__('Sign Up')) ?>
     </div>
