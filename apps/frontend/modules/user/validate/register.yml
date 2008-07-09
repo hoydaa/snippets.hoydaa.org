@@ -1,5 +1,5 @@
 methods:
-  post: [username, password, password_confirmation, email, email_confirmation, first_name, last_name, gender, birthday]
+  post: [username, password, password_confirmation, email, email_confirmation, first_name, last_name, gender, birthday, captcha]
 
 names:
   username:
@@ -42,6 +42,11 @@ names:
   birthday:
     required: false
     validators: [birthdayValidator]
+
+  captcha:
+    required: true
+    required_msg: Please type the code shown.
+    validators: [captchaValidator]
 
 usernameValidator:
   class: sfStringValidator
@@ -97,3 +102,8 @@ birthdayValidator:
   class: sfDateValidator
   param:
     date_error: Not a valid date.
+
+captchaValidator:
+  class: sfCryptographpValidator
+  param:
+    code_error: The code you entered is not correct.
