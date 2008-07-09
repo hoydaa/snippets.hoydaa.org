@@ -41,6 +41,7 @@ names:
 
   birthday:
     required: false
+    validators: [birthdayValidator]
 
 usernameValidator:
   class: sfStringValidator
@@ -91,3 +92,8 @@ genderValidator:
   param:
     values: [M, F]
     values_error: Not a valid gender.
+
+birthdayValidator:
+  class: sfDateValidator
+  param:
+    date_error: Not a valid date.
