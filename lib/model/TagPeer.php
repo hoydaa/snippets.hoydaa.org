@@ -7,7 +7,7 @@ class TagPeer extends BaseTagPeer
   {
     $connection = Propel::getConnection();
   
-    $query = 'SELECT DISTINCT %s as tag from %s WHERE tag like = '" . $tag . "%' ORDER BY tag ASC';
+    $query = "SELECT DISTINCT %s as tag from %s WHERE tag like = '" . $tag . "%' ORDER BY tag ASC";
     $query = sprintf($query, TagPeer::NAME, TagPeer::TABLE_NAME);
     
     $statement = $connection->prepeareStatement($query);
