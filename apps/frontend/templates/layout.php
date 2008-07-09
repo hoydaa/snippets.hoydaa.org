@@ -16,10 +16,10 @@
             <div id="header">
                 <br />
                 <ul id="nav">
-                    <li><?php echo link_to(__('Post Snippet'), 'snippet/create') ?></li>
+                    <li><?php echo link_to(__('&lt;post-snippet /&gt;'), 'snippet/create') ?></li>
                     <?php if (!$sf_user->isAuthenticated()): ?>
-                    <li><?php echo link_to(__('Login'), '@sf_guard_signin') ?></li>
-                    <li><?php echo link_to(__('Register'), 'user/register') ?></li>
+                    <li><?php echo link_to(__('signIn()'), '@sf_guard_signin') ?></li>
+                    <li><?php echo link_to(__('$sign_up'), 'user/register') ?></li>
                     <?php else: ?>
                     <li><?php echo link_to(__('Logout'), '@sf_guard_signout') ?></li>
                     <?php endif; ?>
