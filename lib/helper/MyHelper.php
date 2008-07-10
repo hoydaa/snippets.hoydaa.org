@@ -39,4 +39,17 @@
 	    return trim($rtn);
 	}
 	
+  function link_to_blind($id, $text) {
+    $context = sfContext::getInstance();
+  
+    $response = $context->getResponse();
+    $response->addJavascript(sfConfig::get('sf_prototype_web_dir').'/js/prototype');
+    $response->addJavascript(sfConfig::get('sf_prototype_web_dir').'/js/effects');
+    $response->addJavascript(sfConfig::get('sf_prototype_web_dir').'/js/controls');
+    
+    $response->addJavascript('/js/rich');
+
+    echo "<a onclick=\"blind('$id');return false;\">$text</a>";
+  }
+	
 ?>

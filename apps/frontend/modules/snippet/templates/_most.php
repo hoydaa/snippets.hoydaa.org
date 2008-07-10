@@ -1,9 +1,10 @@
 <?php use_helper('Date', 'I18N', 'My', 'Javascript') ?>
-
 <div class="sidebox">
 	<div class="bottom">
 		<div class="content">
-			<?php echo image_tag('snippets.gif') ?><br />
+			<?php echo link_to_blind('most_box', image_tag('snippets.gif')) ?>
+		</div>
+		<div class="content" id="most_box">
 			<ol>
 				<?php foreach ($snippets as $snippet): ?>
 				<li>
