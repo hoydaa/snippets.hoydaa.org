@@ -93,6 +93,12 @@ body {
     margin: 10px 0;
 }
 
+/* image */
+
+img {
+    border: none;
+}
+
 /* link */
 
 a {
