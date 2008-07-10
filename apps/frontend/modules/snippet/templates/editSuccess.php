@@ -22,7 +22,7 @@
     <div class="row">
         <?php echo label_for('description', __('Description')) ?>
         <?php echo textarea_tag('description', $sf_params->get('description')) ?>
-        <?php echo form_error('description') ?>            
+        <?php echo form_error('description') ?>
     </div>
     <div class="row">
         <?php echo label_for('body', __('Snippet')) ?>
