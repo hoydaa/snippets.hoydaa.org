@@ -1,12 +1,19 @@
-function blind(id) {
-  if(document.blind_arr == null) {
-    document.blind_arr = [];
+function toogle(target_id, up_id, down_id)
+{
+  var target = document.getElementById(target_id);
+  var up = document.getElementById(up_id);
+  var down = document.getElementById(down_id);
+
+  if (up.style.display != "none")
+  {
+    Effect.BlindUp(target);
+    up.style.display = "none";
+    down.style.display = "inline";
   }
-  if(document.blind_arr[id] == null || document.blind_arr[id] == 'blindup') {
-    Effect.BlindUp(id);
-    document.blind_arr[id] = 'blinddown';
-  } else if(document.blind_arr[id] == 'blinddown'){
-    Effect.BlindDown(id);
-    document.blind_arr[id] = 'blindup';		
+  else
+  {
+    Effect.BlindDown(target);
+    down.style.display = "none";
+    up.style.display = "inline";
   }
 }
