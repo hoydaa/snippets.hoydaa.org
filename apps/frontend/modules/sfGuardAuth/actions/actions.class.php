@@ -35,7 +35,8 @@ class sfGuardAuthActions extends BasesfGuardAuthActions {
 
 		$sfGuardUser->save();
 
-		return 'Confirmation';
+		$this->setFlash('info', 'A new password is sent to your email.');
+		$this->forward('site', 'message');
 	}
 
 	public function handleErrorPassword() {
