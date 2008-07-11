@@ -21,7 +21,7 @@
                     <li><?php echo link_to(__('signIn()'), '@sf_guard_signin', array('title' => 'Sign In')) ?></li>
                     <li><?php echo link_to(__('$sign_up'), 'user/register', array('title' => 'Sign Up')) ?></li>
                     <?php else: ?>
-                    <li><?php echo link_to(__('Logout'), '@sf_guard_signout', array('title' => 'Sign Out')) ?></li>
+                    <li><?php echo link_to(__('Sign::OUT'), '@sf_guard_signout', array('title' => 'Sign Out')) ?></li>
                     <?php endif; ?>
                 </ul>
             </div>
