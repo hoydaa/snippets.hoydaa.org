@@ -13,6 +13,10 @@ form label {
     color: #42423D;
 }
 
+form label em.required {
+    color: #AE0000;
+}
+
 input, select {
     font-family: Verdana,Arial,Helvetica,sans-serif;
     font-size: 11px;
