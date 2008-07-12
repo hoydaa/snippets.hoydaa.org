@@ -121,13 +121,6 @@ p.error {
     background: url("/images/error.png") no-repeat;
 }
 
-/* feed link */
-
-a.feed { 
-    padding-left: 16px;
-    background: url('/images/feed.gif') no-repeat 0 0;
-}
-
 /* indicator */
 
 div.indicator {
