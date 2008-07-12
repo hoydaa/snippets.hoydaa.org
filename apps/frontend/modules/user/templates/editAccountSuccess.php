@@ -22,7 +22,7 @@
     </div>
     <div class="row">
         <?php echo label_for('birthday', __('Birthday')) ?>
-        <?php echo input_date_tag('birthday', $sf_params->get('birthday'), 'class=date rich=true') ?>
+        <?php echo input_date_tag('birthday', $sf_params->get('birthday'), 'rich=true class=date calendar_button_img=date.png') ?>
         <?php echo form_error('birthday') ?>
     </div>
     <div class="row right_col">
