@@ -1,15 +1,15 @@
-<?php use_helper('I18N', 'Validation') ?>
+<?php use_helper('I18N', 'Validation', 'My') ?>
 
 <h1><?php echo __('Sign In') ?></h1>
 
 <?php echo form_tag('@sf_guard_signin') ?>
     <div class="row">
-        <?php echo label_for('username', __('Username').':') ?>
+        <?php echo label_for('username', __('Username') . required()) ?>
         <?php echo input_tag('username', $sf_params->get('username')) ?><br />
         <?php echo form_error('username', 'class=error') ?>
     </div>
     <div class="row">
-        <?php echo label_for('password', __('Password').':') ?>
+        <?php echo label_for('password', __('Password') . required()) ?>
         <?php echo input_password_tag('password'); ?><br />
         <?php echo form_error('password', 'class=error') ?> 
     </div>
