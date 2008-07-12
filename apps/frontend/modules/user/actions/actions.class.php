@@ -64,6 +64,23 @@ class userActions extends sfActions
     $this->redirect('user/viewAccount');
   }
 
+  public function validateEditAccount()
+  {
+    $gender = $this->getRequestParameter('gender');
+
+    if ($gender && $gender != 'M' && $gender != 'F')
+    {
+      $this->getRequest()->setError('gender', 'Not a valid gender.');
+    }
+
+    if ($this->getRequest()->hasErrors())
+    {
+      return false;
+    }
+
+    return true;
+  }
+
   public function handleErrorEditAccount()
   {
     return sfView::SUCCESS;
@@ -132,8 +149,8 @@ class userActions extends sfActions
     $profile->setEmail($this->getRequestParameter('email'));
     $profile->setFirstName($this->getRequestParameter('first_name'));
     $profile->setLastName($this->getRequestParameter('last_name'));
-    $profile->setGender($this->getRequestParameter('gender'));
-    $profile->setBirthday($this->getRequestParameter('birthday'));
+    $profile->setGender($this->getRequestParameter('gender') ? $this->getRequestParameter('gender') : null);
+    $profile->setBirthday($this->getRequestParameter('birthday') ? $this->getRequestParameter('birthday') : null);
     $user->addUserProfile($profile);
 
     $user->save();
@@ -147,6 +164,23 @@ class userActions extends sfActions
 
     $this->setFlash('info', 'We sent a confirmation email to your email address.');
     $this->forward('site', 'message');
+  }
+
+  public function validateRegister()
+  {
+    $gender = $this->getRequestParameter('gender');
+
+    if ($gender && $gender != 'M' && $gender != 'F')
+    {
+      $this->getRequest()->setError('gender', 'Not a valid gender.');
+    }
+
+    if ($this->getRequest()->hasErrors())
+    {
+      return false;
+    }
+
+    return true;
   }
 
   public function handleErrorRegister()
