@@ -153,6 +153,7 @@ div.indicator {
 ul#tag_cloud {
     list-style-type: none;
     padding: 0;
+    text-align: center;
 }
 
 ul#tag_cloud li {
@@ -210,9 +211,11 @@ ul#tag_cloud li.rank_10 {
 }
 
 ul#tag_cloud li a {
-    text-decoration: none;
+    padding: 0 0.2em;
 }
 
 ul#tag_cloud li a:hover {
-    text-decoration: underline;
+    background-color: #AE0000;
+    color: #E9E7E0;
+    text-decoration: none;
 }
