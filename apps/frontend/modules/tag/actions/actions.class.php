@@ -21,5 +21,6 @@ class tagActions extends sfActions
   public function executeShow()
   {
     $this->pager = SnippetPeer::getByTag($this->getRequestParameter('tag'), $this->getRequestParameter('page', 1));
+    $this->tag = $this->getRequestParameter('tag');
   }
 }
