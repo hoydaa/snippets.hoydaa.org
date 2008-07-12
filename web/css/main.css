@@ -1,28 +1,29 @@
 body {
-	margin: 0;
-	font-family: Verdana,Arial,Helvetica,sans-serif;
-	font-size: 11px;
+    margin: 0;
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 11px;
     color: #42423D;
 }
 
 #header-wrapper {
-	background-color: #1A1613;
-	border-bottom: 1px solid #FFFFFF;
+    background-color: #1A1613;
+    border-bottom: 1px solid #FFFFFF;
 }
 
 #bar-wrapper {
-	padding: 5px 0;
-	background-color: #E9E7E0;
-	border-bottom: 1px solid #D3D3D1;
+    padding: 5px 0;
+    background-color: #E9E7E0;
+    border-bottom: 1px solid #D3D3D1;
 }
 
 #footer-wrapper {
-	background-color: #42423D;
-	border-top: 1px solid #000000;
+    background-color: #42423D;
+    border-top: 1px solid #000000;
 }
 
 #footer {
-	padding: 10px 0;
+    padding: 10px 0;
+    color: #B8AF8B;
 }
 
 /* menu */
@@ -38,7 +39,8 @@ body {
 
 #nav a {
     text-decoration: none;
-    color: #B8AF8B;padding: 5px;
+    color: #B8AF8B;
+    padding: 5px;
 }
 
 #nav a:hover {
@@ -61,12 +63,6 @@ body {
 
 .panel .shifted {
     margin-left: 125px;
-}
-
-/* snippets */
-
-#snippets {
-    
 }
 
 /* snippets sidebar */
@@ -102,42 +98,42 @@ img {
 /* link */
 
 a {
-	color: #AE0000;
+    color: #AE0000;
 }
 
 a:hover {
-	color: #232323;
+    color: #232323;
 }
 
 /* message */
 
 p.info {
-	margin: 0;
-	padding-left: 32px;
-	line-height: 32px;
-	background: url("/images/info.png") no-repeat;
+    margin: 0;
+    padding-left: 32px;
+    line-height: 32px;
+    background: url("/images/info.png") no-repeat;
 }
 
 p.error {
-	margin: 0;
-	padding-left: 32px;
-	line-height: 32px;
-	background: url("/images/error.png") no-repeat;
+    margin: 0;
+    padding-left: 32px;
+    line-height: 32px;
+    background: url("/images/error.png") no-repeat;
 }
 
 /* feed link */
 
 a.feed { 
-	padding-left: 16px;
-	background: url('/images/feed.gif') no-repeat 0 0;
+    padding-left: 16px;
+    background: url('/images/feed.gif') no-repeat 0 0;
 }
 
 /* indicator */
 
 div.indicator {
-	width: 16px;
-	height: 16px;
-	background: url("/images/indicator.gif") no-repeat 0 0;
+    width: 16px;
+    height: 16px;
+    background: url("/images/indicator.gif") no-repeat 0 0;
 }
 
 /* hr */
