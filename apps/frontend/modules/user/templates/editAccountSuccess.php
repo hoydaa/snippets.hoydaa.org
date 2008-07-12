@@ -1,4 +1,4 @@
-<?php use_helper('I18N', 'Validation', 'DateForm') ?>
+<?php use_helper('I18N', 'Validation', 'DateForm', 'My') ?>
 
 <h1><?php echo __('Edit Account Settings') ?></h1>
 
@@ -6,12 +6,12 @@
 
 <?php echo form_tag('user/editAccount') ?>
     <div class="row">
-        <?php echo label_for('first_name', __('First Name')) ?>
+        <?php echo label_for('first_name', __('First Name') . required()) ?>
         <?php echo input_tag('first_name', $sf_params->get('first_name')) ?>
         <?php echo form_error('first_name') ?>
     </div>
     <div class="row">
-        <?php echo label_for('last_name', __('Last Name')) ?>
+        <?php echo label_for('last_name', __('Last Name') . required()) ?>
         <?php echo input_tag('last_name', $sf_params->get('last_name')) ?>
         <?php echo form_error('last_name') ?>
     </div>
