@@ -55,4 +55,9 @@ function toggle($target, $up, $down)
   echo "</a>";
 }
 
+function required()
+{
+  return '<em class="required">*</em>';
+}
+
 ?>
