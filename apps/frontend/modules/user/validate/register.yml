@@ -1,5 +1,5 @@
 methods:
-  post: [username, password, password_confirmation, email, email_confirmation, first_name, last_name, gender, birthday, captcha]
+  post: [username, password, password_confirmation, email, email_confirmation, first_name, last_name, birthday, captcha]
 
 names:
   username:
@@ -34,10 +34,6 @@ names:
   last_name:
     required: true
     required_msg: Please enter your last name.
-
-  gender:
-    required: false
-    validators: [genderValidator]
 
   birthday:
     required: false
@@ -91,12 +87,6 @@ emailUniqueValidator:
     class: UserProfile
     column: email
     unique_error: There is another user with the same email, please try another one.
-
-genderValidator:
-  class: sfStringValidator
-  param:
-    values: [M, F]
-    values_error: Not a valid gender.
 
 birthdayValidator:
   class: sfDateValidator
