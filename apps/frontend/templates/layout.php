@@ -65,7 +65,7 @@
         <div id="footer-wrapper">
             <div id="footer">
                 <p>Copyright &copy; <?php echo date("Y") ?> Hoydaa Inc. All rights reserved.</p>
-                <p><?php echo link_to(__('New Snippets'), 'feed/newCodes', 'class=feed') ?></p>
+                <p><?php echo link_to(image_tag('feed.png'), 'feed/newCodes') ?> <?php echo link_to(__('New Snippets'), 'feed/newCodes') ?></p>
             </div>
         </div>
        
