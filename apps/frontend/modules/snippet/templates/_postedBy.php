@@ -20,4 +20,4 @@ $params['%tags%'] = implode(', ', $tags);
 
 ?>
 
-<p><?php echo __('posted by %contributor% on %date% with tags %tags%', $params) ?></p>
+<?php echo __('posted by %contributor% on %date% with tags %tags%', $params) ?>
