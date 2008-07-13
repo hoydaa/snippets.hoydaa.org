@@ -13,6 +13,9 @@
                 <li class="rank_<?php echo $rank ?>"><?php echo link_to($tag, 'tag/show?tag=' . $tag) ?></li>
                 <?php endforeach; ?>
             </ul>
+            <div style="align: right; ">
+            	<?php echo link_to(__('View All'), 'tag/list') ?>
+            </div>
         </div>
     </div>
 </div>

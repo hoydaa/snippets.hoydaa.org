@@ -1,6 +1,10 @@
 tag_auto:
   url: /tag/autocomplete
   param: { module: tag, action: autocomplete }
+  
+tag_list:
+  url: /tag/list
+  param: { module: tag, action: list }
 
 tag:
   url: /tag/:tag
