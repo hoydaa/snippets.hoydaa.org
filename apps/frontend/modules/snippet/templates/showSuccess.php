@@ -3,7 +3,7 @@
 <h1><?php echo $code->getTitle() ?></h1>
 <p><?php echo simple_format_text($code->getBody()) ?></p>
 <?php include_partial('snippet/postedBy', array('code' => $code)) ?>
-
+<br /><br />
 <?php echo sf_rater($code) ?>
 <?php include_component('sfRating', 'ratingDetails', array('object' => $code)) ?>
 
