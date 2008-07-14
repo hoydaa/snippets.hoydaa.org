@@ -23,8 +23,9 @@ class tagActions extends sfActions
     $this->pager = SnippetPeer::getByTag($this->getRequestParameter('tag'), $this->getRequestParameter('page', 1));
     $this->tag = $this->getRequestParameter('tag');
   }
-  
-  public function executeList() {
+
+  public function executeList()
+  {
     $this->tags = TagPeer::getPopularTags(100);
   }
 }
