@@ -1,12 +1,25 @@
 <?php use_helper('I18N', 'Date') ?>
 
-<h1><?php echo __('Snippets') ?></h1>
+<h1><?php echo __('Your Snippets') ?></h1>
 
-<ol start="<?php echo $pager->getFirstIndice() ?>" class="search-results">
-    <?php foreach ($pager->getResults() as $result): ?>
+<?php include_partial('snippet/list', array('pager' => $pager)) ?>
+
+<?php if ($pager->haveToPaginate()): ?>
+<ul class="search-page-numbers">
+    <?php if ($pager->getPage() != $pager->getPreviousPage()): ?>
+    <li><?php echo link_to(__('Prev'), 'snippet/listMySnippets?page=' . $pager->getPreviousPage()) ?></li>
+    <?php endif; ?>
+    <?php foreach ($pager->getLinks() as $page): ?>
     <li>
-        <?php include_partial('snippet/searchResult', array('result' => $result)) ?>
-        <?php echo link_to(__('Edit'), 'snippet/edit?id='.$result->getId()) ?>
+        <?php if ($page == $pager->getPage()): ?>
+        <span><?php echo $page ?></span>
+        <?php else: ?>
+        <?php echo link_to($page, 'snippet/listMySnippets?page=' . $page) ?>
+        <?php endif; ?>
     </li>
-    <?php endforeach ?>
-</ol>
+    <?php endforeach; ?>
+    <?php if ($pager->getPage() != $pager->getNextPage()): ?>
+    <li><?php echo link_to(__('Next'), 'snippet/listMySnippets?page=' . $pager->getNextPage()) ?></li>
+    <?php endif; ?>
+</ul>
+<?php endif; ?>
