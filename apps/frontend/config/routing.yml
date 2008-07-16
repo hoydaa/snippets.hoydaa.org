@@ -1,3 +1,7 @@
+popup:
+  url:   /popup/:content
+  param: { module: site, action: index }
+
 tag_auto:
   url: /tag/autocomplete
   param: { module: tag, action: autocomplete }
