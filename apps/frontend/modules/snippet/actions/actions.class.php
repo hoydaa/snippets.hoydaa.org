@@ -53,7 +53,7 @@ class snippetActions extends sfActions
 
     if(!myUtils::isUserRecord('SnippetPeer', $id, $this->getUser()->getId()))
     {
-      $this->setFlash('error', 'You dont have enough credentials to edit this record.');
+      $this->setFlash('error', 'You don\'t have enough credentials to edit this snippet.');
       $this->forward('site', 'message');
     }
 
@@ -188,6 +188,21 @@ class snippetActions extends sfActions
 
   public function executeDelete()
   {
+    $id = $this->getRequestParameter('id');
+    $this->forward404Unless($id);
+
+    $snippet = SnippetPeer::retrieveByPk($id);
+    $this->forward404Unless($snippet);
+
+    if($snippet->getSfGuardUserId() != $this->getUser()->getGuardUser()->getId())
+    {
+      $this->forward('default', 'secure');
+    }
+
+    $snippet->delete();
+
+    $this->setFlash('info', 'Snippet is completely removed from the system.');
+    $this->forward('site', 'message');
   }
 
   public function executeMost()
