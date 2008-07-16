@@ -21,6 +21,7 @@
   <div class="row">
     <?php echo label_for('body', __('Comment') . required()) ?>
     <?php echo textarea_tag('body', $sf_params->get('body')) ?>
+    <?php echo link_to(image_tag('help.png', array('alt' => __('Markdown Syntax'), 'title' => __('Markdown Syntax'))), 'site?content=markdown', array('popup' => array(__('Markdown Syntax'), 'width=600, height=500, resizable, scrollbars=yes'))) ?>
     <?php echo form_error('body') ?>            
   </div>
   <div class="row right_col">
