@@ -68,34 +68,43 @@ class snippetActions extends sfActions
 
   public function executeUpdate()
   {
-    if (!$this->getRequestParameter('id'))
+    $id = $this->getRequestParameter('id');
+
+    if (!$id)
     {
-      $code = new Snippet();
+      $snippet = new Snippet();
     }
     else
     {
-      $code = SnippetPeer::retrieveByPk($this->getRequestParameter('id'));
-      $this->forward404Unless($code);
+      $snippet = SnippetPeer::retrieveByPk($id);
+      $this->forward404Unless($snippet);
+
+      if($snippet->getSfGuardUserId() != $this->getUser()->getGuardUser()->getId())
+      {
+        $this->forward('default', 'secure');
+      }
+
+      foreach ($snippet->getTags() as $tag)
+      {
+        $tag->delete();
+      }
+
+      $snippet = SnippetPeer::retrieveByPk($id);
     }
 
     if ($this->getUser()->isAuthenticated())
     {
-      $code->setSfGuardUserId($this->getUser()->getGuardUser()->getId());
+      $snippet->setSfGuardUserId($this->getUser()->getGuardUser()->getId());
     }
     else
     {
-      $code->setName($this->getRequestParameter('name'));
-      $code->setEmail($this->getRequestParameter('email'));
+      $snippet->setName($this->getRequestParameter('name'));
+      $snippet->setEmail($this->getRequestParameter('email'));
     }
 
-    $code->setTitle($this->getRequestParameter('title'));
-    $code->setDescription($this->getRequestParameter('description'));
-    $code->setBody($this->getRequestParameter('body'));
-
-    foreach ($code->getTags() as $tag)
-    {
-      $tag->delete();
-    }
+    $snippet->setTitle($this->getRequestParameter('title'));
+    $snippet->setDescription($this->getRequestParameter('description'));
+    $snippet->setBody($this->getRequestParameter('body'));
 
     $tag_names = explode(',', $this->getRequestParameter('tags'));
 
@@ -104,24 +113,24 @@ class snippetActions extends sfActions
       $tag = new Tag();
       $tag->setName(trim($tag_name));
 
-      $code->addTag($tag);
+      $snippet->addTag($tag);
     }
 
     if ($this->getUser()->hasGroup('EDITOR'))
     {
       if ($this->getRequestParameter('managed_content'))
       {
-        $code->setManagedContent(1);
+        $snippet->setManagedContent(1);
       }
       else
       {
-        $code->setManagedContent(0);
+        $snippet->setManagedContent(0);
       }
     }
 
-    $code->save();
+    $snippet->save();
 
-    return $this->redirect('snippet/show?id='.$code->getId());
+    return $this->redirect('snippet/show?id=' . $snippet->getId());
   }
 
   public function validateUpdate()
