@@ -110,8 +110,13 @@ class snippetActions extends sfActions
 
     foreach ($tag_names as $tag_name)
     {
+      if (!($tag_name = strtolower(trim($tag_name))))
+      {
+        continue;
+      }
+
       $tag = new Tag();
-      $tag->setName(trim($tag_name));
+      $tag->setName($tag_name);
 
       $snippet->addTag($tag);
     }
