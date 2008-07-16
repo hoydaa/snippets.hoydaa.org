@@ -185,14 +185,9 @@ class snippetActions extends sfActions
 
   public function handleErrorUpdate()
   {
-    if (!$this->getRequestParameter('id'))
-    {
-      $this->forward('snippet', 'create');
-    }
-    else
-    {
-      $this->forward('snippet', 'edit');
-    }
+    $this->setTemplate('edit');
+
+    return sfView::SUCCESS;
   }
 
   public function executeDelete()
