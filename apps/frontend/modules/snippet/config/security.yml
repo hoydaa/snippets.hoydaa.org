@@ -1,2 +1,4 @@
 edit:
   is_secure: on
+delete:
+  is_secure: on
