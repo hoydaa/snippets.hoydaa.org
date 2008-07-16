@@ -1,180 +1,35 @@
+sfGuardGroup:
+  EDITOR:
+    name: EDITOR
+
 sfGuardUser:
   umut.utkan:
-    username:       umut.utkan
-    password:       gahve123
-    is_super_admin: true
+    username: umut.utkan
+    password: pass-word
+  utku.utkan:
+    username: utku.utkan
+    password: pass-word
 
-Language:
-  c:
-    name: C
-    tag: c
-  java:
-    name: Java
-    tag: java
-  php:
-    name: Php
-    tag: php
-  xml:
-    name: Xml
-    tag: xml
-    
-Tag:
-  j2me:
-    tag: J2me
-    tag_normalized: j2me
-    popularity: 25
-  j2ee:
-    tag: j2ee
-    tag_normalized: j2ee
-    popularity: 11
-  pattern:
-    tag: patterns
-    tag_normalized: patterns
-    popularity: 20
-  pdaapi:
-    tag: pdaapi
-    tag_normalized: pdaapi
-    popularity: 30
-  mysql:
-    tag: mysql
-    tag_normalized: mysql
-    popularity: 23
-  apache:
-    tag: apache
-    tag_normalized: apache
-    popularity: 4
-  gof:
-    tag: gof
-    tag_normalized: gof
-    popularity: 10
-    
-Code:
-  singleton:
+sfGuardUserGroup:
+  umut.utkan_EDITOR:
+    user_id: umut.utkan
+    group_id: EDITOR
+  utku.utkan_EDITOR:
+    user_id: utku.utkan
+    group_id: EDITOR
+
+UserProfile:
+  umut.utkan_profile:
     sf_guard_user_id: umut.utkan
-    code: |
-      <java-snippet>
-      public class Singleton {
-        // Protected constructor is sufficient to suppress unauthorized calls to the constructor
-        protected Singleton() {}
- 
-        /**
-         * SingletonHolder is loaded on the first execution of Singleton.getInstance() 
-         * or the first access to SingletonHolder.instance , not before.
-         */
-        private static class SingletonHolder { 
-          private final static Singleton instance = new Singleton();
-        }
- 
-        public static Singleton getInstance() {
-          return SingletonHolder.instance;
-        }
-      }
-      </java-snippet>
-    title: Singleton pattern
-    description: Singleton pattern is a design pattern that is used to restrict instantiation of a class to one object.
-    average_rating: 5.89
-  facade:
-    sf_guard_user_id: umut.utkan
-    code: |
-      import java.text.ParseException;
-      import java.text.SimpleDateFormat;
-      import java.util.Calendar;
-      import java.util.Date;
- 
-      /** "Facade" * */
-      class UserfriendlyDate {
-        Calendar cal = Calendar.getInstance();
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
- 
-        public UserfriendlyDate(String isodate_ymd) throws ParseException {
-                Date date = sdf.parse(isodate_ymd);
-                cal.setTime(date);
-        }
- 
-        public void addDays(int days) {
-                cal.add(Calendar.DAY_OF_MONTH, days);
-        }
- 
-        public String toString() {
-                return sdf.format(cal.getTime());
-        }
-      }
- 
-      /** "Client" * */
-      class FacadePattern {
-        public static void main(String[] args) throws ParseException {
-                UserfriendlyDate d = new UserfriendlyDate("1980-08-20");
-                System.out.println("Date: " + d.toString());
-                d.addDays(20);
-                System.out.println("20 days after: " + d.toString());
-        }
-      }
-    title: Facade pattern
-    description: A facade is an object that provides a simplified interface to a larger body of code, such as a class library.
-    average_rating: 5.89    
-  adapter:
-    sf_guard_user_id: umut.utkan
-    code: |
-      /* the client class should instantiate adapter objects */
-      /* by using a reference of this type */ 
-      interface Stack<T>
-      {
-        void push (T o);
-        T pop ();
-        T top ();
-      }
- 
-      /* DoubleLinkedList is the adaptee class */
-      class DList<T>
-      {
-        public void insert (DNode pos, T o) { ... }
-        public void remove (DNode pos) { ... }
- 
-        public void insertHead (T o) { ... }
-        public void insertTail (T o) { ... }
- 
-        public T removeHead () { ... }
-        public T removeTail () { ... }
- 
-        public T getHead () { ... }
-        public T getTail () { ... }
-      }
- 
-        /* Adapt DList class to Stack interface is the adapter class */
-      class DListImpStack<T> extends DList<T> implements Stack<T>
-      {
-          public void push (T o) {
-            insertTail (o);
-        }
- 
-       public T pop () {
-          return removeTail ();
-        }
- 
-        public T top () {
-          return getTail ();
-        }
-      }
-    title: Adapter pattern
-    description: In computer programming, the adapter design pattern (often referred to as the wrapper pattern or simply a wrapper) 'adapts' one interface for a class into one that a client expects.
-    average_rating: 8.5
-    
-CodeTag:
-  ctag1:
-    code_id: singleton
-    tag_id: pattern
-  ctag2:
-    code_id: singleton
-    tag_id: gof
-  ctag3:
-    code_id: facade
-    tag_id: pattern
-  ctag4:
-    code_id: facade
-    tag_id: gof
-  ctag5:
-    code_id: adapter
-    tag_id: pattern
-  ctag6:
-    code_id: adapter
-    tag_id: gof
+    email: umut.utkan@gmail.com
+    first_name: Umut
+    last_name: Utkan
+    gender: M
+    birthday: 1979-02-23
+  utku.utkan_profile:
+    sf_guard_user_id: utku.utkan
+    email: utku.utkan@gmail.com
+    first_name: Utku
+    last_name: Utkan
+    gender: M
+    birthday: 1984-05-13
