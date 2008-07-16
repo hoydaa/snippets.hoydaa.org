@@ -9,7 +9,9 @@ MyIndex:
           boost: 1.5
           type: text
         description: text
-        body: text
+        content:
+          type: unstored
+          transform: strip_tags
         tag: text
         languages: text
         mc: keyword
