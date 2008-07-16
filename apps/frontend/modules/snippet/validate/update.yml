@@ -1,5 +1,5 @@
 methods:
-  post: [title, body]
+  post: [title, body, tags]
 
 names:
   title:
@@ -8,3 +8,13 @@ names:
   body:
     required: true
     required_msg: Please enter a snippet.
+  tags:
+    required: false
+    validators: [tagsValidator]
+
+tagsValidator:
+  class: sfRegexValidator
+  param:
+    match: Yes
+    pattern: /^[a-zA-Z0-9 \-,]+$/
+    match_error: Tags can only contain alphanumeric characters, hyphens, and spaces.
