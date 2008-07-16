@@ -1,4 +1,4 @@
-<?php use_helper('I18N', 'Date') ?>
+<?php use_helper('I18N', 'Date', 'Markdown') ?>
 
 <?php
 
@@ -14,4 +14,4 @@ $params['%date%'] = format_date($comment->getCreatedAt());
 ?>
 
 <?php echo __('%posted_by% on %date%', $params) ?>
-<p><?php echo $comment->getBody() ?></p>
+<?php echo convert_markdown_text($comment->getBody()) ?>
