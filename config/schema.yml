@@ -49,6 +49,6 @@ propel:
     email:                  { type: varchar, size: 255, required: true }
     first_name:             { type: varchar, size: 255, required: true }
     last_name:              { type: varchar, size: 255, required: true }
-    confirmation:           { type: varchar, size: 32, required: true }
+    confirmation:           { type: varchar, size: 32 }
     gender:                 { type: char, size: 1, required: false }
     birthday:               { type: date, required: false }
