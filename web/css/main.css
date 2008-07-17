@@ -26,6 +26,14 @@ body {
     color: #B8AF8B;
 }
 
+#footer a {
+   color: #E9E7E0;
+}
+
+#footer a:hover {
+    text-decoration: none;
+}
+
 /* menu */
 
 #nav {
