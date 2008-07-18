@@ -1,10 +1,11 @@
 <?php
 
+$er = error_reporting(0);
 include 'SOAP/Client.php';
 
 class SnippetServiceClient {
 
-    const WSDL_URL = 'http://localhost:8080/axis2/services/CodesnippetService?wsdl';
+    const WSDL_URL = 'http://www.hoydaa.org:8080/axis2/services/CodesnippetService?wsdl';
     private $soap_client = null;
 
     public function __construct() {
