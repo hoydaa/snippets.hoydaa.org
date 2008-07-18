@@ -9,7 +9,7 @@ MyIndex:
           boost: 1.5
           type: text
         description: text
-        content:
+        body:
           type: unstored
           transform: strip_tags
         tag: text
