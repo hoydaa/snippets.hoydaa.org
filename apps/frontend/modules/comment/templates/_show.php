@@ -14,4 +14,4 @@ $params['%date%'] = format_date($comment->getCreatedAt());
 ?>
 
 <?php echo __('%posted_by% on %date%', $params) ?>
-<?php echo convert_markdown_text($comment->getBody()) ?>
+<?php echo $comment->getBody() ?>
