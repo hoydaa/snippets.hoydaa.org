@@ -1,15 +1,17 @@
 <?php
 
-/**
- * Subclass for representing a row from the 'repo_comment' table.
- *
- * 
- *
- * @package lib.model
- */ 
 class Comment extends BaseComment
 {
+  public function getBody()
+  {
+    if (parent::getBody())
+    {
+      return parent::getBody();
+    }
 
-    
-    
+    $this->setBody(sfMarkdown::doConvert($this->getRawBody()));
+    $this->save();
+
+    return $this->getBody();
+  }
 }
