@@ -14,7 +14,7 @@
                     <li>
                         <h3 class="title"><?php echo link_to($snippet->getTitle(), 'snippet/show?id='.$snippet->getId(), 'class=title'); ?></h3>
                         <?php if ($snippet->getMC() == 'true'): ?>
-                        <?php echo image_tag('flag_blue.png', array('alt' => __('Managed Content'), 'title' => __('Managed Content'))) ?> 
+                        <?php echo image_tag('flag_blue.png', array('alt' => __('Managed Content'), 'title' => __('Managed Content'))) ?>
                         <?php endif; ?>
                         <br />
                         <?php include_partial('snippet/postedBy', array('code' => $snippet)) ?>
