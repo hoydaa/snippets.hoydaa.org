@@ -1,13 +1,13 @@
 methods:
-  post: [title, body, tags]
+  post: [title, raw_body, tags]
 
 names:
   title:
     required: true
     required_msg: Please enter a title.
-  body:
+  raw_body:
     required: true
-    required_msg: Please enter a snippet.
+    required_msg: Please enter a body.
   tags:
     required: false
     validators: [tagsValidator]
