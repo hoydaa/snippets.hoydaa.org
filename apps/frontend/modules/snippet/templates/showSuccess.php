@@ -8,7 +8,7 @@
 <?php echo link_to(image_tag('page_edit.png', array('alt' => __('Edit'), 'title' => __('Edit'))), 'snippet/edit?id=' . $code->getId()) ?> 
 <?php echo link_to(image_tag('page_delete.png', array ('alt' => __('Delete'), 'title' => __('Delete'))), 'snippet/delete?id=' . $code->getId(), array('confirm' => 'Are you sure you want to delete this snippet?')) ?>
 <?php endif; ?>
-<?php echo convert_markdown_text($code->getBody()) ?>
+<?php echo $code->getBody() ?>
 <?php include_partial('snippet/postedBy', array('code' => $code)) ?>
 <br /><br />
 <?php echo sf_rater($code) ?>
