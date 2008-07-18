@@ -61,7 +61,7 @@ class snippetActions extends sfActions
 
     $this->getRequest()->setParameter('title', $code->getTitle());
     $this->getRequest()->setParameter('description', $code->getTitle());
-    $this->getRequest()->setParameter('body', $code->getBody());
+    $this->getRequest()->setParameter('raw_body', $code->getRawBody());
     $this->getRequest()->setParameter('tags', $code->getTag());
     $this->getRequest()->setParameter('managed_content', $code->getManagedContent());
   }
@@ -104,7 +104,8 @@ class snippetActions extends sfActions
 
     $snippet->setTitle($this->getRequestParameter('title'));
     $snippet->setDescription($this->getRequestParameter('description'));
-    $snippet->setBody($this->getRequestParameter('body'));
+    $snippet->setRawBody($this->getRequestParameter('raw_body'));
+    $snippet->setBody(null);
 
     $tag_names = explode(',', $this->getRequestParameter('tags'));
 
