@@ -4,9 +4,17 @@ class Snippet extends BaseSnippet
 {
   public static $REG_EXPRESSION = "/<%s\-snippet>(.+)<\/%s\-snippet>/isU";
 
-  public function getContent()
+  public function getBody()
   {
-    return sfMarkdown::doConvert($this->getBody());
+    if (parent::getBody())
+    {
+      return parent::getBody();
+    }
+
+    $this->setBody(sfMarkdown::doConvert($this->getRawBody()));
+    $this->save();
+
+    return $this->getBody();
   }
 
   public function getTag()
