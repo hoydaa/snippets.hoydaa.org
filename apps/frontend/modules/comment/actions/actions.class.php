@@ -18,7 +18,7 @@ class commentActions extends sfActions
       $comment->setEmail($this->getRequestParameter('email'));
     }
 
-    $comment->setBody($this->getRequestParameter('body'));
+    $comment->setRawBody($this->getRequestParameter('raw_body'));
 
     $comment->save();
 
