@@ -1,10 +1,10 @@
 methods:
-  post: [body, captcha]
+  post: [raw_body, captcha]
 
 names:
-  body:
+  raw_body:
     required: true
-    required_msg: Please enter a comment.
+    required_msg: Please enter a body.
   captcha:
     required: true
     required_msg: Please type the code shown.
