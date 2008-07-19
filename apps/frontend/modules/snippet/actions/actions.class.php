@@ -60,7 +60,6 @@ class snippetActions extends sfActions
     $code = SnippetPeer::retrieveByPk($id);
 
     $this->getRequest()->setParameter('title', $code->getTitle());
-    $this->getRequest()->setParameter('description', $code->getTitle());
     $this->getRequest()->setParameter('raw_body', $code->getRawBody());
     $this->getRequest()->setParameter('tags', $code->getTag());
     $this->getRequest()->setParameter('managed_content', $code->getManagedContent());
@@ -103,7 +102,6 @@ class snippetActions extends sfActions
     }
 
     $snippet->setTitle($this->getRequestParameter('title'));
-    $snippet->setDescription($this->getRequestParameter('description'));
     $snippet->setRawBody($this->getRequestParameter('raw_body'));
     $snippet->setBody(null);
 
