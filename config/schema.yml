@@ -41,6 +41,7 @@ propel:
     email:                  { type: varchar, size: 255, required: false }
     raw_body:               { type: longvarchar, required: true }
     body:                   { type: longvarchar, required: true }
+    summary:                { type: varchar, size: 200, required: true }
     created_at:             ~
 
   # will be improved
