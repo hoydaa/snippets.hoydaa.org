@@ -65,4 +65,17 @@ class commentActions extends sfActions
     $this->getResponse()->setStatusCode(404);
     return sfView::ERROR;
   }
+
+  public function executeListMine()
+  {
+    $user_id = $this->getUser()->getGuardUser()->getId();
+
+    $c = new Criteria();
+    $c->add(CommentPeer::SF_GUARD_USER_ID, $user_id);
+
+    $this->pager = new sfPropelPager('Comment', sfConfig::get('app_pager', 10));
+    $this->pager->setCriteria($c);
+    $this->pager->setPage($this->getRequestParameter('page', 1));
+    $this->pager->init();
+  }
 }
