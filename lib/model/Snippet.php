@@ -4,19 +4,6 @@ class Snippet extends BaseSnippet
 {
   public static $REG_EXPRESSION = "/<%s\-snippet>(.+)<\/%s\-snippet>/isU";
 
-  public function getBody()
-  {
-    if (parent::getBody())
-    {
-      return parent::getBody();
-    }
-
-    $this->setBody(sfMarkdown::doConvert($this->getRawBody()));
-    $this->save();
-
-    return $this->getBody();
-  }
-
   public function getTag()
   {
     $tag_names = array();
@@ -58,6 +45,13 @@ class Snippet extends BaseSnippet
         return ($this->getSfGuardUserId() ? 
             $this->getSfGuardUser()->getUsername() : $this->getName());
     }
+
+  public function save($con = null)
+  {
+    $this->setBody(sfMarkdown::doConvert($this->getRawBody()));
+
+    parent::save();
+  }
 }
 
 sfLucenePropelBehavior::getInitializer()->setupModel('Snippet');
