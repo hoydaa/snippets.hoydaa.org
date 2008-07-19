@@ -49,7 +49,9 @@ class Snippet extends BaseSnippet
   public function save($con = null)
   {
     $this->setBody(sfMarkdown::doConvert($this->getRawBody()));
-
+	
+    $this->setSummary(myUtils::extractSummary($this->getBody(), 10, 400));
+    
     parent::save();
   }
 }
