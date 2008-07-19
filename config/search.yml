@@ -8,13 +8,13 @@ MyIndex:
         title:
           boost: 1.5
           type: text
-        description: text
         body:
           type: unstored
           transform: strip_tags
         tag: text
         languages: text
         mc: keyword
+        summary: unindexed
         createdat: text
       title: title
       description: description
