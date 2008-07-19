@@ -2,16 +2,10 @@
 
 class Comment extends BaseComment
 {
-  public function getBody()
+  public function save($con = null)
   {
-    if (parent::getBody())
-    {
-      return parent::getBody();
-    }
-
     $this->setBody(sfMarkdown::doConvert($this->getRawBody()));
-    $this->save();
 
-    return $this->getBody();
+    parent::save();
   }
 }
