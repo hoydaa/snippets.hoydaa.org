@@ -14,7 +14,7 @@
 		<?php foreach($codePager->getResults() as $code): ?>
 			<tr>
 				<td><?php echo link_to($code->getTitle(), 'code/show?id=' . $code->getId()); ?>&nbsp;</td>
-				<td><?php echo $code->getDescription() ?>&nbsp;</td>
+				<td><?php echo $code->getSummary() ?>&nbsp;</td>
 				<td>
 					<?php if($sf_user->isAuthenticated() && $code->getSfGuardUserId() == $sf_user->getId()): ?>
 				        <?php echo link_to(__('Edit'), 'code/edit?id=' . $code->getId()) ?>
