@@ -2,5 +2,5 @@
 <?php if ($result->getMC() == 'true'): ?>
 <?php echo image_tag('flag_blue.png', array('alt' => __('Managed Content'), 'title' => __('Managed Content'))) ?>
 <?php endif; ?>
-<p><?php echo $result->getDescription() ?></p>
+<p><?php echo $result->getSummary() ?></p>
 <?php include_partial('snippet/postedBy', array('code' => $result)) ?>
