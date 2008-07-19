@@ -1,21 +1,48 @@
 <?php
 class myUtils {
-    public static function highlightSnippet($snippet) {
-        return array('snippet' => $snippet, 'languages' => array(
-            LanguagePeer::retrieveByPK(2), LanguagePeer::retrieveByPK(3)
-        ));
-//        $languages = CodeLanguagePeer::doSelect(new Criteria());
-//    foreach($languages as $language) {
-//        $c = new Criteria();
-//        //$c->add(CommentPeer::ID, 8);
-//        $comments = CommentPeer::doSelect($c);
-//        foreach($comments as $comment) {
-//            echo '<'.$language->getTag().'\-code>(.|\r|\n)+<\/'.$language->getTag().'\-code>' . "\n";
-//            $arr = array();
-//            preg_match_all("/<".$language->getTag()."\-code>(.+)<\/".$language->getTag()."\-code>/isU", $comment->getComment(), $arr, PREG_SET_ORDER);
-//            print_r($arr);
-//        }
-//    }        
+    
+	public static function extractSummary($body, $min, $total) {
+		$summaries = self::extractSummaryArray($body, $min, $total);
+		$rtn = "";
+		foreach($summaries as $summary) {
+			$rtn .= "$summary... ";
+		}
+		return $rtn;
+	}
+	
+    public static function extractSummaryArray($body, $min, $total) {
+        
+    	//replace whitespaces with space
+        $body = preg_replace("/(\\r?\\n[ \\t]*)+/", " ", $body);
+        
+        //find paragraphs
+        $matches = array();
+        preg_match_all("/<p>(.+)<\/p>/isU", $body, $matches, PREG_SET_ORDER);
+        
+        //put paragraphs to a fresh array and calculate total length
+        $total_length = 0;
+        $paragraphs = array();
+        foreach($matches as $match) {
+        	$len = 0;
+        	if(($len = strlen($match[1])) > $min) {
+        		$paragraphs[] = $match[1];
+        		$total_length += strlen($match[1]);
+        	}
+        }
+		
+        //chop paragraphs
+        $final = array();
+        for($i = 0; $i < sizeof($paragraphs); $i++) {
+        	$share = (int)($total * strlen($paragraphs[$i]) / $total_length);
+        	if($share < $min) {
+        		$total_length -= strlen($paragraphs[$i]);
+        		continue;
+        	}
+            $final[] = substr($paragraphs[$i], 0, $share > strlen($paragraphs[$i]) ? strlen($paragraphs[$i]) : $share);
+        }
+
+        return $final;
+        
     }
     
     public static function isUserRecord($class_name, $record_id, $user_id) {
