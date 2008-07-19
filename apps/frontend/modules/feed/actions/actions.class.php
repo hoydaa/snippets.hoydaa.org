@@ -36,7 +36,7 @@ class feedActions extends sfActions
                 $code->getSfGuardUser()->getProfile()->getEmail() : $code->getEmail()));
             $item->setPubdate($code->getCreatedAt('U'));
             $item->setUniqueId($code->getId());
-            $item->setDescription($code->getDescription());
+            $item->setDescription($code->getSummary());
 
             $feed->addItem($item);
         }
