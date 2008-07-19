@@ -20,11 +20,6 @@
         <?php echo form_error('title') ?>
     </div>
     <div class="row">
-        <?php echo label_for('description', __('Description')) ?>
-        <?php echo textarea_tag('description', $sf_params->get('description')) ?>
-        <?php echo form_error('description') ?>
-    </div>
-    <div class="row">
         <?php echo label_for('raw_body', __('Body') . required()) ?>
         <?php echo textarea_tag('raw_body', $sf_params->get('raw_body'), 'class=snippet') ?>
         <?php echo link_to(image_tag('help.png', array('alt' => __('Markdown Syntax'), 'title' => __('Markdown Syntax'))), 'site?content=markdown', array('popup' => array(__('Markdown Syntax'), 'width=600, height=500, resizable, scrollbars=yes'))) ?>
