@@ -31,6 +31,7 @@ class myUtils {
         }
 		
         //chop paragraphs
+        sfLoader::loadHelpers('Text');
         $final = array();
         for($i = 0; $i < sizeof($paragraphs); $i++) {
         	$share = (int)($total * strlen($paragraphs[$i]) / $total_length);
@@ -38,7 +39,7 @@ class myUtils {
         		$total_length -= strlen($paragraphs[$i]);
         		continue;
         	}
-            $final[] = substr($paragraphs[$i], 0, $share > strlen($paragraphs[$i]) ? strlen($paragraphs[$i]) : $share);
+            $final[] = truncate_text($paragraphs[$i], $share, "", true);
         }
 
         return $final;
