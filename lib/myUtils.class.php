@@ -6,7 +6,7 @@ class myUtils {
         $body = sfMarkdown::doConvert($raw_body);
         $matches = array();
         $langs = array();
-        preg_match_all("/<pre><code>\[(\w*)\](.+)<\/code><\/pre>/isU", $body, $matches, PREG_SET_ORDER);
+        preg_match_all("/<pre><code>\[(\w*)\](\\r?\\n)+(.+)(\\r?\\n)+<\/code><\/pre>/isU", $body, $matches, PREG_SET_ORDER);
         if(sizeof($matches) > 0) {
             $service = new SnippetServiceClient();
             $cnt = 1;
@@ -14,12 +14,12 @@ class myUtils {
             {
                 if(strtoupper($match[1]) == 'JAVA')
                 {
-                    $highlighted = $service->highlight('JAVA', $match[2]);
+                    $highlighted = $service->highlight('JAVA', $match[3]);
                     $body = str_replace($match[0], $highlighted['snippet'], $body, $cnt);
                     $langs['java'] = $langs['java'] ? ($langs['java'] + 1) : 1;
                 } else if(strtoupper($match[1]) == 'PHP')
                 {
-                    $highlighted = $service->highlight('PHP', preg_replace('/\[(\w*)\]\n/', '', $codeblock));
+                    $highlighted = $service->highlight('PHP', $match[3]);
                     $body = str_replace($match[0], $highlighted['snippet'], $body, $cnt);
                     $langs['php'] = $langs['php'] ? ($langs['php'] + 1) : 1;
                 } else {
