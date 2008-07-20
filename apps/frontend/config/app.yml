@@ -7,3 +7,13 @@ all:
     remember_cookie_name:         codeRepositoryRememberMe   
   lucene:
     per_page: 1
+  .array:
+    languages:
+      c: C
+      cpp: C++
+      html: HTML
+      java: Java
+      php: PHP
+      ruby: Ruby
+      sql: SQL
+      xml: XML
