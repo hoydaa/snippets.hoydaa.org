@@ -84,6 +84,21 @@ class SnippetPeer extends BaseSnippetPeer
     return $codes;
   }
 
+  public static function getByLanguage($language, $page)
+  {
+    $c = new Criteria();
+    $c->addJoin(self::ID, SnippetLanguagePeer::SNIPPET_ID, Criteria::LEFT_JOIN);
+    $c->add($c->getNewCriterion(SnippetLanguagePeer::NAME, $language));
+    $c->setDistinct();
+
+    $pager = new sfPropelPager('Snippet', sfConfig::get('app_pager', 10));
+    $pager->setCriteria($c);
+    $pager->setPage($page);
+    $pager->init();
+
+    return $pager;
+  }
+
   public static function getByTag($tag, $page)
   {
     $c = new Criteria();
