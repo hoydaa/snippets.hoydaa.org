@@ -17,20 +17,14 @@ propel:
   snippets_snippet_language:
     _attributes:            { phpName: SnippetLanguage }
     id:                     { type: integer, required: true, autoIncrement: true, primaryKey: true }
-    snippet_id:             { type: integer, required: true, foreignTable: snippets_snippet, foreignReference: id, onDelete: restrict }
-    language_id:            { type: integer, required: true, foreignTable: snippets_language, foreignReference: id, onDelete: restrict }
+    snippet_id:             { type: integer, required: true, foreignTable: snippets_snippet, foreignReference: id, onDelete: cascade }
+    name:                   { type: varchar, size: 16, required: true }
 
   snippets_tag:
     _attributes:            { phpName: Tag }
     snippet_id:             { type: integer, required: true, primaryKey: true, foreignTable: snippets_snippet, foreignReference: id, onDelete: cascade }
     name:                   { type: varchar, size: 100, required: true, primaryKey: true }
     created_at:             ~
-
-  snippets_language:
-    _attributes:            { phpName: Language }
-    id:                     { type: integer, required: true, autoIncrement: true, primaryKey: true }
-    name:                   { type: varchar, size: 100, required: true }
-    tag:                    { type: varchar, size: 100, required: true }
 
   snippets_comment:
     _attributes:            { phpName: Comment }
