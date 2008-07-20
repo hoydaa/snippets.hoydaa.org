@@ -34,8 +34,8 @@ class Snippet extends BaseSnippet
     //for lucene index
     public function getLanguages() {
         $rtn = "";
-        foreach($this->getSnippetLanguages() as $code_language) {
-            $rtn .= " " . $code_language->getLanguage()->getTag();
+        foreach($this->getSnippetLanguages() as $language) {
+            $rtn .= " " . $language->getName();
         }
         return trim($rtn);
     }
@@ -48,7 +48,19 @@ class Snippet extends BaseSnippet
 
   public function save($con = null)
   {
-    $this->setBody(sfMarkdown::doConvert($this->getRawBody()));
+    $highlighted = myUtils::highlight($this->getRawBody());
+	$this->setBody($highlighted['body']);
+	foreach($this->getSnippetLanguages() as $language) {
+      $language->delete();	  
+	}
+	
+    foreach($highlighted['langs'] as $lang => $count)
+    {
+      $sl = new SnippetLanguage();
+      $sl->setName($lang);
+      $sl->setSnippet($this);
+      $this->addSnippetLanguage($sl);
+    }
 	
     $this->setSummary(myUtils::extractSummary($this->getBody(), 10, 400));
     
