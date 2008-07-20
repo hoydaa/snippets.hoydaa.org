@@ -2,6 +2,14 @@ popup:
   url:   /popup/:content
   param: { module: site, action: index }
 
+language_list:
+  url: /language
+  param: { module: language, action: list }
+
+language:
+  url: /language/:language
+  param: { module: language, action: show }
+
 tag_auto:
   url: /tag/autocomplete
   param: { module: tag, action: autocomplete }
