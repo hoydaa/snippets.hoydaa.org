@@ -56,6 +56,10 @@
                     <div id="sidebar-tags">
                         <?php include_component('tag', 'tagCloud') ?>
                     </div>
+                    <br />
+                    <div id="sidebar-languages">
+                        <?php include_component('language', 'cloud') ?>
+                    </div>
                 </div>
                 <div id="content">
                     <?php echo $sf_data->getRaw('sf_content') ?>
