@@ -54,5 +54,10 @@ class myUtils {
         $record = $class->getMethod('doSelectOne')->invoke(null, $c);
         return $record != null;
     }
+
+  public static function item($array, $i)
+  {
+    return $array[$i];
+  }
 }
 ?>
