@@ -280,9 +280,10 @@ class userActions extends sfActions
   
   public function executeSavePreferences()
   {
+    sfLoader::loadHelpers('I18N');
     if(!$this->getUser()->isAuthenticated())
     {
-      $this->msg = 'In order to save preferences please log in.';
+      $this->msg = __('In order to save preferences please log in.');
     } else {
       $criteria = new Criteria();
       $criteria->add(PreferencePeer::USER_ID, $this->getUser()->getId());
@@ -291,12 +292,12 @@ class userActions extends sfActions
       {
         $preference->delete();
       }
-      $this->msg = 'Prefences saved.';
+      $this->msg = __('Prefences saved.');
       if(($preference = $this->getUser()->getPreference('box_user')) != 
           sfConfig::get('app_preference_box_user'))
       {
         $this->msg .= "\napp_preference_box_user : " . 
-            ($preference == 'none' ? 'do not display' : 'display');
+            ($preference == 'none' ? __('do not display') : __('display'));
         $p = new Preference();
         $p->setUserId($this->getUser()->getId());
         $p->setName('box_user');
@@ -307,7 +308,7 @@ class userActions extends sfActions
           sfConfig::get('app_preference_box_snippets'))
       {
         $this->msg .= "\napp_preference_box_snippets : " . 
-            ($preference == 'none' ? 'do not display' : 'display');
+            ($preference == 'none' ? __('do not display') : __('display'));
         $p = new Preference();
         $p->setUserId($this->getUser()->getId());
         $p->setName('box_snippets');
@@ -318,7 +319,7 @@ class userActions extends sfActions
           sfConfig::get('app_preference_box_language_cloud'))
       {
         $this->msg .= "\napp_preference_box_language_cloud : " . 
-            ($preference == 'none' ? 'do not display' : 'display');
+            ($preference == 'none' ? __('do not display') : __('display'));
         $p = new Preference();
         $p->setUserId($this->getUser()->getId());
         $p->setName('box_language_cloud');
@@ -329,7 +330,7 @@ class userActions extends sfActions
           sfConfig::get('app_preference_box_tag_cloud'))
       {
         $this->msg .= "\napp_preference_box_tag_cloud : " . 
-            ($preference == 'none' ? 'do not display' : 'display');
+            ($preference == 'none' ? __('do not display') : __('display'));
         $p = new Preference();
         $p->setUserId($this->getUser()->getId());
         $p->setName('box_tag_cloud');
