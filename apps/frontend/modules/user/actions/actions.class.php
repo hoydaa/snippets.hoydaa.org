@@ -292,7 +292,7 @@ class userActions extends sfActions
       {
         $preference->delete();
       }
-      $this->msg = __('Prefences saved.');
+      $this->msg = __('Preferences saved.');
       if(($preference = $this->getUser()->getPreference('box_user')) != 
           sfConfig::get('app_preference_box_user'))
       {
