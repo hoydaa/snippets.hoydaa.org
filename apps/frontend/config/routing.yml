@@ -1,3 +1,7 @@
+set_preference:
+  url:   /setPreference/:pname
+  param: { module: user, action: setPreference }
+
 popup:
   url:   /popup/:content
   param: { module: site, action: index }
