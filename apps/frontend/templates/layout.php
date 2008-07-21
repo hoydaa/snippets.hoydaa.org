@@ -27,17 +27,36 @@
             </div>
         </div>
         <div id="bar-wrapper">
-            <div id=bar>
-                <?php echo form_tag('sfLucene/search', 'method=get class=search-controls') ?>
-                	<?php if($sf_params->get('query')): ?>
-                    	<?php echo input_tag('query', $sf_params->get('query')) ?> <?php echo submit_tag(__('Search')) ?>
-                	<?php else: ?>
-                	    <?php echo input_tag('query', 'tag: java, jee title: patterns author: John Doe', 
-                		        array('onfocus' => 'this.value = ""; this.style.color = "#000000"', 
-                		            'onblur' => 'this.value = "tag: java, jee title: patterns author: John Doe"; this.style.color = "#AAAAAA";', 
-                		            'style' => 'color: #AAAAAA;')) ?> <?php echo submit_tag(__('Search')) ?>
-                	<?php endif; ?>
-                </form>
+        	<div id="bar">
+        	    <div id="bar-right">
+        	        <?php 
+        	        $arr = array();
+        	        if (!$sf_user->isAuthenticated()) {
+        	            $arr = array('disabled' => 'disabled');
+        	        }?>
+        	        <div id="msg-container" style="display: none;"></div>
+	                <?php echo button_to_remote(
+	                    __('Save Preferences'),
+	                    array(
+	                        'url' => 'user/savePreferences',
+	                        'update' => 'msg-container',
+	                        'complete' => "window.alert($('msg-container').innerHTML);"
+	                    ),
+	                    $arr
+	                ) ?>
+	            </div>
+	            <div id="bar-left">
+	                <?php echo form_tag('sfLucene/search', 'method=get class=search-controls') ?>
+	                	<?php if($sf_params->get('query')): ?>
+	                    	<?php echo input_tag('query', $sf_params->get('query')) ?> <?php echo submit_tag(__('Search')) ?>
+	                	<?php else: ?>
+	                	    <?php echo input_tag('query', 'tag: java, jee title: patterns author: John Doe', 
+	                		        array('onfocus' => 'this.value = ""; this.style.color = "#000000"', 
+	                		            'onblur' => 'this.value = "tag: java, jee title: patterns author: John Doe"; this.style.color = "#AAAAAA";', 
+	                		            'style' => 'color: #AAAAAA;')) ?> <?php echo submit_tag(__('Search')) ?>
+	                	<?php endif; ?>
+	                </form>
+	            </div>
             </div>
         </div>
         <div id="main-wrapper">
@@ -82,6 +101,8 @@
             pageTracker._initData();
             pageTracker._trackPageview();
         </script>
-        
+        <pre>
+        <?php print_r($sf_user->getAttributeHolder()); ?>
+        </pre>
     </body>
 </html>
