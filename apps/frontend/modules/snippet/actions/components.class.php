@@ -16,15 +16,15 @@ class snippetComponents extends sfComponents
 
     if (!$most || $most == 'new')
     {
-      $this->snippets = SnippetPeer::getNewCodes();
+      $this->snippets = SnippetPeer::getNewCodes($this->getUser()->getPreference('box_snippets_size'));
     }
     else if ($most == 'high')
     {
-      $this->snippets = SnippetPeer::getPopularCodes();
+      $this->snippets = SnippetPeer::getPopularCodes($this->getUser()->getPreference('box_snippets_size'));
     }
     else if ($most == 'disc')
     {
-      $this->snippets = SnippetPeer::getMostDiscussedCodes();
+      $this->snippets = SnippetPeer::getMostDiscussedCodes($this->getUser()->getPreference('box_snippets_size'));
     }
     else
     {
