@@ -84,14 +84,14 @@ class SnippetPeer extends BaseSnippetPeer
     return $codes;
   }
 
-  public static function getByLanguage($language, $page)
+  public static function getByLanguage($language, $page, $pager_size)
   {
     $c = new Criteria();
     $c->addJoin(self::ID, SnippetLanguagePeer::SNIPPET_ID, Criteria::LEFT_JOIN);
     $c->add($c->getNewCriterion(SnippetLanguagePeer::NAME, $language));
     $c->setDistinct();
 
-    $pager = new sfPropelPager('Snippet', sfConfig::get('app_pager', 10));
+    $pager = new sfPropelPager('Snippet', $pager_size);
     $pager->setCriteria($c);
     $pager->setPage($page);
     $pager->init();
@@ -99,14 +99,14 @@ class SnippetPeer extends BaseSnippetPeer
     return $pager;
   }
 
-  public static function getByTag($tag, $page)
+  public static function getByTag($tag, $page, $pager_size)
   {
     $c = new Criteria();
     $c->addJoin(self::ID, TagPeer::SNIPPET_ID, Criteria::LEFT_JOIN);
     $c->add($c->getNewCriterion(TagPeer::NAME, $tag));
     $c->setDistinct();
 
-    $pager = new sfPropelPager('Snippet', sfConfig::get('app_pager', 10));
+    $pager = new sfPropelPager('Snippet', $pager_size);
     $pager->setCriteria($c);
     $pager->setPage($page);
     $pager->init();
