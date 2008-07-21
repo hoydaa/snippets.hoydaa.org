@@ -39,7 +39,7 @@ function link_to_languages($language_tags) {
   return trim($rtn);
 }
 	
-function toggle($target, $up, $down)
+function toggle($target, $up, $down, $updown = null, $after = null)
 {
   $context = sfContext::getInstance();
 
@@ -49,9 +49,15 @@ function toggle($target, $up, $down)
   $response->addJavascript(sfConfig::get('sf_prototype_web_dir').'/js/controls');
   $response->addJavascript('/js/rich');
 
-  echo "<a href=\"#\" onclick=\"toogle('$target', '$up', '$down'); return false;\">";
-  echo image_tag('minimize.gif', "id=$up");
-  echo image_tag('maximize.gif', "id=$down style=display:none");
+  echo "<a href=\"#\" onclick=\"toogle('$target', '$up', '$down'); $after return false; \">";
+  $upstyle = "";
+  $downstyle = " style=display:none";
+  if($updown == "down") {
+      $upstyle = $downstyle;
+      $downstyle = "";
+  }
+  echo image_tag('minimize.gif', "id=$up$upstyle");
+  echo image_tag('maximize.gif', "id=$down$downstyle");
   echo "</a>";
 }
 
