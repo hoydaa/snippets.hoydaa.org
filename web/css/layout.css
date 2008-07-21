@@ -15,6 +15,13 @@
 	width: 900px;
 }
 
+#bar-left {
+}
+
+#bar-right {
+    float: right;
+}
+
 #main-wrapper {
 	
 }
