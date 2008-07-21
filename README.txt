@@ -5,6 +5,7 @@ Required plugins
   symfony plugin-install http://plugins.symfony-project.com/sfLucenePlugin
   symfony plugin-install http://plugins.symfony-project.com/sfCryptographpPlugin
   symfony plugin-install http://plugins.symfony-project.com/sfMarkdownPlugin
+  symfony plugin-install http://plugins.symfony-project.com/isicsSitemapXMLPlugin
 
 Important Points
   

@@ -24,3 +24,5 @@ all:
     box_snippets_size: 10
     box_user: inline
     search_size: 10
+  isicsSitemapXML:
+    modules:       [snippet, tag, language]
