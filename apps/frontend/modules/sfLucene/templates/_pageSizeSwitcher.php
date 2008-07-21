@@ -13,7 +13,13 @@
         $sf_user->getPreference('search_size')
     ),
     array(
-        'onchange' => remote_function(array('url' => "@set_preference?pname=search_size", 'with' => "&quot;pvalue=&quot; + value"))
+        'onchange' => remote_function(
+            array(
+                'url' => "@set_preference?pname=search_size", 
+                'with' => "&quot;pvalue=&quot; + value", 
+                'success' => 'window.location.reload();'
+            )
+        )
     )
 )
 ?>
