@@ -21,6 +21,6 @@ all:
     box_language_cloud: inline
     box_tag_cloud: inline
     box_snippets: inline
-    box_snipepts_size: 10
+    box_snippets_size: 10
     box_user: inline
     search_size: 10
