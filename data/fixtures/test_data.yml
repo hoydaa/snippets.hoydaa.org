@@ -20,14 +20,14 @@ sfGuardUserGroup:
 
 UserProfile:
   umut.utkan_profile:
-    sf_guard_user_id: umut.utkan
+    user_id: umut.utkan
     email: umut.utkan@gmail.com
     first_name: Umut
     last_name: Utkan
     gender: M
     birthday: 1979-02-23
   utku.utkan_profile:
-    sf_guard_user_id: utku.utkan
+    user_id: utku.utkan
     email: utku.utkan@gmail.com
     first_name: Utku
     last_name: Utkan
