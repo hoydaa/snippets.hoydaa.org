@@ -268,4 +268,13 @@ class userActions extends sfActions
   {
     return sfView::SUCCESS;
   }
+  
+  public function executeSetPreference()
+  {
+    $pname = $this->getRequestParameter('pname');
+    $pvalue = $this->getRequestParameter('pvalue');
+    $this->getUser()->setPreference($pname, $pvalue);
+    sfLogger::getInstance()->info("Setting preference $pname=$pvalue");
+    return sfView::NONE;
+  }
 }
