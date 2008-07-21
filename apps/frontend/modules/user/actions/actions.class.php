@@ -277,4 +277,85 @@ class userActions extends sfActions
     sfLogger::getInstance()->info("Setting preference $pname=$pvalue");
     return sfView::NONE;
   }
+  
+  public function executeSavePreferences()
+  {
+    if(!$this->getUser()->isAuthenticated())
+    {
+      $this->msg = 'In order to save preferences please log in.';
+    } else {
+      $criteria = new Criteria();
+      $criteria->add(PreferencePeer::USER_ID, $this->getUser()->getId());
+      $preferences = PreferencePeer::doSelect($criteria);
+      foreach($preferences as $preference)
+      {
+        $preference->delete();
+      }
+      $this->msg = 'Prefences saved.';
+      if(($preference = $this->getUser()->getPreference('box_user')) != 
+          sfConfig::get('app_preference_box_user'))
+      {
+        $this->msg .= "\napp_preference_box_user : " . 
+            ($preference == 'none' ? 'do not display' : 'display');
+        $p = new Preference();
+        $p->setUserId($this->getUser()->getId());
+        $p->setName('box_user');
+        $p->setValue($preference);
+        $p->save();
+      }
+      if(($preference = $this->getUser()->getPreference('box_snippets')) != 
+          sfConfig::get('app_preference_box_snippets'))
+      {
+        $this->msg .= "\napp_preference_box_snippets : " . 
+            ($preference == 'none' ? 'do not display' : 'display');
+        $p = new Preference();
+        $p->setUserId($this->getUser()->getId());
+        $p->setName('box_snippets');
+        $p->setValue($preference);
+        $p->save();
+      }
+      if(($preference = $this->getUser()->getPreference('box_language_cloud')) != 
+          sfConfig::get('app_preference_box_language_cloud'))
+      {
+        $this->msg .= "\napp_preference_box_language_cloud : " . 
+            ($preference == 'none' ? 'do not display' : 'display');
+        $p = new Preference();
+        $p->setUserId($this->getUser()->getId());
+        $p->setName('box_language_cloud');
+        $p->setValue($preference);
+        $p->save();
+      }
+      if(($preference = $this->getUser()->getPreference('box_tag_cloud')) != 
+          sfConfig::get('app_preference_box_tag_cloud'))
+      {
+        $this->msg .= "\napp_preference_box_tag_cloud : " . 
+            ($preference == 'none' ? 'do not display' : 'display');
+        $p = new Preference();
+        $p->setUserId($this->getUser()->getId());
+        $p->setName('box_tag_cloud');
+        $p->setValue($preference);
+        $p->save();
+      }
+      if(($preference = $this->getUser()->getPreference('box_snippets_size')) != 
+          sfConfig::get('app_preference_box_snippets_size'))
+      {
+        $this->msg .= "\napp_preference_box_snippets_size : " . $preference;
+        $p = new Preference();
+        $p->setUserId($this->getUser()->getId());
+        $p->setName('box_snippets_size');
+        $p->setValue($preference);
+        $p->save();
+      }
+      if(($preference = $this->getUser()->getPreference('search_size')) != 
+          sfConfig::get('app_preference_search_size'))
+      {
+        $this->msg .= "\napp_preference_search_size : " . $preference;
+        $p = new Preference();
+        $p->setUserId($this->getUser()->getId());
+        $p->setName('box_search_size');
+        $p->setValue($preference);
+        $p->save();
+      }
+    }
+  }
 }
