@@ -101,8 +101,5 @@
             pageTracker._initData();
             pageTracker._trackPageview();
         </script>
-        <pre>
-        <?php print_r($sf_user->getAttributeHolder()); ?>
-        </pre>
     </body>
 </html>
