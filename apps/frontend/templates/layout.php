@@ -14,7 +14,7 @@
     <body>
         <div id="header-wrapper">
             <div id="header">
-                <br />
+                <?php echo link_to(image_tag('logo.gif', array('alt' => __('snippets'), 'title' => __('snippets by hoydaa'), 'id' => 'logo')), '@homepage') ?>
                 <ul id="nav">
                     <li><?php echo link_to(__('&lt;post-snippet /&gt;'), 'snippet/create', array('title' => __('Post Snippet'))) ?></li>
                     <?php if (!$sf_user->isAuthenticated()): ?>
