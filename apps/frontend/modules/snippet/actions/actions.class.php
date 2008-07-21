@@ -24,7 +24,7 @@ class snippetActions extends sfActions
       }
     }
 
-    $pager = new sfPropelPager('Snippet', sfConfig::get('app_pager', 10));
+    $pager = new sfPropelPager('Snippet', $this->getUser()->getPreference('search_size'));
     $pager->setCriteria($c);
     $pager->setPage($this->getRequestParameter('page', 1));
     $pager->init();
@@ -236,7 +236,7 @@ class snippetActions extends sfActions
     $c = new Criteria();
     $c->add(SnippetPeer::SF_GUARD_USER_ID, $user_id);
 
-    $this->pager = new sfPropelPager('Snippet', sfConfig::get('app_pager', 10));
+    $this->pager = new sfPropelPager('Snippet', $this->getUser()->getPreference('search_size'));
     $this->pager->setCriteria($c);
     $this->pager->setPage($this->getRequestParameter('page', 1));
     $this->pager->init();
