@@ -42,10 +42,17 @@ propel:
   snippets_user_profile:
     _attributes:            { phpName: UserProfile }
     id:                     ~
-    user_id:       { type: integer, required: true, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
+    user_id:                { type: integer, required: true, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
     email:                  { type: varchar, size: 255, required: true }
     first_name:             { type: varchar, size: 255, required: true }
     last_name:              { type: varchar, size: 255, required: true }
     confirmation:           { type: varchar, size: 32 }
     gender:                 { type: char, size: 1, required: false }
     birthday:               { type: date, required: false }
+
+  snippets_preference:
+    _attributes:            { phpName: Preference }
+    id:                     ~
+    user_id:                { type: integer, required: true, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
+    name:                   { type: varchar, size: 255, required: true }
+    value:                  { type: varchar, size: 255, required: true }
