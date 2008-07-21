@@ -49,7 +49,7 @@ function toggle($target, $up, $down, $updown = null, $after = null)
   $response->addJavascript(sfConfig::get('sf_prototype_web_dir').'/js/controls');
   $response->addJavascript('/js/rich');
 
-  echo "<a href=\"#\" onclick=\"toogle('$target', '$up', '$down'); $after return false; \">";
+  echo "<a href=\"#\" onclick=\"toogle('$target', '$up', '$down'); $after; return false; \">";
   $upstyle = "";
   $downstyle = " style=display:none";
   if($updown == "down") {
