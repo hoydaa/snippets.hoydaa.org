@@ -5,4 +5,4 @@
     </li>
     <?php endforeach ?>
 </ol>
-<?php include_partial('sfLucene/pageSizeSwitcher') ?>
+<div class="right-aligned"><?php include_partial('sfLucene/pageSize') ?></div>
