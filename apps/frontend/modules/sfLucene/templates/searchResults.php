@@ -10,5 +10,5 @@
     <?php endforeach ?>
 </ol>
 
+<div class="right-aligned"><?php include_partial('sfLucene/pageSize') ?></div>
 <?php include_search_pager($pager, sfConfig::get('app_lucene_pager_radius')) ?>
-<?php include_partial('sfLucene/pageSizeSwitcher') ?>
