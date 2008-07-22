@@ -63,6 +63,12 @@ body {
     color: #FFFFFF;
 }
 
+/* right aligned */
+
+.right-aligned {
+    float: right;
+}
+
 /* titles */
 
 h1.title, h2.title, h3.title {
