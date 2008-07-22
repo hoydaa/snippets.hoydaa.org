@@ -28,7 +28,7 @@
         </div>
         <div id="bar-wrapper">
         	<div id="bar">
-        	    <div id="bar-right">
+        	    <div class="right-aligned">
         	        <?php 
         	        $arr = array();
         	        if (!$sf_user->isAuthenticated()) {
@@ -45,7 +45,7 @@
 	                    $arr
 	                ) ?>
 	            </div>
-	            <div id="bar-left">
+	            <div>
 	                <?php echo form_tag('sfLucene/search', 'method=get class=search-controls') ?>
 	                	<?php if($sf_params->get('query')): ?>
 	                    	<?php echo input_tag('query', $sf_params->get('query')) ?> <?php echo submit_tag(__('Search')) ?>
