@@ -62,23 +62,7 @@
         <div id="main-wrapper">
             <div id="main">
                 <div id="sidebar">
-                    <?php if($sf_user->isAuthenticated()): ?>
-                    <div id="sidebar-user">
-                        <?php include_component('user', 'box') ?>
-                    </div>
-                    <br />
-                    <?php endif; ?>
-                    <div id="sidebar-snippets">
-                        <?php include_component('snippet', 'most') ?>
-                    </div>
-                    <br />
-                    <div id="sidebar-tags">
-                        <?php include_component('tag', 'tagCloud') ?>
-                    </div>
-                    <br />
-                    <div id="sidebar-languages">
-                        <?php include_component('language', 'cloud') ?>
-                    </div>
+                    <?php include('right.php'); ?>
                 </div>
                 <div id="content">
                     <?php echo $sf_data->getRaw('sf_content') ?>
