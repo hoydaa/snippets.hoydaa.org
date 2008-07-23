@@ -1,4 +1,4 @@
-<?php use_helper('Javascript') ?>
+<?php use_helper('Javascript', 'My') ?>
 <div class="sidebox">
     <div class="bottom">
         <div class="content" id="tag_cloud_box">
