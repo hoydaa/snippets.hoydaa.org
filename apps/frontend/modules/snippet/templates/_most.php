@@ -30,7 +30,7 @@
                         <?php echo image_tag('flag_blue.png', array('alt' => __('Managed Content'), 'title' => __('Managed Content'))) ?>
                         <?php endif; ?>
                         <br />
-                        <?php include_partial('snippet/postedBy', array('code' => $snippet)) ?>
+                        <?php echo snippet_posted_by($snippet, false) ?>
                     </li>
                     <?php endforeach; ?>
                 </ol>
