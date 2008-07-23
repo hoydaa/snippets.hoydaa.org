@@ -35,8 +35,13 @@ class SnippetLanguagePeer extends BaseSnippetLanguagePeer
       {
         $max_count = $resultset->getInt('count');
       }
-
-      $languages[$resultset->getString('language')] = floor(($resultset->getInt('count') / $max_count * 9) + 1);
+      
+      $languages[] = array(
+        'language' => $resultset->getString('language'),
+        'rank' => floor(($resultset->getInt('count') / $max_count * 9) + 1),
+        'count' => ($resultset->getInt('count'))
+      );
+      //$languages[$resultset->getString('language')] = floor(($resultset->getInt('count') / $max_count * 9) + 1);
     }
 
     ksort($languages);
