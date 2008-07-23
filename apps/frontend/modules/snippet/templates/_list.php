@@ -5,4 +5,6 @@
     </li>
     <?php endforeach ?>
 </ol>
+
 <div class="right-aligned"><?php include_partial('sfLucene/pageSize') ?></div>
+<?php include_partial('sfLucene/pagerNavigation', array('pager' => $pager)) ?>
