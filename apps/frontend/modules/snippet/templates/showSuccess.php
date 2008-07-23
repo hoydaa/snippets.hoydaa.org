@@ -1,4 +1,4 @@
-<?php use_helper('I18N', 'Markdown', 'sfRating', 'My') ?>
+<?php use_helper('I18N', 'Markdown', 'sfRating', 'My', 'Date') ?>
 
 <h1 class="title"><?php echo $code->getTitle() ?></h1>
 
