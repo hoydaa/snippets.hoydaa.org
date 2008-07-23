@@ -1,4 +1,4 @@
-<?php use_helper('I18N', 'Date') ?>
+<?php use_helper('I18N', 'Date', 'My') ?>
 
 <h1><?php echo __('My Comments') ?></h1>
 
@@ -6,7 +6,7 @@
     <?php foreach ($pager->getResults() as $comment): ?>
     <li>
         <h2><?php echo link_to($comment->getSnippet()->getTitle(), 'snippet/show?id=' . $comment->getSnippet()->getId() . '#comment' . $comment->getId()) ?></h2>
-        <?php include_partial('comment/posted_by', array('comment' => $comment)) ?>
+        <?php echo comment_posted_by($comment) ?>
         <p><?php echo $comment->getSummary() ?></p>
     </li>
     <?php endforeach ?>
