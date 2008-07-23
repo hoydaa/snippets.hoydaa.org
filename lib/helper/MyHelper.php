@@ -66,4 +66,68 @@ function required()
   return '<em class="required">*</em>';
 }
 
+function snippet_posted_by($code, $with_tags = true)
+{
+  $params = array();
+
+  // Contributor parameter is set.
+  if ($code->getSfGuardUserId())
+  {
+    $params['%contributor%'] = link_to($code->getContributor(), 'user/viewProfile?username=' . $code->getContributor());
+  }
+  else
+  {
+    $params['%contributor%'] = $code->getContributor();
+  }
+
+  // Date parameter is set.
+  $params['%date%'] = format_date($code->getCreatedAt());
+
+  if ($with_tags)
+  {
+    // Tags parameter is set.
+    $tag_links = array();
+    $tags = explode(', ', $code->getTag());
+
+    for ($i = 0; $i < count($tags); $i++)
+    {
+      if ($tags[$i])
+      {
+        $tag_links[$i] = link_to($tags[$i], 'tag/show?tag=' . $tags[$i]);
+      }
+    }
+
+    $params['%tags%'] = implode(', ', $tag_links);
+  }
+
+  if (isset($params['%tags%']))
+  {
+    return __('posted by %contributor% on %date% with tags %tags%', $params);
+  }
+  else
+  {
+    return __('posted by %contributor% on %date%', $params);
+  }
+}
+
+function comment_posted_by($comment)
+{
+  $params = array();
+
+  // Contributor parameter is set.
+  if ($comment->getSfGuardUserId())
+  {
+    $params['%posted_by%'] = link_to($comment->getSfGuardUser()->getUsername(), 'user/viewProfile?username=' . $comment->getSfGuardUser()->getUsername());
+  }
+  else
+  {
+    $params['%posted_by%'] = $comment->getName();
+  }
+
+  // Date parameter is set.
+  $params['%date%'] = format_date($comment->getCreatedAt());
+
+  return __('posted by %posted_by% on %date%', $params);
+}
+
 ?>
