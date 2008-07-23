@@ -49,7 +49,12 @@ class TagPeer extends BaseTagPeer
         $max_count = $resultset->getInt('count');
       }
 
-      $tags[$resultset->getString('tag')] = floor(($resultset->getInt('count') / $max_count * 9) + 1);
+      $tags[] = array(
+        'tag' => $resultset->getString('tag'),
+        'rank' => floor(($resultset->getInt('count') / $max_count * 9) + 1),
+        'count' => $resultset->getInt('count')
+      );
+      //$tags[$resultset->getString('tag')] = floor(($resultset->getInt('count') / $max_count * 9) + 1);
     }
 
     ksort($tags);
