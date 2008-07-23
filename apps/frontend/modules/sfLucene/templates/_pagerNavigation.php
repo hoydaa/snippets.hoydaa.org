@@ -1,17 +1,26 @@
+<?php
+
+$sf_controller = $sf_context->getController();
+$params = $sf_request->getParameterHolder()->getAll();
+
+?>
+
 <?php if ($pager->haveToPaginate()): ?>
 <ul class="search-page-numbers">
     <?php if ($pager->getPage() != $pager->getPreviousPage()): ?>
-    <li><?php echo link_to(__('Prev'), 'sfLucene/search?query=' . $query . '&page=' . $pager->getPreviousPage() . (($category) ? '&category='.$category : ''), 'class=bookend') ?></li>
+    <li><a href="<?php echo $sf_controller->genUrl(array_merge($params, array('page' => $pager->getPreviousPage()))) ?>" class="bookend"><?php echo __('Prev') ?></a></li>
     <?php endif ?>
-    <?php foreach ($links as $page): ?>
+
+    <?php foreach ($pager->getLinks() as $page): ?>
     <?php if ($page == $pager->getPage()): ?>
     <li><span><?php echo $page ?></span></li>
     <?php else: ?>
-    <li><?php echo link_to($page, 'sfLucene/search?query=' . $query . '&page=' . $page . (($category) ? '&category='.$category : '')) ?></li>
+    <li><a href="<?php echo $sf_controller->genUrl(array_merge($params, array('page' => $page))) ?>" class="bookend"><?php echo $page ?></a></li>
     <?php endif ?>
     <?php endforeach ?>
+
     <?php if ($pager->getPage() != $pager->getNextPage()): ?>
-    <li><?php echo link_to(__('Next'), 'sfLucene/search?query=' . $query . '&page=' . $pager->getNextPage() . (($category) ? '&category='.$category : ''), 'class=bookend') ?></li>
+    <li><a href="<?php echo $sf_controller->genUrl(array_merge($params, array('page' => $pager->getNextPage()))) ?>" class="bookend"><?php echo __('Next') ?></a></li>
     <?php endif ?>
 </ul>
 <?php endif ?>
