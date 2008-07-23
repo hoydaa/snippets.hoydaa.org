@@ -12,8 +12,8 @@
             </table>
             <div id="tags-hide"<?php echo $sf_user->getPreference('box_tag_cloud') == 'none' ? " style=display:none;" : "" ?>>
                 <ul class="tag_cloud few_tags">
-                    <?php foreach($tags as $tag => $rank): ?>
-                    <li class="rank_<?php echo $rank ?>"><?php echo link_to($tag, 'tag/show?tag=' . $tag) ?></li>
+                    <?php foreach($tags as $tag): ?>
+                    <li class="rank_<?php echo $tag['rank'] ?>"><?php echo link_to($tag['tag'], 'tag/show?tag=' . $tag['tag'], array('title' => __(":count snippet(s) are tagged with ':tag'", array(':count' => $tag['count'], ':tag' => $tag['tag'])))) ?></li>
                     <?php endforeach; ?>
                 </ul>
                 <?php echo link_to(__('View All'), 'tag/list') ?>
