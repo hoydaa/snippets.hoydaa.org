@@ -357,6 +357,22 @@ class userActions extends sfActions
         $p->setValue($preference);
         $p->save();
       }
+      if(($preference = $this->getUser()->getPreference('box_order')) != 
+          sfConfig::get('app_preference_box_order'))
+      {
+        $order_str = "";
+        foreach($preference as $order_no)
+        {
+          $order_str .= "$order_no, ";
+        }
+        $order_str = substr($order_str, 0, strlen($order_str) - 2);
+        $p = new Preference();
+        $p->setUserId($this->getUser()->getId());
+        $p->setName('box_order');
+        $p->setValue($order_str);
+        $p->save();
+        $this->msg .= "\napp_preference_box_order : " . $order_str;
+      }
     }
   }
 }
