@@ -71,7 +71,7 @@
         </div>
         <div id="footer-wrapper">
             <div id="footer">
-                <p>Copyright &copy; <?php echo date("Y") ?> <?php echo link_to('Hoydaa Inc.', 'http://www.hoydaa.org', array('target' => '_blank')) ?> All rights reserved.</p>
+                <p>Copyright &copy; <?php echo date("Y") ?> <?php echo link_to('Hoydaa Inc.', 'http://www.hoydaa.org', array('target' => '_blank', 'title' => 'deliver few, deliver complete')) ?> All rights reserved.</p>
                 <p><?php echo link_to(image_tag('feed.png'), 'feed/newCodes') ?> <?php echo link_to(__('New Snippets'), 'feed/newCodes') ?></p>
             </div>
         </div>
