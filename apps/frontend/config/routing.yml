@@ -4,7 +4,7 @@ set_preference:
 
 popup:
   url:   /popup/:content
-  param: { module: site, action: index }
+  param: { module: site, action: popup }
 
 language_list:
   url: /language
@@ -29,7 +29,7 @@ tag:
 # default rules
 homepage:
   url:   /
-  param: { module: home, action: main }
+  param: { module: site, action: index }
 
 default_symfony:
   url:   /symfony/:action/*
