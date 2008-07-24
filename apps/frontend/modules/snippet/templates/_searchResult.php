@@ -1,4 +1,4 @@
-<?php use_helper('My', 'Date') ?>
+<?php use_helper('I18N', 'My') ?>
 
 <h2 class="title"><?php echo link_to($result->getTitle(), 'snippet/show?id='.$result->getId()); ?></h2>
 <?php if ($result->getMC() == 'true'): ?>
