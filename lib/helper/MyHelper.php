@@ -1,5 +1,7 @@
 <?php
 
+sfLoader::loadHelpers(array('Date'));
+
 function form_message($sf_request) {
   $rtn = "";
   if($sf_request->hasError('form-message')) {
