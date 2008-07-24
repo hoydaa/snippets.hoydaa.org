@@ -22,7 +22,7 @@
     <div class="row">
         <?php echo label_for('raw_body', __('Body') . required()) ?>
         <?php echo textarea_tag('raw_body', $sf_params->get('raw_body'), 'class=snippet') ?>
-        <?php echo link_to(image_tag('help.png', array('alt' => __('Markdown Syntax'), 'title' => __('Markdown Syntax'))), 'site?content=markdown', array('popup' => array(__('Markdown Syntax'), 'width=600, height=500, resizable, scrollbars=yes'))) ?>
+        <?php echo link_to(image_tag('help.png', array('alt' => __('Markdown Syntax'), 'title' => __('Markdown Syntax'))), 'site/popup?content=markdown', array('popup' => array(__('Markdown Syntax'), 'width=600, height=500, resizable, scrollbars=yes'))) ?>
         <?php echo form_error('raw_body') ?>
     </div>
     <div class="row">
