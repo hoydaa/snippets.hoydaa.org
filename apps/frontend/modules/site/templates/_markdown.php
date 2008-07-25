@@ -1,13 +1,12 @@
 <h1>Markdown Syntax</h1>
-You can post your snippets and comments using Markdown's formatting
-syntax. Markdown is a lightweight markup language, which aims for
-maximum readability and "publishability" of both its input and output
-forms, taking many cues from existing conventions for marking up plain
-text in email. Following is a cheatsheet that will help you type your
-own Markdown-formatted text quickly. See the
-<a href="http://daringfireball.net/projects/markdown/syntax"
-	target="_blank">full Markdown syntax</a>
-for more information.
+<p>You can post your snippets and comments using Markdown's
+formatting syntax. Markdown is a lightweight markup language, which aims
+for maximum readability and "publishability" of both its input and
+output forms, taking many cues from existing conventions for marking up
+plain text in email. Following is a cheatsheet that will help you type
+your own Markdown-formatted text quickly. See the <a
+	href="http://daringfireball.net/projects/markdown/syntax"
+	target="_blank">full Markdown syntax</a> for more information.</p>
 
 <h2>Cheatsheet</h2>
 
