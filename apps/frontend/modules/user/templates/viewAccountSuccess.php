@@ -2,7 +2,7 @@
 
 <h1><?php echo __('Account Settings') ?></h1>
 
-<div class="panel">
+<div class="form">
     <div class="row">
         <label><?php echo __('First Name') ?></label>
         <?php echo $sf_params->get('first_name') ?>
@@ -19,7 +19,7 @@
         <label><?php echo __('Birthday') ?></label>
         <?php echo $sf_params->get('birthday') ? format_date($sf_params->get('birthday')) : '-' ?>
     </div>
-    <div class="shifted">
+    <div class="right_col">
         <?php echo link_to(__('Edit'), 'user/editAccount') ?><br />
     </div>
 </div>
