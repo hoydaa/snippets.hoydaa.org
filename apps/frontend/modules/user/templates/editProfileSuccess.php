@@ -4,7 +4,7 @@
 
 <?php include_partial('site/message') ?>
 
-<?php echo form_tag('user/editProfile') ?>
+<?php echo form_tag('user/editProfile', array('class' => 'form')) ?>
     <div class="row">
         <?php echo label_for('email', __('Email')) ?>
         <?php echo input_tag('email', $sf_params->get('email')) ?>
