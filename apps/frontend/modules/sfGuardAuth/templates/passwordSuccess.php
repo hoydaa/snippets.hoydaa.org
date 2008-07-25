@@ -1,6 +1,6 @@
 <?php use_helper('I18N', 'Validation', 'My') ?>
 
-<?php echo form_tag('sfGuardAuth/password') ?>
+<?php echo form_tag('sfGuardAuth/password', array('class' => 'form')) ?>
 	<div class="row">
 		<?php echo label_for('email', __('Email') . required()) ?>
 		<?php echo input_tag('email', $sf_params->get('email')) ?>
