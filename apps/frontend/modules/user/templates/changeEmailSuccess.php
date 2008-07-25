@@ -2,7 +2,7 @@
 
 <h1><?php echo __('Change Email Address') ?></h1>
 
-<?php echo form_tag('user/changeEmail') ?>
+<?php echo form_tag('user/changeEmail', array('class' => 'form')) ?>
     <div class="row">
         <?php echo label_for('password', __('Password') . required()) ?>
         <?php echo input_password_tag('password') ?>
