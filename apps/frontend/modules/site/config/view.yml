@@ -1,2 +1,4 @@
 popupSuccess:
+  stylesheets: [-main, -lang-java, popup]
+  javascripts: [-util]
   layout: popup
