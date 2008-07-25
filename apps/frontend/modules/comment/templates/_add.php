@@ -4,7 +4,7 @@
   'url' => 'comment/add',
   'update' => array('success' => 'new_comment', 'failure' => 'comment_form-wrapper'),
   'success' => "Element.show('new_comment');Element.hide('comment_form-wrapper');"
-)) ?>
+), array('class' => 'form')) ?>
   <?php echo input_hidden_tag('id', $sf_params->get('id')) ?>
   <?php if(!$sf_user->isAuthenticated()): ?>
   <div class="row">
