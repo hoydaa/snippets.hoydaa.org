@@ -248,3 +248,58 @@ ul.few_tags li a:hover {
 ul.all_tags li a:hover {
     color: #FFFFFF;
 }
+
+/* form */
+
+form {
+    margin: 0;
+}
+
+form .row {
+    margin-bottom: 10px;
+}
+
+form label {
+    float: left;
+    width: 125px;
+    font-weight: bold;
+    color: #42423D;
+}
+
+form label em.required {
+    color: #AE0000;
+}
+
+input, select {
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 11px;
+}
+
+input[type=text], input[type=password] {
+    width: 200px;
+}
+
+input[type=text].date {
+    width: 75px;
+}
+
+form textarea {
+    width: 300px;
+    height: 100px;
+}
+
+form textarea.body {
+    width: 400px;
+    height: 400px;
+}
+
+form .error {
+    margin-left: 125px;
+    padding-left: 16px;
+    background: url("/images/bullet_error.png") no-repeat;
+    color: #FF0000;
+}
+
+form .right_col {
+    margin-left: 125px;
+}
