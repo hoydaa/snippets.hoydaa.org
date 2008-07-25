@@ -10,7 +10,7 @@ class commentActions extends sfActions
 
     if ($this->getUser()->isAuthenticated())
     {
-      $comment->setSfGuardUserId($this->getUser()->getGuardUser()->getId());
+      $comment->setUserId($this->getUser()->getGuardUser()->getId());
     }
     else
     {
@@ -71,7 +71,7 @@ class commentActions extends sfActions
     $user_id = $this->getUser()->getGuardUser()->getId();
 
     $c = new Criteria();
-    $c->add(CommentPeer::SF_GUARD_USER_ID, $user_id);
+    $c->add(CommentPeer::USER_ID, $user_id);
 
     $this->pager = new sfPropelPager('Comment', sfConfig::get('app_pager', 10));
     $this->pager->setCriteria($c);
