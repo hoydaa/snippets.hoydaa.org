@@ -73,7 +73,7 @@ function snippet_posted_by($code, $with_tags = true)
   $params = array();
 
   // Contributor parameter is set.
-  if ($code->getSfGuardUserId())
+  if ($code->getUserId())
   {
     $params['%contributor%'] = link_to($code->getContributor(), 'user/viewProfile?username=' . $code->getContributor());
   }
@@ -117,7 +117,7 @@ function comment_posted_by($comment)
   $params = array();
 
   // Contributor parameter is set.
-  if ($comment->getSfGuardUserId())
+  if ($comment->getUserId())
   {
     $params['%posted_by%'] = link_to($comment->getSfGuardUser()->getUsername(), 'user/viewProfile?username=' . $comment->getSfGuardUser()->getUsername());
   }
