@@ -117,7 +117,7 @@ class SnippetPeer extends BaseSnippetPeer
   public static function countUserSnippets($user_id)
   {
     $c = new Criteria();
-    $c->add(SnippetPeer::SF_GUARD_USER_ID, $user_id);
+    $c->add(SnippetPeer::USER_ID, $user_id);
 
     return SnippetPeer::doCount($c);
   }
