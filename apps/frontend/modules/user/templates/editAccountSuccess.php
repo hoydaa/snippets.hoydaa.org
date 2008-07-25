@@ -4,7 +4,7 @@
 
 <?php include_partial('site/message') ?>
 
-<?php echo form_tag('user/editAccount') ?>
+<?php echo form_tag('user/editAccount', array('class' => 'form')) ?>
     <div class="row">
         <?php echo label_for('first_name', __('First Name') . required()) ?>
         <?php echo input_tag('first_name', $sf_params->get('first_name')) ?>
