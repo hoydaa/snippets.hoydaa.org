@@ -1,6 +1,6 @@
 <?php use_helper('I18N', 'Validation', 'Javascript', 'Cryptographp', 'My') ?>
 
-<?php echo form_tag('snippet/update') ?>
+<?php echo form_tag('snippet/update', array('class' => 'form')) ?>
     <?php echo input_hidden_tag('id', $sf_params->get('id')) ?>
     <?php if(!$sf_user->isAuthenticated()): ?>
     <div class="row">
