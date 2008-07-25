@@ -16,11 +16,11 @@ class snippetActions extends sfActions
     {
       if ($job == 'rating')
       {
-        $c->add(RatingPeer::SF_GUARD_USER_ID, $this->getUser()->getId());
+        $c->add(RatingPeer::USER_ID, $this->getUser()->getId());
       }
       else if ($job == 'comment')
       {
-        $c->add(CommentPeer::SF_GUARD_USER_ID, $this->getUser()->getId());
+        $c->add(CommentPeer::USER_ID, $this->getUser()->getId());
       }
     }
 
@@ -78,7 +78,7 @@ class snippetActions extends sfActions
       $snippet = SnippetPeer::retrieveByPk($id);
       $this->forward404Unless($snippet);
 
-      if($snippet->getSfGuardUserId() != $this->getUser()->getGuardUser()->getId())
+      if($snippet->getUserId() != $this->getUser()->getGuardUser()->getId())
       {
         $this->forward('default', 'secure');
       }
@@ -93,7 +93,7 @@ class snippetActions extends sfActions
 
     if ($this->getUser()->isAuthenticated())
     {
-      $snippet->setSfGuardUserId($this->getUser()->getGuardUser()->getId());
+      $snippet->setUserId($this->getUser()->getGuardUser()->getId());
     }
     else
     {
@@ -202,7 +202,7 @@ class snippetActions extends sfActions
     $snippet = SnippetPeer::retrieveByPk($id);
     $this->forward404Unless($snippet);
 
-    if($snippet->getSfGuardUserId() != $this->getUser()->getGuardUser()->getId())
+    if($snippet->getUserId() != $this->getUser()->getGuardUser()->getId())
     {
       $this->forward('default', 'secure');
     }
@@ -234,7 +234,7 @@ class snippetActions extends sfActions
     $user_id = $this->getUser()->getGuardUser()->getId();
 
     $c = new Criteria();
-    $c->add(SnippetPeer::SF_GUARD_USER_ID, $user_id);
+    $c->add(SnippetPeer::USER_ID, $user_id);
 
     $this->pager = new sfPropelPager('Snippet', $this->getUser()->getPreference('search_size'));
     $this->pager->setCriteria($c);
