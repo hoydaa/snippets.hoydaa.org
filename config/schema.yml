@@ -2,7 +2,7 @@ propel:
   snippets_snippet:
     _attributes:            { phpName: Snippet }
     id:                     ~
-    sf_guard_user_id:       { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: restrict }
+    user_id:                { type: integer, foreignTable: sf_guard_user, foreignReference: id, onDelete: restrict }
     name:                   { type: varchar, size: 255, required: false }
     email:                  { type: varchar, size: 255, required: false }
     title:                  { type: varchar, size: 255 }
@@ -30,7 +30,7 @@ propel:
     _attributes:            { phpName: Comment }
     id:                     ~
     snippet_id:             { type: integer, required: true, foreignTable: snippets_snippet, foreignReference: id, onDelete: cascade }
-    sf_guard_user_id:       { type: integer, required: false, foreignTable: sf_guard_user, foreignReference: id, onDelete: restrict }
+    user_id:                { type: integer, required: false, foreignTable: sf_guard_user, foreignReference: id, onDelete: restrict }
     name:                   { type: varchar, size: 255, required: false }
     email:                  { type: varchar, size: 255, required: false }
     raw_body:               { type: longvarchar, required: true }
