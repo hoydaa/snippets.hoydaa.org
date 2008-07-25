@@ -2,7 +2,7 @@
 
 <h1><?php echo __('Sign Up') ?></h1>
 
-<?php echo form_tag('user/register') ?>
+<?php echo form_tag('user/register', array('class' => 'form')) ?>
     <div class="row">
         <?php echo label_for('username', __('Username') . required()) ?>
         <?php echo input_tag('username', $sf_params->get('username')) ?>
