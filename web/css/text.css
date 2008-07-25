@@ -1,0 +1,44 @@
+.text h1 {
+    font-size: 2.2em;
+}
+
+.text h2 {
+    font-size: 2em;
+}
+
+.text h2 {
+    font-size: 1.8em;
+}
+
+.text h3 {
+    font-size: 1.6em;
+}
+
+.text h4 {
+    font-size: 1.4em;
+}
+
+.text h5 {
+    font-size: 1.2em;
+}
+
+.text h6 {
+    font-size: 1em;
+}
+
+.text p {
+    line-height: 1.5em;
+}
+
+.text ul {
+    line-height: 1.5em;
+}
+
+.text sup,
+.text sub {
+    line-height: 0em;
+}
+
+.text code {
+    font-size: 1.4em;
+}
