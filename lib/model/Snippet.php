@@ -42,7 +42,7 @@ class Snippet extends BaseSnippet
 
     //for lucene index
     public function getContributor() {
-        return ($this->getSfGuardUserId() ? 
+        return ($this->getUserId() ? 
             $this->getSfGuardUser()->getUsername() : $this->getName());
     }
 
