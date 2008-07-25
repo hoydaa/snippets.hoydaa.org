@@ -2,7 +2,7 @@
 
 <h1><?php echo __('Sign In') ?></h1>
 
-<?php echo form_tag('@sf_guard_signin') ?>
+<?php echo form_tag('@sf_guard_signin', array('class' => 'form')) ?>
     <div class="row">
         <?php echo label_for('username', __('Username') . required()) ?>
         <?php echo input_tag('username', $sf_params->get('username')) ?><br />
