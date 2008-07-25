@@ -9,7 +9,7 @@ class userActions extends sfActions
     $this->user = sfGuardUserPeer::retrieveByUsername($username);
 
     $c = new Criteria();
-    $c->add(SnippetPeer::SF_GUARD_USER_ID, $this->user->getId());
+    $c->add(SnippetPeer::USER_ID, $this->user->getId());
 
     $this->snippet_count = SnippetPeer::doCount($c);
 
@@ -105,14 +105,14 @@ class userActions extends sfActions
 
       $profile = UserProfilePeer::doSelectOne($c);
 
-      if ($profile && $profile->getSfGuardUserId() != $this->getUser()->getGuardUser()->getId())
+      if ($profile && $profile->getUserId() != $this->getUser()->getGuardUser()->getId())
       {
         $this->getRequest()->setError('email', 'This email belongs to some other user.');
         return sfView::SUCCESS;
       }
 
       $c = new Criteria();
-      $c->add(UserProfilePeer::SF_GUARD_USER_ID, $this->getUser()->getGuardUser()->getId());
+      $c->add(UserProfilePeer::USER_ID, $this->getUser()->getGuardUser()->getId());
 
       $profile = UserProfilePeer::doSelectOne($c);
 
@@ -198,7 +198,7 @@ class userActions extends sfActions
 
       if ($user_profile)
       {
-        $user = sfGuardUserPeer::retrieveByPK($user_profile->getSfGuardUserId());
+        $user = sfGuardUserPeer::retrieveByPK($user_profile->getUserId());
         $user->setIsActive(true);
         $user->save();
 
