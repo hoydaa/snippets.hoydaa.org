@@ -3,7 +3,7 @@ MyIndex:
     Snippet:
       fields:
         id: unindexed
-        sfguarduserid: unindexed
+        userid: unindexed
         contributor: text
         title:
           boost: 1.5
