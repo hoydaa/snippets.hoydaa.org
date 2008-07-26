@@ -1,18 +1,19 @@
-Dear askeet user,
+Dear <?php echo $full_name ?>,
 
 A request for <?php echo $mail->getSubject() ?> was sent to this address.
 
-For safety reasons, the askeet website does not store passwords in clear.
-When you forget your password, askeet creates a new one that can be used in place.
+For safety reasons, the snippets website does not store passwords in clear text.
+When you forget your password, snippets creates a new one that can be used in place.
 
-You can now connect to your askeet profile with:
+You can now login to snippets with:
 
-username: <?php echo $username ?>
-password: <?php echo $password ?>
+username: <?php echo "$username\n" ?>
+password: <?php echo "$password\n" ?>
 
-To get connected, go to the login page (http://www.askeet.com/login)
-and enter these codes.
+To get connected, go to the login page 
+(<?php echo url_for('@sf_guard_signin', array('absolute' => 'true')) ?>)
+and use your username and password.
 
-We hope to see you soon on askeet!
+We hope to see you soon on snippets!
 
-The askeet email robot
+Hoydaa Snippets Team

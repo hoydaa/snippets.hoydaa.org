@@ -27,6 +27,7 @@ class sfGuardAuthActions extends BasesfGuardAuthActions {
 
 		$sfGuardUser->setPassword($password);
 
+		$this->getRequest()->setAttribute('full_name', $profile->getFullName());
 		$this->getRequest()->setAttribute('email', $email);
 		$this->getRequest()->setAttribute('username', $sfGuardUser->getUsername());
 		$this->getRequest()->setAttribute('password', $password);

@@ -4,4 +4,4 @@
 <p><?php echo link_to('Verify my account', 
 	'user/confirmation?key=' . $activation_key, array('absolute' => true)) ?></p>
 <p>Thanks for signing up.</p>
-<p>The Hoydaa Codesnippets Team</p>
+<p>Hoydaa Snippets Team</p>
