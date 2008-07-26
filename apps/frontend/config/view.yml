@@ -9,7 +9,7 @@ default:
     keywords:     snippet, hoydaa, highlight
     language:     en
 
-  stylesheets:    [main, text, lang-java]
+  stylesheets:    [main, text]
 
   javascripts:    [util]
 
