@@ -1,4 +1,7 @@
 popupSuccess:
-  stylesheets: [-main, -lang-java, popup]
+  stylesheets: [-main, popup]
   javascripts: [-util]
   layout: popup
+  
+indexSuccess:
+  stylesheets: [lang-java, lang-php, lang-c]
