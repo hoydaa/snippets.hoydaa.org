@@ -366,3 +366,8 @@ input[type=text].date {
 .form .right_col {
     margin-left: 125px;
 }
+
+.snippet-container {
+	width: 600px;
+	overflow: auto;
+}

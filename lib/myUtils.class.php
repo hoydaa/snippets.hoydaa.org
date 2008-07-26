@@ -16,22 +16,26 @@ class myUtils {
                 if(strtoupper($match[1]) == 'JAVA')
                 {
                     $highlighted = $service->highlight('JAVA', htmlspecialchars_decode($match[3]));
+                    $highlighted['snippet'] = "<div class=\"snippet-container\">{$highlighted['snippet']}</div>";
                     $body = str_replace($match[0], $highlighted['snippet'], $body, $cnt);
                     $langs['java'] = $langs['java'] ? ($langs['java'] + 1) : 1;
                 } else if(strtoupper($match[1]) == 'PHP')
                 {
                     $highlighted = $service->highlight('PHP', htmlspecialchars_decode($match[3]));
+                    $highlighted['snippet'] = "<div class=\"snippet-container\">{$highlighted['snippet']}</div>";
                     $body = str_replace($match[0], $highlighted['snippet'], $body, $cnt);
                     $langs['php'] = $langs['php'] ? ($langs['php'] + 1) : 1;
                 } else if(strtoupper($match[1]) == 'C')
                 {
                     $highlighted = $service->highlight('C', htmlspecialchars_decode($match[3]));
+                    $highlighted['snippet'] = "<div class=\"snippet-container\">{$highlighted['snippet']}</div>";
                     $body = str_replace($match[0], $highlighted['snippet'], $body, $cnt);
                     $langs['c'] = $langs['c'] ? ($langs['c'] + 1) : 1;
                 } else 
                 {
                     $lang = strtolower($match[1]);
                     $langs[$lang] = $langs[$lang] ? ($langs[$lang] + 1) : 1;
+                    $body = str_replace($match[0], "<div class=\"snippet-container\"><pre><code>{$match[3]}</code></pre></div>", $body, $cnt);
                 }
             }
         }
