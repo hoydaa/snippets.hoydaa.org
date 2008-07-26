@@ -12,19 +12,20 @@ class myUtils {
             $cnt = 1;
             foreach($matches as $match)
             {
+            	sfLogger::getInstance()->info("From myUtils: " . $match[3]);
                 if(strtoupper($match[1]) == 'JAVA')
                 {
-                    $highlighted = $service->highlight('JAVA', $match[3]);
+                    $highlighted = $service->highlight('JAVA', htmlspecialchars_decode($match[3]));
                     $body = str_replace($match[0], $highlighted['snippet'], $body, $cnt);
                     $langs['java'] = $langs['java'] ? ($langs['java'] + 1) : 1;
                 } else if(strtoupper($match[1]) == 'PHP')
                 {
-                    $highlighted = $service->highlight('PHP', $match[3]);
+                    $highlighted = $service->highlight('PHP', htmlspecialchars_decode($match[3]));
                     $body = str_replace($match[0], $highlighted['snippet'], $body, $cnt);
                     $langs['php'] = $langs['php'] ? ($langs['php'] + 1) : 1;
                 } else if(strtoupper($match[1]) == 'C')
                 {
-                    $highlighted = $service->highlight('C', $match[3]);
+                    $highlighted = $service->highlight('C', htmlspecialchars_decode($match[3]));
                     $body = str_replace($match[0], $highlighted['snippet'], $body, $cnt);
                     $langs['c'] = $langs['c'] ? ($langs['c'] + 1) : 1;
                 } else 
