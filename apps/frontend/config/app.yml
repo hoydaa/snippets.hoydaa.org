@@ -25,4 +25,4 @@ all:
     search_size: 10
     box_order: [1, 2, 3, 4]
   isicsSitemapXML:
-    modules:       [snippet, tag, language]
+    modules:       [site, tag, language, snippet]
