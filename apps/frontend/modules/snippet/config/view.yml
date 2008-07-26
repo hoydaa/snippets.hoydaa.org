@@ -12,3 +12,6 @@ mostSuccess:
   
 highlightSuccess:
   has_layout:   off
+  
+showSuccess:
+  stylesheets:    [lang-java, lang-php, lang-c]
