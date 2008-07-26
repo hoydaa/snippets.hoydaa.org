@@ -22,7 +22,13 @@ class myUtils {
                     $highlighted = $service->highlight('PHP', $match[3]);
                     $body = str_replace($match[0], $highlighted['snippet'], $body, $cnt);
                     $langs['php'] = $langs['php'] ? ($langs['php'] + 1) : 1;
-                } else {
+                } else if(strtoupper($match[1]) == 'C')
+                {
+                    $highlighted = $service->highlight('C', $match[3]);
+                    $body = str_replace($match[0], $highlighted['snippet'], $body, $cnt);
+                    $langs['c'] = $langs['c'] ? ($langs['c'] + 1) : 1;
+                } else 
+                {
                     $lang = strtolower($match[1]);
                     $langs[$lang] = $langs[$lang] ? ($langs[$lang] + 1) : 1;
                 }
