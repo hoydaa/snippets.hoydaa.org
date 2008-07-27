@@ -1,0 +1,37 @@
+.c-snippet {
+    border-collapse: collapse;
+    font-family: courier new;
+    font-size: 10pt;
+}
+
+.c-snippet .left {
+    padding: 0;
+    padding-right: 10px;
+    border-right: 1px solid #D4D0C8;
+    text-align: right;
+}
+
+.c-snippet .left a {
+    display: block;
+    color: #787878;
+}
+
+.c-snippet .right {
+    padding: 0;
+}
+
+.c-snippet .keyword {
+    color: #0000FF;
+}
+
+.c-snippet .comment {
+    color: #008000;
+}
+
+.c-snippet a {
+    text-decoration: none;
+}
+
+.c-snippet a:hover {
+    text-decoration: underline;
+}
