@@ -16,7 +16,7 @@
     <?php echo $code->getBody() ?>
 </div>
 
-<?php echo snippet_posted_by($code) ?>
-<br /><br />
+<p><?php echo snippet_posted_by($code) ?></p>
+
 <?php echo sf_rater($code) ?>
 <?php include_component('sfRating', 'ratingDetails', array('object' => $code)) ?>
