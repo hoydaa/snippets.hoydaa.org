@@ -1,17 +1,17 @@
 rateSuccess:
   has_layout:    off
-  
+
 commentListSuccess:
   has_layout:   off
-  
+
 commentSuccess:
   has_layout:   off
 
 mostSuccess:
   has_layout:     off
-  
+
 highlightSuccess:
   has_layout:   off
-  
+
 showSuccess:
-  stylesheets:    [lang-java, lang-php, lang-c]
+  stylesheets:    [code-java, code-php, code-c]
