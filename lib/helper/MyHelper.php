@@ -58,8 +58,8 @@ function toggle($target, $up, $down, $updown = null, $after = null)
       $upstyle = $downstyle;
       $downstyle = "";
   }
-  echo image_tag('minimize.gif', "id=$up$upstyle");
-  echo image_tag('maximize.gif', "id=$down$downstyle");
+  echo image_tag('minimize.gif', "id=$up$upstyle class=right-aligned");
+  echo image_tag('maximize.gif', "id=$down$downstyle class=right-aligned");
   echo "</a>";
 }
 
