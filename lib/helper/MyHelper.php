@@ -1,6 +1,6 @@
 <?php
 
-sfLoader::loadHelpers(array('Date'));
+sfLoader::loadHelpers(array('I18N', 'Date'));
 
 function form_message($sf_request) {
   $rtn = "";
@@ -127,7 +127,7 @@ function comment_posted_by($comment)
   }
 
   // Date parameter is set.
-  $params['%date%'] = format_date($comment->getCreatedAt());
+  $params['%date%'] = format_datetime($comment->getCreatedAt());
 
   return __('posted by %posted_by% on %date%', $params);
 }
