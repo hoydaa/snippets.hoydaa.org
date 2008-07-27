@@ -61,9 +61,10 @@ class Snippet extends BaseSnippet
       $sl->setSnippet($this);
       $this->addSnippetLanguage($sl);
     }
-	
-    $this->setSummary(myUtils::extractSummary($this->getBody(), 10, 400));
-    
+
+    $summarizer = new Summarizer(400);
+    $this->setSummary($summarizer->summarize($this->getBody()));
+
     parent::save();
   }
 }
