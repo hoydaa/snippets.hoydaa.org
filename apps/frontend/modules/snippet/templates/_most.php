@@ -13,14 +13,10 @@
 <div class="sidebox">
     <div class="bottom">
         <div class="content" id="most_box">
-            <table width="100%" border="0" cellpadding="0" cellspacing="0">
-                <tr>
-                    <td><?php echo image_tag('snippets.gif') ?></td>
-                    <td align="right"><?php echo toggle('snippets-hide', 'snippets-up', 'snippets-down', 
-                    		$sf_user->getPreference('box_snippets') == 'none' ? 'down' : 'up',
-                    		remote_function(array('url' => "@set_preference?pname=box_snippets", 'with' => "&quot;pvalue=&quot; + $('snippets-up').style.display"))); ?></td>
-                </tr>
-            </table>
+            <?php echo toggle('snippets-hide', 'snippets-up', 'snippets-down',
+                    $sf_user->getPreference('box_snippets') == 'none' ? 'down' : 'up',
+                    remote_function(array('url' => "@set_preference?pname=box_snippets", 'with' => "&quot;pvalue=&quot; + $('snippets-up').style.display"))); ?>
+            <?php echo image_tag('snippets.gif') ?>
             <div id="snippets-hide"<?php echo $sf_user->getPreference('box_snippets') == 'none' ? " style=display:none;" : "" ?>>
                 <ol>
                     <?php foreach ($snippets as $snippet): ?>
