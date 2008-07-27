@@ -36,10 +36,11 @@ class Summarizer
     }
 
     $total = $this->total($paragraphs);
+    $spaces = count($paragraphs) - 1;
 
     foreach ($paragraphs as $i => $paragraph)
     {
-      $paragraphs[$i] = truncate_text($paragraph, strlen($paragraph) / $total * $this->max);
+      $paragraphs[$i] = truncate_text($paragraph, strlen($paragraph) / $total * ($this->max - $spaces), '...', true);
     }
 
     return implode(' ', $paragraphs);
