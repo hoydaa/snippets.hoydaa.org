@@ -7,22 +7,6 @@ body {
     color: #42423D;
 }
 
-/* image */
-
-img {
-    border: none;
-}
-
-/* link */
-
-a {
-    color: #AE0000;
-}
-
-a:hover {
-    color: #232323;
-}
-
 /* layout */
 
 #header-wrapper {
@@ -236,8 +220,10 @@ p.error {
 /* TAG CLOUD */
 
 ul.tag_cloud {
-    list-style-type: none;
+    margin: 0;
     padding: 0;
+    list-style-type: none;
+    line-height: normal;
     text-align: center;
 }
 
@@ -367,7 +353,9 @@ input[type=text].date {
     margin-left: 125px;
 }
 
-.snippet-container {
-	width: 600px;
-	overflow: auto;
+/* code wrapper */
+
+.code-wrapper {
+    width: 600px;
+    overflow: auto;
 }
