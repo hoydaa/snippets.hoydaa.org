@@ -1,6 +1,6 @@
 <?php use_helper('sfLucene', 'I18N') ?>
 
-<h2><?php echo __('Search Results') ?></h2>
+<h1><?php echo __('Search Results') ?></h1>
 
 <p><?php echo __('The following results matched your query:') ?></p>
 
