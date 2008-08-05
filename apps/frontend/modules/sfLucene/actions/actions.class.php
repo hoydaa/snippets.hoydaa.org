@@ -16,4 +16,28 @@ require_once(SF_ROOT_DIR . '/plugins/sfLucenePlugin/modules/sfLucene/lib/BasesfL
  */
 class sfLuceneActions extends BasesfLuceneActions
 {
+  /**
+  * Configures the pager according to the request parameters.
+  */
+  protected function configurePager($pager)
+  {
+    $page = (int) ($this->getRequestParameter('page', 1));
+
+    $pager->setMaxPerPage(sfContext::getInstance()->getUser()->getPreference('search_size'));
+
+    if ($page < 1)
+    {
+      $pager->setPage(1);
+    }
+    elseif ($page > $pager->getLastPage())
+    {
+      $pager->setPage($pager->getLastPage());
+    }
+    else
+    {
+      $pager->setPage($page);
+    }
+
+    return $pager;
+  }
 }
