@@ -1,3 +1,7 @@
+content:
+  url:   /content/:template
+  param: { module: site, action: content }
+  
 set_preference:
   url:   /setPreference/:pname
   param: { module: user, action: setPreference }

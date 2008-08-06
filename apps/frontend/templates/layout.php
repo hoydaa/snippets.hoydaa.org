@@ -23,6 +23,7 @@
                     <?php else: ?>
                     <li><?php echo link_to(__('Sign::OUT'), '@sf_guard_signout', array('title' => 'Sign Out')) ?></li>
                     <?php endif; ?>
+                    <li><?php echo link_to(__('^About( Us)?$'), '@content?template=about', array('title' => 'About Us')) ?></li>
                 </ul>
                 <div class="right-aligned" style="padding-top: 75px;">
                 	(v <?php echo sfConfig::get('app_version') ?>)

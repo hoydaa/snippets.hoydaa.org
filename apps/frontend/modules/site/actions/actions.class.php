@@ -7,6 +7,12 @@ class siteActions extends sfActions
     $this->snippets = SnippetPeer::getNewCodes(5);
   }
 
+  public function executeContent() {
+    $template = $this->getRequestParameter('template');
+    
+    $this->setTemplate($template);
+  }
+
   public function executePopup()
   {
     $this->content = $this->getRequestParameter('content');
