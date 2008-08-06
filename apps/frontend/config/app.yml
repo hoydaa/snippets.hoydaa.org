@@ -26,3 +26,4 @@ all:
     box_order: [1, 2, 3, 4]
   isicsSitemapXML:
     modules:       [site, tag, language, snippet]
+  version: 1.0-beta

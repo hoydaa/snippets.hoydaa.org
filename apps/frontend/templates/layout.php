@@ -24,6 +24,9 @@
                     <li><?php echo link_to(__('Sign::OUT'), '@sf_guard_signout', array('title' => 'Sign Out')) ?></li>
                     <?php endif; ?>
                 </ul>
+                <div class="right-aligned" style="padding-top: 75px;">
+                	(v <?php echo sfConfig::get('app_version') ?>)
+                </div>
             </div>
         </div>
         <div id="bar-wrapper">
