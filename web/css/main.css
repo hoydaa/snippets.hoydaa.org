@@ -332,6 +332,10 @@ input[type=text].date {
     width: 75px;
 }
 
+input[type=text].search {
+    width: 500px;
+}
+
 .form textarea {
     width: 300px;
     height: 100px;
