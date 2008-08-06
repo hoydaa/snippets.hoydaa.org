@@ -1,5 +1,7 @@
 <?php use_helper('I18N', 'Validation', 'My') ?>
 
+<h1><?php echo __('Password Request') ?></h1>
+
 <?php echo form_tag('sfGuardAuth/password', array('class' => 'form')) ?>
 	<div class="row">
 		<?php echo label_for('email', __('Email') . required()) ?>

@@ -1,5 +1,7 @@
 <?php use_helper('I18N', 'Validation', 'Javascript', 'Cryptographp', 'My') ?>
 
+<h1><?php echo __('Add/Edit Snippet') ?></h1>
+
 <?php echo form_tag('snippet/update', array('class' => 'form')) ?>
     <?php echo input_hidden_tag('id', $sf_params->get('id')) ?>
     <?php if(!$sf_user->isAuthenticated()): ?>
