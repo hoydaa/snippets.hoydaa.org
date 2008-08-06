@@ -49,14 +49,15 @@
 	                ) ?>
 	            </div>
 	            <div>
-	                <?php echo form_tag('sfLucene/search', 'method=get class=search-controls') ?>
+	                <?php echo form_tag('sfLucene/search', array('method' => 'get')) ?>
 	                	<?php if($sf_params->get('query')): ?>
-	                    	<?php echo input_tag('query', $sf_params->get('query')) ?> <?php echo submit_tag(__('Search')) ?>
+	                    	<?php echo input_tag('query', $sf_params->get('query'), array('class' => 'search')) ?> <?php echo submit_tag(__('Search')) ?>
 	                	<?php else: ?>
 	                	    <?php echo input_tag('query', 'tag: java, jee title: patterns author: John Doe', 
 	                		        array('onfocus' => 'this.value = ""; this.style.color = "#000000"', 
 	                		            'onblur' => 'this.value = "tag: java, jee title: patterns author: John Doe"; this.style.color = "#AAAAAA";', 
-	                		            'style' => 'color: #AAAAAA;')) ?> <?php echo submit_tag(__('Search')) ?>
+	                		            'style' => 'color: #AAAAAA;',
+	                		            'class' => 'search')) ?> <?php echo submit_tag(__('Search')) ?>
 	                	<?php endif; ?>
 	                </form>
 	            </div>
