@@ -23,7 +23,6 @@
                     <?php else: ?>
                     <li><?php echo link_to(__('Sign::OUT'), '@sf_guard_signout', array('title' => 'Sign Out')) ?></li>
                     <?php endif; ?>
-                    <li><?php echo link_to(__('^About( Us)?$'), '@content?template=about', array('title' => 'About Us')) ?></li>
                 </ul>
                 <div class="right-aligned" style="padding-top: 75px;">
                 	(v <?php echo sfConfig::get('app_version') ?>)
@@ -76,8 +75,12 @@
         </div>
         <div id="footer-wrapper">
             <div id="footer">
-                <p>Copyright &copy; <?php echo date("Y") ?> <?php echo link_to('Hoydaa Inc.', 'http://www.hoydaa.org', array('target' => '_blank', 'title' => 'deliver few, deliver complete')) ?> All rights reserved.</p>
+                <ul id="footer-nav">
+                    <li><?php echo link_to(__('about us'), '@content?template=about', array('title' => 'About Us')) ?> |</li>
+                    <li><?php echo link_to(__('contact us'), '@content?template=contact', array('title' => 'Contact Us')) ?></li>
+                </ul>
                 <p><?php echo link_to(image_tag('feed.png'), 'feed/newCodes') ?> <?php echo link_to(__('New Snippets'), 'feed/newCodes') ?></p>
+                <p>Copyright &copy; <?php echo date("Y") ?> <?php echo link_to('Hoydaa Inc.', 'http://www.hoydaa.org', array('target' => '_blank', 'title' => 'deliver few, deliver complete')) ?> All rights reserved.</p>
             </div>
         </div>
        
