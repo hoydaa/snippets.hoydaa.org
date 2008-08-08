@@ -58,6 +58,7 @@ body {
     width: 900px;
     padding: 10px 0;
     color: #B8AF8B;
+    text-align: center;
 }
 
 #footer a {
@@ -101,6 +102,28 @@ ul#pvalue, ul#pvalue li{
 }
 
 #nav a:hover {
+    background-color: #AE0000;
+    color: #FFFFFF;
+}
+
+/* footer menu */
+
+#footer-nav {
+    margin: 0 0 0 0;
+    padding: 0;
+}
+
+#footer-nav li {
+    display: inline;
+}
+
+#footer-nav a {
+    text-decoration: none;
+    color: #B8AF8B;
+    padding: 5px;
+}
+
+#footer-nav a:hover {
     background-color: #AE0000;
     color: #FFFFFF;
 }
