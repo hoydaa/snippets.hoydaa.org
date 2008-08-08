@@ -2,6 +2,8 @@
 
 class siteActions extends sfActions
 {
+  private static $allowedTemplates = array('contact', 'about');
+
   public function executeIndex()
   {
     $this->snippets = SnippetPeer::getNewCodes(5);
@@ -10,7 +12,12 @@ class siteActions extends sfActions
   public function executeContent() {
     $template = $this->getRequestParameter('template');
     
-    $this->setTemplate($template);
+    if(!in_array($template, siteActions::$allowedTemplates)) {
+      $this->setTemplate('error');
+      return;
+    }
+    
+    $this->setTemplate($template);    
   }
 
   public function executePopup()
