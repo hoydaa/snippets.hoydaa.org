@@ -7,5 +7,9 @@ Required plugins
   symfony plugin-install http://plugins.symfony-project.com/sfMarkdownPlugin
   symfony plugin-install http://plugins.symfony-project.com/isicsSitemapXMLPlugin
 
-Important Points
+Required Apache Modules
+  mod_rewrite
+  
+Required Php Extensions
+  gd, mysql
   
