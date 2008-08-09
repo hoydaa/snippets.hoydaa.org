@@ -127,6 +127,35 @@ like `` `this` ``.
     code block.
 </code></pre>
 
+<p>You can also specify the programming language in square brackets
+so that it can be recognized and possibly highlighted by our syntax
+highlighting engine.</p>
+
+<pre><code>    [java]
+    public class HelloWorld {
+        public static void main() {
+            System.out.println("Hello World!");
+        }
+    }
+</code></pre>
+
+<p>Following is the list of all valid programming languages. The
+ones written in bold are also supported by our syntax highlighting
+engine. We strongly suggest you to specify the programming language even
+though it is not supported by the engine. Since, it may be supported in
+the near future.</p>
+
+<ul>
+	<li>[c] - C</li>
+	<li><strong>[cpp]</strong> - C++</li>
+	<li>[html] - HTML</li>
+	<li><strong>[java]</strong> - Java</li>
+	<li><strong>[php]</strong> - PHP</li>
+	<li>[ruby] - Ruby</li>
+	<li>[sql] - SQL</li>
+	<li>[xml] - XML</li>
+</ul>
+
 <h3>Horizontal Rules</h3>
 
 <p>Three or more dashes or asterisks:</p>
