@@ -1,4 +1,5 @@
 <?php use_helper('I18N', 'Validation', 'My') ?>
+<?php special_append_to_page_title('Password Request') ?>
 
 <h1><?php echo __('Password Request') ?></h1>
 

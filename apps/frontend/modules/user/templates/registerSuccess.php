@@ -1,4 +1,5 @@
 <?php use_helper('I18N', 'Validation', 'Cryptographp', 'My') ?>
+<?php special_append_to_page_title('Sign Up') ?>
 
 <h1><?php echo __('Sign Up') ?></h1>
 

@@ -1,6 +1,7 @@
 <?php use_helper('I18N', 'Validation', 'Javascript', 'Cryptographp', 'My') ?>
+<?php special_append_to_page_title('Post Snippet') ?>
 
-<h1><?php echo __('Add/Edit Snippet') ?></h1>
+<h1><?php echo __('Post Snippet') ?></h1>
 
 <?php echo form_tag('snippet/update', array('class' => 'form')) ?>
     <?php echo input_hidden_tag('id', $sf_params->get('id')) ?>

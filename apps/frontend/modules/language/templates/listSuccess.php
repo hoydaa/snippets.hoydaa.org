@@ -1,4 +1,5 @@
-<?php use_helper('I18N') ?>
+<?php use_helper('I18N', 'My') ?>
+<?php special_append_to_page_title(__('All Languages')); ?>
 
 <h1><?php echo __('All Languages') ?></h1>
 
