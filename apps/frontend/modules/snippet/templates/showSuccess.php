@@ -1,4 +1,5 @@
-<?php use_helper('I18N') ?>
+<?php use_helper('I18N', 'My') ?>
+<?php special_append_to_page_title($code->getTitle()) ?>
 
 <h1>
     <span><?php echo $code->getTitle() ?></span>
