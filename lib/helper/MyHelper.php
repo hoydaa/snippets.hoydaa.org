@@ -132,6 +132,10 @@ function comment_posted_by($comment)
   return __('posted by %posted_by% on %date%', $params);
 }
 
+function special_append_to_page_title($append) {
+	set_page_title(sfContext::getInstance()->getResponse()->getTitle() . ' :: ' . $append);
+}
+
 function append_to_page_title($append) {
 	set_page_title(sfContext::getInstance()->getResponse()->getTitle() . $append);
 }
