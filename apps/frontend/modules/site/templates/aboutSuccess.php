@@ -1,4 +1,5 @@
-<?php use_helper('I18N') ?>
+<?php use_helper('I18N', 'My') ?>
+<?php append_to_page_title(' :: ' . __('About Us')) ?>
 
 <h1><?php echo __('About Snippets') ?></h1>
 

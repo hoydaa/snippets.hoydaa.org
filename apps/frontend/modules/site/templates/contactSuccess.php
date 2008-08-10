@@ -1,3 +1,6 @@
+<?php use_helper('I18N', 'My') ?>
+<?php append_to_page_title(' :: ' . __('Contact Us')) ?>
+
 <h1>Contact Details</h1>
 
 <p>If you have anything in your mind, anything regarding Snippets, 
