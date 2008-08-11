@@ -42,5 +42,48 @@ class feedActions extends sfActions
         }
 
         $this->feed = $feed;
+        $this->setTemplate('feed');
     }
+    
+    public function executeSearch() {
+        $feed = new sfAtom1Feed();
+
+        $feed->setTitle('Hoydaa Codesnippet - New Snippets');
+        $feed->setLink('http://codesnippet.hoydaa.org');
+        $feed->setAuthorEmail('codesnippet@hoydaa.org');
+        $feed->setAuthorName('Hoydaa Codesnippet');    
+    
+    	$querystring = $this->getRequestParameter('q');
+    	$query = new sfLuceneCriteria($this->getLuceneInstance());
+    	$query->addDescendingSortBy('createdat');
+    	$query->addSane($querystring);
+    	$pager = new sfLucenePager($this->getLuceneInstance()->friendlyFind($query));
+    	
+    	$num = $pager->getNbResults();
+    	if($num > 0) {
+    		$pager->setMaxPerPage(10);
+    		$pager->setPage(1);
+    		foreach($pager->getResults() as $result) {
+            	$item = new sfFeedItem();
+            	$item->setTitle($result->getTitle());
+            	$item->setLink('snippet/show?id='.$result->getId());
+            	$item->setAuthorName($result->getContributor());
+            	$item->setPubDate(strtotime($result->getCreatedAt()));
+            	//$item->setAuthorEmail(($code->getSfGuardUser() ? 
+                //	$code->getSfGuardUser()->getProfile()->getEmail() : $code->getEmail()));
+            	$item->setUniqueId($result->getId());
+            	$item->setDescription($result->getSummary());
+
+            	$feed->addItem($item);
+    		}
+    	}
+    
+    	$this->feed = $feed;
+    	$this->setTemplate('feed');
+    }
+    
+  	protected function getLuceneInstance()
+  	{
+    	return sfLuceneToolkit::getApplicationInstance();
+  	}
 }
