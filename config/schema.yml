@@ -56,3 +56,9 @@ propel:
     user_id:                { type: integer, required: true, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
     name:                   { type: varchar, size: 255, required: true }
     value:                  { type: varchar, size: 255, required: true }
+    
+  snippets_user_feed:
+    _attributes:            { phpName: UserFeed }
+    id:                     ~
+    user_id:                { type: integer, required: true, foreignTable: sf_guard_user, foreignReference: id, onDelete: cascade }
+    query:                  { type: varchar, size: 255, required: true }
