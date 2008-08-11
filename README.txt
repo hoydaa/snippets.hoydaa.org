@@ -17,3 +17,6 @@ Required Apache Modules
 Required Php Extensions
   gd, mysql
   
+Required Pear Modules
+  pear install SOAP-beta
+  
