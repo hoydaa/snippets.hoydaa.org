@@ -12,3 +12,15 @@ changePassword:
 
 editProfile:
   is_secure: on
+  
+listFeeds:
+  is_secure: on
+  
+deleteFeed:
+  is_secure: on
+  
+addFeed:
+  is_secure: on
+  
+savePreferences:
+  is_secure: on

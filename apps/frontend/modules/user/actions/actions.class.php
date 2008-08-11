@@ -30,16 +30,17 @@ class userActions extends sfActions
   }
   
   public function executeAddFeed() {
-    sfLoader::loadHelpers('I18N');
-  
-  	$query = $this->getRequestParameter('q');
+  	sfLoader::loadHelpers('I18N');
+	
+	$query = $this->getRequestParameter('q');
+	  	
+	$user_feed = new UserFeed();
+	$user_feed->setUserId($this->getUser()->getId());
+	$user_feed->setQuery($query);
+	$user_feed->save();
+	  	
+	$this->msg = __("User feed is saved with query ':query'.", array(':query' => $query));
   	
-  	$user_feed = new UserFeed();
-  	$user_feed->setUserId($this->getUser()->getId());
-  	$user_feed->setQuery($query);
-  	$user_feed->save();
-  	
-  	$this->msg = __("User feed is saved with query ':query'.", array(':query' => $query));
   	$this->setTemplate('savePreferences');
   }
   
@@ -322,10 +323,6 @@ class userActions extends sfActions
   public function executeSavePreferences()
   {
     sfLoader::loadHelpers('I18N');
-    if(!$this->getUser()->isAuthenticated())
-    {
-      $this->msg = __('In order to save preferences please log in.');
-    } else {
       $criteria = new Criteria();
       $criteria->add(PreferencePeer::USER_ID, $this->getUser()->getId());
       $preferences = PreferencePeer::doSelect($criteria);
@@ -414,6 +411,5 @@ class userActions extends sfActions
         $p->save();
         $this->msg .= "\napp_preference_box_order : " . $order_str;
       }
-    }
   }
 }
