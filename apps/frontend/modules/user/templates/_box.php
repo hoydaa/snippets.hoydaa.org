@@ -11,7 +11,8 @@
         <?php echo __('Welcome') . ' ' . link_to($sf_user->getGuardUser()->getUsername(), 'user/viewProfile?username=' . $sf_user->getGuardUser()->getUsername()) ?>!<br /><br />
         You have <?php echo link_to($user_code_count, 'snippet/listMySnippets') ?> snippet(s).<br /><br />
         You have <?php echo link_to($user_comment_count, 'comment/listMine') ?> comment(s).<br /><br />
-        <?php echo link_to(__('Account settings'), 'user/viewAccount') ?>
+        <?php echo link_to(__('Account settings'), 'user/viewAccount') ?> | 
+        <?php echo link_to(__('My Feeds'), 'user/listFeeds') ?>
       </div>
     </div>
   </div>

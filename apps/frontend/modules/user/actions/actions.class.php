@@ -2,6 +2,47 @@
 
 class userActions extends sfActions
 {
+
+  private function putUserFeedsInRequest() {
+	$c = new Criteria();
+    $c->add(UserFeedPeer::USER_ID, $this->getUser()->getId());
+    $feeds = UserFeedPeer::doSelect($c);  
+    $this->feeds = $feeds;
+  }
+
+  public function executeListFeeds() {
+	$this->putUserFeedsInRequest();
+  }
+  
+  public function executeDeleteFeed() {
+    $id = $this->getRequestParameter('id');
+    
+  	$c = new Criteria();
+  	$c->add(UserFeedPeer::USER_ID, $this->getUser()->getId());
+  	$c->add(UserFeedPeer::ID, $id);
+  	$feed = UserFeedPeer::doSelectOne($c);
+  	if($feed) {
+  		$feed->delete();
+  	}
+  	$this->putUserFeedsInRequest();
+  	$this->setFlash('info', "Feed with id '$id' is deleted.");
+  	$this->setTemplate('listFeeds');
+  }
+  
+  public function executeAddFeed() {
+    sfLoader::loadHelpers('I18N');
+  
+  	$query = $this->getRequestParameter('q');
+  	
+  	$user_feed = new UserFeed();
+  	$user_feed->setUserId($this->getUser()->getId());
+  	$user_feed->setQuery($query);
+  	$user_feed->save();
+  	
+  	$this->msg = __("User feed is saved with query ':query'.", array(':query' => $query));
+  	$this->setTemplate('savePreferences');
+  }
+  
   public function executeViewProfile()
   {
     $username = $this->getRequestParameter('username');
