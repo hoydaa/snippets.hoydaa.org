@@ -12,7 +12,7 @@
                     <li class="rank_<?php echo $language['rank'] ?>"><?php echo link_to($language['language'], 'language/show?language=' . $language['language'], array('title' => __(":count snippet(s) with ':language' code", array(':count' => $language['count'], ':language' => $language['language'])))) ?></li>
                     <?php endforeach; ?>
                 </ul>
-                <?php echo link_to(__('View All'), 'language/list') ?>
+                <?php echo link_to(__('View All'), 'language/list', array('title' => __('View All Languages'))) ?>
             </div>
         </div>
     </div>
