@@ -18,5 +18,6 @@ Required Php Extensions
   gd, mysql
   
 Required Pear Modules
-  pear install SOAP-beta
+  pear install SOAP-0.11.0
+    0.12.0 is available but there is an issue with namespaces.
   
