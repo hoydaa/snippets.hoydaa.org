@@ -5,16 +5,20 @@ class SnippetPeer extends BaseSnippetPeer
   public static function getNewCodes($max = 10)
   {
     $c = new Criteria();
+    $c->add(SnippetPeer::DRAFT, false);
     $c->addDescendingOrderByColumn(SnippetPeer::CREATED_AT);
     $c->setLimit($max);
+
     return SnippetPeer::doSelect($c);
   }
 
   public static function getPopularCodes($max = 10)
   {
     $c = new Criteria();
+    $c->add(SnippetPeer::DRAFT, false);
     $c->addDescendingOrderByColumn(SnippetPeer::AVERAGE_RATING);
     $c->setLimit($max);
+
     return SnippetPeer::doSelect($c);
   }
 
@@ -63,14 +67,19 @@ class SnippetPeer extends BaseSnippetPeer
   {
     $codes = array();
     $con = Propel::getConnection();
-    $sql = 	"SELECT %s AS code_id FROM %s LEFT JOIN %s ON %s = %s 
-      GROUP BY %s order by COUNT(*) desc, %s desc";
+    $sql = 'SELECT %s AS code_id
+            FROM %s
+            LEFT JOIN %s ON %s = %s
+            WHERE %s = false
+            GROUP BY %s
+            ORDER BY COUNT(*) DESC, %s DESC';
     $sql = sprintf($sql,
       SnippetPeer::ID,
       SnippetPeer::TABLE_NAME,
       CommentPeer::TABLE_NAME,
       SnippetPeer::ID,
       CommentPeer::SNIPPET_ID,
+      SnippetPeer::DRAFT,
       SnippetPeer::ID,
       CommentPeer::ID
     );
