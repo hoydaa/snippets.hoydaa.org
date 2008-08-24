@@ -67,6 +67,11 @@ class Snippet extends BaseSnippet
 
     parent::save();
   }
+
+  public function isIndexable()
+  {
+    return !$this->getDraft();
+  }
 }
 
 sfLucenePropelBehavior::getInitializer()->setupModel('Snippet');
