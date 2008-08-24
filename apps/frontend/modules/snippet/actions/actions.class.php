@@ -35,13 +35,21 @@ class snippetActions extends sfActions
   public function executeShow()
   {
     $id = $this->getRequestParameter('id');
+    $this->forward404Unless($id);
 
     $this->code = SnippetPeer::retrieveByPK($id);
-    // $this->related_codes = SnippetPeer::getReleatedCodes($id);
+    $this->forward404Unless($this->code);
+
+    if ($this->code->getDraft() && (!$this->getUser()->isAuthenticated() || !myUtils::isUserRecord('SnippetPeer', $id, $this->getUser()->getId())))
+    {
+      $this->forward404();
+    }
   }
 
   public function executeCreate()
   {
+    $this->getRequest()->setParameter('draft', true);
+
     $this->setTemplate('edit');
   }
 
@@ -63,6 +71,7 @@ class snippetActions extends sfActions
     $this->getRequest()->setParameter('raw_body', $code->getRawBody());
     $this->getRequest()->setParameter('tags', $code->getTag());
     $this->getRequest()->setParameter('managed_content', $code->getManagedContent());
+    $this->getRequest()->setParameter('draft', $code->getDraft());
   }
 
   public function executeUpdate()
@@ -130,6 +139,17 @@ class snippetActions extends sfActions
       {
         $snippet->setManagedContent(0);
       }
+    }
+
+    $draft = $this->getRequestParameter('draft');
+
+    if (!isset($draft))
+    {
+      $snippet->setDraft(false);
+    }
+    else
+    {
+      $snippet->setDraft($draft);
     }
 
     $snippet->save();
