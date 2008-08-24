@@ -6,11 +6,12 @@ propel:
     name:                   { type: varchar, size: 255, required: false }
     email:                  { type: varchar, size: 255, required: false }
     title:                  { type: varchar, size: 255 }
+    summary:                { type: longvarchar }
     raw_body:               { type: longvarchar, required: true }
     body:                   { type: longvarchar, required: true }
     average_rating:         { type: decimal, size: 4, scale: 2, required: true, default: 0.0 }
     managed_content:        { type: boolean, required: true, default: 0 }
-    summary:                { type: longvarchar }
+    draft:                  { type: boolean, required: true, default: 1 }
     created_at:             ~
     updated_at:             ~
 
