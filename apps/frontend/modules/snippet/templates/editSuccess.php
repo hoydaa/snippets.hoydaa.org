@@ -33,11 +33,19 @@
         <?php echo input_auto_complete_tag('tags',  $sf_params->get('tags'), 'tag/autocomplete', array('autocomplete' => 'off'), array('use_style' => 'true', 'tokens' => ',')) ?>
         <?php echo form_error('tags') ?>
     </div>
-    <?php if($sf_user->isAuthenticated() && $sf_user->hasGroup('EDITOR')): ?>
+    <?php if($sf_user->isAuthenticated()): ?>
+    <?php if($sf_user->hasGroup('EDITOR')): ?>
     <div class="row">
         <?php echo label_for('managed_content', __('Managed Content')) ?>
         <?php echo checkbox_tag('managed_content', '1', $sf_params->get('managed_content')) ?>
         <?php echo form_error('managed_content') ?>
+    </div>
+    <?php endif; ?>
+    <div class="row">
+        <?php echo label_for('draft', __('Draft')) ?>
+        <?php echo checkbox_tag('draft', '1', $sf_params->get('draft')) ?>
+        <?php echo link_to(image_tag('help.png', array('alt' => __('Draft'), 'title' => __('Draft'))), 'site/popup?content=draft', array('popup' => array(__('Draft'), 'width=300, height=250, resizable, scrollbars=yes'))) ?>
+        <?php echo form_error('draft') ?>
     </div>
     <?php endif; ?>
     <?php if (!$sf_params->get('id')): ?>
