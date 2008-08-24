@@ -13,8 +13,23 @@ class SnippetLanguagePeer extends BaseSnippetLanguagePeer
       $languages[$i] = "'$languages[$i]'";
     }
 
-    $query = 'SELECT %s as language, COUNT(*) as count FROM %s WHERE %s IN (%s) GROUP BY language ORDER BY count DESC';
-    $query = sprintf($query, SnippetLanguagePeer::NAME, SnippetLanguagePeer::TABLE_NAME, SnippetLanguagePeer::NAME, implode(', ', $languages));
+    $query = 'SELECT %s as language, COUNT(*) as count
+              FROM %s
+              INNER JOIN %s ON %s = %s
+              WHERE %s = false AND %s IN (%s)
+              GROUP BY language
+              ORDER BY count DESC';
+
+    $query = sprintf($query,
+      SnippetLanguagePeer::NAME,
+      SnippetLanguagePeer::TABLE_NAME,
+      SnippetPeer::TABLE_NAME,
+      SnippetLanguagePeer::SNIPPET_ID,
+      SnippetPeer::ID,
+      SnippetPeer::DRAFT,
+      SnippetLanguagePeer::NAME,
+      implode(', ', $languages)
+    );
 
     $statement = $connection->prepareStatement($query);
 
@@ -35,13 +50,12 @@ class SnippetLanguagePeer extends BaseSnippetLanguagePeer
       {
         $max_count = $resultset->getInt('count');
       }
-      
+
       $languages[] = array(
         'language' => $resultset->getString('language'),
         'rank' => floor(($resultset->getInt('count') / $max_count * 9) + 1),
         'count' => ($resultset->getInt('count'))
       );
-      //$languages[$resultset->getString('language')] = floor(($resultset->getInt('count') / $max_count * 9) + 1);
     }
 
     ksort($languages);
