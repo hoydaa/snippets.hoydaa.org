@@ -5,3 +5,8 @@ popupSuccess:
 
 indexSuccess:
   stylesheets: [code-java, code-php, code-c]
+
+highlightSuccess:
+  stylesheets: [-main, -commons, code-java, code-php, code-c]
+  javascripts: [-util]
+  layout: popup
