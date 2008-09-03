@@ -31,6 +31,17 @@ class siteActions extends sfActions
   {
   }
 
+  public function executeHighlight()
+  {
+    $language = $this->getRequestParameter('language');
+    $code = $this->getRequestParameter('code');
+
+    $service = new SnippetServiceClient();
+    $output = $service->highlight($language, $code);
+
+    $this->code = $output['snippet'];
+  }
+
   protected function partialExists($context, $name)
   {
     $directory = $context->getModuleDirectory();
