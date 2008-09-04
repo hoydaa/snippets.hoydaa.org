@@ -18,10 +18,10 @@ class feedActions extends sfActions
     public function executeNewCodes() {
         $feed = new sfAtom1Feed();
 
-        $feed->setTitle('Hoydaa Codesnippet - New Snippets');
+        $feed->setTitle('Hoydaa Snippets');
         $feed->setLink('http://codesnippet.hoydaa.org');
         $feed->setAuthorEmail('codesnippet@hoydaa.org');
-        $feed->setAuthorName('Hoydaa Codesnippet');
+        $feed->setAuthorName('Hoydaa Snippets');
 
         $codes = SnippetPeer::getNewCodes();
 
@@ -48,10 +48,10 @@ class feedActions extends sfActions
     public function executeSearch() {
         $feed = new sfAtom1Feed();
 
-        $feed->setTitle('Hoydaa Codesnippet - New Snippets');
+        $feed->setTitle('Hoydaa Snippets');
         $feed->setLink('http://codesnippet.hoydaa.org');
         $feed->setAuthorEmail('codesnippet@hoydaa.org');
-        $feed->setAuthorName('Hoydaa Codesnippet');    
+        $feed->setAuthorName('Hoydaa Snippets');    
     
     	$querystring = $this->getRequestParameter('q');
     	$query = new sfLuceneCriteria($this->getLuceneInstance());
