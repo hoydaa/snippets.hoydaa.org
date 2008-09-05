@@ -33,6 +33,7 @@ class siteActions extends sfActions
 
   public function executeHighlight()
   {
+    $uri = $this->getRequestParameter('uri');
     $language = $this->getRequestParameter('language');
     $code = $this->getRequestParameter('code');
 
@@ -40,7 +41,7 @@ class siteActions extends sfActions
     $output = $service->highlight($language, $code);
 
     $this->code = $output['snippet'];
-    $this->getResponse()->setTitle($this->getRequest()->getReferer());
+    $this->getResponse()->setTitle($uri);
   }
 
   protected function partialExists($context, $name)
