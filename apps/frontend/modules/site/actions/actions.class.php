@@ -40,6 +40,7 @@ class siteActions extends sfActions
     $output = $service->highlight($language, $code);
 
     $this->code = $output['snippet'];
+    $this->getResponse()->setTitle($this->getRequest()->getReferer());
   }
 
   protected function partialExists($context, $name)
