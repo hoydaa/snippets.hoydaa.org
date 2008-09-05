@@ -1,7 +1,11 @@
 content:
   url:   /content/:template
   param: { module: site, action: content }
-  
+
+highlight:
+  url: /highlight
+  param: { module: site, action: highlight }
+
 set_preference:
   url:   /setPreference/:pname
   param: { module: user, action: setPreference }
