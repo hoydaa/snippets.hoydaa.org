@@ -1,6 +1,8 @@
 <?php
 class myUtils {
     
+    private static $languages = array('JAVA', 'PHP', 'C', 'PYTHON');
+    
     public static function highlight($raw_body)
     {
         $body = sfMarkdown::doConvert($raw_body);
@@ -13,30 +15,23 @@ class myUtils {
             foreach($matches as $match)
             {
             	sfLogger::getInstance()->info("From myUtils: " . $match[3]);
-                if(strtoupper($match[1]) == 'JAVA')
-                {
-                    $highlighted = $service->highlight('JAVA', htmlspecialchars_decode($match[3]));
+            	
+            	$languageLower = $match[1];
+            	$languageUpper = strtoupper($match[1]);
+            	
+            	sfLogger::getInstance()->info("myUtils languages: $languageLower $languageUpper" . sizeof(self::$languages));
+            	
+            	if(in_array($languageUpper, self::$languages)) {
+                    $highlighted = $service->highlight($languageUpper, htmlspecialchars_decode($match[3]));
                     $highlighted['snippet'] = "<div class=\"code-wrapper\">{$highlighted['snippet']}</div>";
                     $body = str_replace($match[0], $highlighted['snippet'], $body, $cnt);
-                    $langs['java'] = $langs['java'] ? ($langs['java'] + 1) : 1;
-                } else if(strtoupper($match[1]) == 'PHP')
-                {
-                    $highlighted = $service->highlight('PHP', htmlspecialchars_decode($match[3]));
-                    $highlighted['snippet'] = "<div class=\"code-wrapper\">{$highlighted['snippet']}</div>";
-                    $body = str_replace($match[0], $highlighted['snippet'], $body, $cnt);
-                    $langs['php'] = $langs['php'] ? ($langs['php'] + 1) : 1;
-                } else if(strtoupper($match[1]) == 'C')
-                {
-                    $highlighted = $service->highlight('C', htmlspecialchars_decode($match[3]));
-                    $highlighted['snippet'] = "<div class=\"code-wrapper\">{$highlighted['snippet']}</div>";
-                    $body = str_replace($match[0], $highlighted['snippet'], $body, $cnt);
-                    $langs['c'] = $langs['c'] ? ($langs['c'] + 1) : 1;
-                } else 
-                {
-                    $lang = strtolower($match[1]);
-                    $langs[$lang] = $langs[$lang] ? ($langs[$lang] + 1) : 1;
-                    $body = str_replace($match[0], "<div class=\"code-wrapper\"><pre><code>{$match[3]}</code></pre></div>", $body, $cnt);
-                }
+                    $langs[$languageLower] = $langs[$languageLower] ? ($langs[$languageLower] + 1) : 1;            	
+            	} else {
+            		sfLogger::getInstance()->info("myUtils : $languageLower is not supported.");
+            		
+                    $langs[$languageLower] = $langs[$languageLower] ? ($langs[$languageLower] + 1) : 1;
+                    $body = str_replace($match[0], "<div class=\"code-wrapper\"><pre><code>{$match[3]}</code></pre></div>", $body, $cnt);            	
+            	}
             }
         }
         return array('body' => $body, 'langs' => $langs);

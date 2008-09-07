@@ -4,9 +4,9 @@ popupSuccess:
   layout: popup
 
 indexSuccess:
-  stylesheets: [code-java, code-php, code-c]
+  stylesheets: [code-java, code-php, code-c, code-python]
 
 highlightSuccess:
-  stylesheets: [-main, -commons, code-java, code-php, code-c]
+  stylesheets: [-main, -commons, code-java, code-php, code-c, code-python]
   javascripts: [-util]
   layout: popup

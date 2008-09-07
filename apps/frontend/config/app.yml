@@ -13,6 +13,7 @@ all:
       html: HTML
       java: Java
       php: PHP
+      python: Python
       ruby: Ruby
       sql: SQL
       xml: XML
@@ -26,4 +27,4 @@ all:
     box_order: [1, 2, 3, 4]
   isicsSitemapXML:
     modules:       [site, tag, language, snippet]
-  version: 1.0-beta
+  version: 1.0-beta-1

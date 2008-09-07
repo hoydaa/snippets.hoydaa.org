@@ -1,0 +1,58 @@
+.python-snippet {
+    border-collapse: collapse;
+    font-family: courier new;
+    font-size: 10pt;
+}
+
+.python-snippet .left {
+    padding: 0;
+    padding-right: 10px;
+    border-right: 1px solid #D4D0C8;
+    text-align: right;
+}
+
+.python-snippet .left a {
+    display: block;
+    color: #787878;
+}
+
+.python-snippet .right {
+    padding: 0;
+}
+
+.python-snippet .keyword {
+    color: blue;
+}
+
+.python-snippet .identifier {
+    color: black;
+}
+
+.python-snippet .variable {
+    color: darkblue;
+}
+
+.python-snippet .string {
+    color: green;
+}
+
+.python-snippet .number {
+    color: maroon;
+}
+
+.python-snippet .comment {
+    color: gray;
+}
+
+.python-snippet br {
+    line-height: normal;
+    background-color: red;
+}
+
+.python-snippet a {
+    text-decoration: none;
+}
+
+.python-snippet a:hover {
+    text-decoration: underline;
+}
