@@ -1,7 +1,7 @@
 <?php
 class myUtils {
     
-    private static $languages = array('JAVA', 'PHP', 'C', 'PYTHON');
+    private static $languages = array('C', 'JAVA', 'JAVASCRIPT', 'PHP', 'PYTHON');
     
     public static function highlight($raw_body)
     {
