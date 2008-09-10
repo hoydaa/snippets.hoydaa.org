@@ -14,4 +14,4 @@ highlightSuccess:
   has_layout:   off
 
 showSuccess:
-  stylesheets:    [code-java, code-php, code-c, code-python]
+  stylesheets:    [code-java, code-php, code-c, code-python, code-javascript]

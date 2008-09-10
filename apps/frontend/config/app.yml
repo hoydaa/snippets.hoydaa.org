@@ -12,6 +12,7 @@ all:
       cpp: C++
       html: HTML
       java: Java
+      javascript: JavaScript
       php: PHP
       python: Python
       ruby: Ruby
