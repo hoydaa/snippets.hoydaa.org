@@ -52,6 +52,7 @@ class userActions extends sfActions
 
     $c = new Criteria();
     $c->add(SnippetPeer::USER_ID, $this->user->getId());
+    $c->add(SnippetPeer::DRAFT, false);
 
     $this->snippet_count = SnippetPeer::doCount($c);
 
