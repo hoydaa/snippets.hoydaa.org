@@ -62,13 +62,18 @@
 	                </form>
 	            </div>
             </div>
+            <center>
+      	        <?php include_partial('tip/tip', array('place' => 'header')) ?>
+            </center>
         </div>
         <div id="main-wrapper">
             <div id="main">
                 <div id="sidebar">
+                	<?php include_partial('tip/tip', array('place' => 'sidebar')) ?>
                     <?php include('right.php'); ?>
                 </div>
                 <div id="content">
+                	<?php include_partial('tip/tip', array('place' => 'content')) ?>
                     <?php echo $sf_data->getRaw('sf_content') ?>
                 </div>
             </div>

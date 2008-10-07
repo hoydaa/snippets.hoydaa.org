@@ -29,3 +29,15 @@ all:
   isicsSitemapXML:
     modules:       [site, tag, language, snippet]
   version: 1.0-beta-1
+  tipFilter:
+    tips:
+      one:
+        text: Do you know you can personalize the sidebar -change the display order of the blocks, display size, etc.- and save your preferences?
+        place: sidebar
+      two: 
+        text: Do you know you can save search results as feeds?
+        place: content
+      three:
+        text: Do you know you can save your posts as draft before publishing?
+        place: header
+    probability: 0.3

@@ -95,5 +95,11 @@ class myUtils {
   {
     return $array[$i];
   }
+  
+  public static function makeSeed()
+  {
+    list($usec, $sec) = explode(' ', microtime());
+    return (float) $sec + ((float) $usec * 100000);
+  }
 }
 ?>
