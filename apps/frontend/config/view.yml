@@ -5,7 +5,7 @@ default:
   metas:
     title:        Hoydaa Snippets
     robots:       index, follow
-    description:  Hoydaa Snippet Repository
+    description:  Snippets is a community website to share your codesnippets.
     keywords:     snippet, hoydaa, highlight
     language:     en
 
