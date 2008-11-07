@@ -101,5 +101,13 @@ class myUtils {
     list($usec, $sec) = explode(' ', microtime());
     return (float) $sec + ((float) $usec * 100000);
   }
+  
+  public static function is_int_val($data) {
+    if (is_int($data) === true) return true;
+    elseif (is_string($data) === true && is_numeric($data) === true) {
+      return (strpos($data, '.') === false);
+    }
+    return false;
+  }
 }
 ?>
