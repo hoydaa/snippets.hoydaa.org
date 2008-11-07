@@ -37,10 +37,15 @@ class snippetActions extends sfActions
     $id = $this->getRequestParameter('id');
     $this->forward404Unless($id);
 
-    sfLogger::getInstance()->log('Received id ' . $id);
-
+    // for backward compability will be corrected.
     $this->cod = SnippetPeer::retrieveByPK(1);
-    $this->code = sfPropelFriendlyUrl::retrieveByFriendlyUrl('Snippet', $id);
+    if(myUtils::is_int_val($id) && $id > 0 && $id < 31)
+    {
+      $this->code = SnippetPeer::retrieveByPK($id);
+    } else
+    {
+      $this->code = sfPropelFriendlyUrl::retrieveByFriendlyUrl('Snippet', $id);
+    }
     
     $this->forward404Unless($this->code);
 
