@@ -12,6 +12,7 @@ propel:
     average_rating:         { type: decimal, size: 4, scale: 2, required: true, default: 0.0 }
     managed_content:        { type: boolean, required: true, default: 0 }
     draft:                  { type: boolean, required: true, default: 1 }
+    stripped_title:         { type: varchar, size: 255 }
     created_at:             ~
     updated_at:             ~
 

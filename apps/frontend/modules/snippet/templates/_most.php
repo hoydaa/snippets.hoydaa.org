@@ -21,7 +21,7 @@
                 <ol>
                     <?php foreach ($snippets as $snippet): ?>
                     <li>
-                        <strong><?php echo link_to($snippet->getTitle(), 'snippet/show?id='.$snippet->getId(), array('class' => 'title')); ?></strong>
+                        <strong><?php echo link_to($snippet->getTitle(), 'snippet/show?id='.$snippet->getFriendlyUrl(), array('class' => 'title')); ?></strong>
                         <?php if ($snippet->getMC() == 'true'): ?>
                         <?php echo image_tag('flag_blue.png', array('alt' => __('Managed Content'), 'title' => __('Managed Content'))) ?>
                         <?php endif; ?>

@@ -29,7 +29,7 @@ class feedActions extends sfActions
         {
             $item = new sfFeedItem();
             $item->setTitle($code->getTitle());
-            $item->setLink('snippet/show?id='.$code->getId());
+            $item->setLink('snippet/show?id='.$code->getFriendlyUrl());
             $item->setAuthorName(($code->getSfGuardUser() ? 
                 $code->getSfGuardUser()->getProfile()->getFullName() : $code->getName()));
             $item->setAuthorEmail(($code->getSfGuardUser() ? 

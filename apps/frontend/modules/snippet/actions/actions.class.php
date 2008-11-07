@@ -37,10 +37,14 @@ class snippetActions extends sfActions
     $id = $this->getRequestParameter('id');
     $this->forward404Unless($id);
 
-    $this->code = SnippetPeer::retrieveByPK($id);
+    sfLogger::getInstance()->log('Received id ' . $id);
+
+    $this->cod = SnippetPeer::retrieveByPK(1);
+    $this->code = sfPropelFriendlyUrl::retrieveByFriendlyUrl('Snippet', $id);
+    
     $this->forward404Unless($this->code);
 
-    if ($this->code->getDraft() && (!$this->getUser()->isAuthenticated() || !myUtils::isUserRecord('SnippetPeer', $id, $this->getUser()->getId())))
+    if ($this->code->getDraft() && (!$this->getUser()->isAuthenticated() || !myUtils::isUserRecord('SnippetPeer', $this->code->getId(), $this->getUser()->getId())))
     {
       $this->forward404();
     }
@@ -154,7 +158,7 @@ class snippetActions extends sfActions
 
     $snippet->save();
 
-    return $this->redirect('snippet/show?id=' . $snippet->getId());
+    return $this->redirect('snippet/show?id=' . $snippet->getFriendlyUrl());
   }
 
   public function validateUpdate()

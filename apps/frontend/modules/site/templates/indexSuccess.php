@@ -4,7 +4,7 @@
 
 <?php foreach ($snippets as $snippet): ?>
 <h1>
-    <span><?php echo link_to($snippet->getTitle(), 'snippet/show?id=' . $snippet->getId()); ?></span>
+    <span><?php echo link_to($snippet->getTitle(), 'snippet/show?id=' . $snippet->getFriendlyUrl()); ?></span>
     <?php if ($snippet->getMC() == 'true'): ?>
     <?php echo image_tag('flag_blue.png', array('alt' => __('Managed Content'), 'title' => __('Managed Content'))) ?>
     <?php endif; ?>

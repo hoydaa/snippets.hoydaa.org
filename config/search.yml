@@ -8,6 +8,7 @@ MyIndex:
         title:
           boost: 1.5
           type: text
+        strippedTitle: unindexed
         body:
           type: unstored
           transform: strip_tags
