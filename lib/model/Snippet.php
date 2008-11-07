@@ -76,3 +76,11 @@ class Snippet extends BaseSnippet
 
 sfLucenePropelBehavior::getInitializer()->setupModel('Snippet');
 sfPropelBehavior::add('Snippet', array('sfPropelActAsRatableBehavior' => array('rating_field' => 'AverageRating')));
+sfPropelBehavior::add('Snippet', 
+  array(
+    'sfPropelFriendlyUrlBehavior' => array(
+      'source_column' => 'title',
+      'target_column' => 'stripped_title'
+    )
+  )
+);
