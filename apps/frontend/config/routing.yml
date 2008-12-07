@@ -1,3 +1,7 @@
+snippet:
+  url:   /:id
+  param: { module: snippet, action: show }
+
 content:
   url:   /content/:template
   param: { module: site, action: content }
@@ -15,7 +19,7 @@ popup:
   param: { module: site, action: popup }
 
 language_list:
-  url: /language
+  url: /language/list
   param: { module: language, action: list }
 
 language:
@@ -60,4 +64,4 @@ sf_guard_signout:
 
 sf_guard_password:
   url:   /request_password
-  param: { module: sfGuardAuth, action: password }  
+  param: { module: sfGuardAuth, action: password }
