@@ -22,9 +22,27 @@
         <?php echo input_tag('title', $sf_params->get('title')) ?>
         <?php echo form_error('title') ?>
     </div>
+    <script type="text/javascript">
+	<!--
+		function change_size() {
+			if($('raw_body').style.width != '95%') {
+				$('raw_body').style.width='95%';
+				$('raw_body').style.position='absolute';
+				$('raw_body').style.top='140px';
+				$('raw_body').style.left='10px';
+			} else {
+				$('raw_body').style.width='';
+				$('raw_body').style.position='';
+				$('raw_body').style.top='';
+				$('raw_body').style.left='';	
+			}
+		}
+	//-->
+	</script>
+	<?php echo __('Double click to textarea in order to maximize/minimize.'); ?>
     <div class="row">
         <?php echo label_for('raw_body', __('Body') . required()) ?>
-        <?php echo textarea_tag('raw_body', $sf_params->get('raw_body'), 'class=body') ?>
+        <?php echo textarea_tag('raw_body', $sf_params->get('raw_body'), array('class'=>'body', 'ondblclick' => 'change_size();')) ?>
         <?php echo link_to(image_tag('help.png', array('alt' => __('Markdown Syntax'), 'title' => __('Markdown Syntax'))), 'site/popup?content=markdown', array('popup' => array(__('Markdown Syntax'), 'width=600, height=500, resizable, scrollbars=yes'))) ?>
         <?php echo form_error('raw_body') ?>
     </div>
