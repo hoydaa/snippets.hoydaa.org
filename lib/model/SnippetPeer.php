@@ -98,7 +98,7 @@ class SnippetPeer extends BaseSnippetPeer
     $c = new Criteria();
     $c->addJoin(self::ID, SnippetLanguagePeer::SNIPPET_ID, Criteria::LEFT_JOIN);
     $c->add($c->getNewCriterion(SnippetLanguagePeer::NAME, $language));
-    $c->addDescendindOrderByColumn(SnippetPeer::CREATED_AT);
+    $c->addDescendingOrderByColumn(SnippetPeer::CREATED_AT);
     $c->setDistinct();
 
     $pager = new sfPropelPager('Snippet', $pager_size);
