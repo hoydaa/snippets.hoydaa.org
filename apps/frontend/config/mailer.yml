@@ -5,9 +5,7 @@ dev:
   deliver:    on
 
 all:
-#  mailer:     sendmail
   mailer:     smtp
-#  domain:     sis-nav.com
   hostname:   mail.sis-nav.com
   username:   umut.utkan@sistemas.com.tr
   password:   gahve123
